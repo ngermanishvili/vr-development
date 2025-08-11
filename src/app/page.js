@@ -1,12 +1,13 @@
-import AboutHero from "@/components/about/AboutHero/about-hero";
 import AboutLanding from "@/components/landing/About/AboutSection";
 import LandingAccordion from "@/components/landing/Accordion/LandingAccordion";
-import LandingBanner from "@/components/landing/BannerLanding/LandingBanner";
+import ContactForm from "@/components/landing/ContactForm/ContactForm";
+import FeaturedStories from "@/components/landing/FeaturedStories/FeaturedStories";
 import LandingHero from "@/components/landing/Hero/LandingHero";
+import LandingImg from "@/components/landing/Hero/LandingImg";
 import ProjectsLanding from "@/components/landing/Projects/Projects";
+import Rent from "@/components/landing/Rent/Rent";
 import StatisticLanding from "@/components/landing/statistic/StatisticSection";
-import ProjectsHero from "@/components/projects/ProjectsHero/ProjectsHero";
-import Image from "next/image";
+
 
 export default function Home() {
   return (
@@ -16,6 +17,10 @@ export default function Home() {
       <StatisticLanding />
       <ProjectsLanding />
       <LandingAccordion />
+      <LandingImg />
+      <FeaturedStories />
+      <Rent />
+      <ContactForm />
     </div>
 
   );
