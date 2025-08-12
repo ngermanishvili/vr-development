@@ -35,7 +35,7 @@ const ProjectsLanding = () => {
     }
 
     return (
-        <section className="py-20 px-6">
+        <section className="py-8 px-6">
             <div className="max-w-full mx-auto">
                 <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider">PROJECTS</h2>
 

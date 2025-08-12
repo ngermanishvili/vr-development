@@ -4,10 +4,14 @@ import ContactForm from "@/components/landing/ContactForm/ContactForm";
 import FeaturedStories from "@/components/landing/FeaturedStories/FeaturedStories";
 import LandingHero from "@/components/landing/Hero/LandingHero";
 import LandingImg from "@/components/landing/Hero/LandingImg";
+import NearbyLocations from "@/components/landing/NearbyLocations/NearbyLocations";
 import ProjectsLanding from "@/components/landing/Projects/Projects";
 import Rent from "@/components/landing/Rent/Rent";
 import StatisticLanding from "@/components/landing/statistic/StatisticSection";
+import VRClubCard from "@/components/landing/VRClubCard/VRClubCard";
 
+// Force dynamic rendering in development
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
@@ -17,9 +21,11 @@ export default function Home() {
       <StatisticLanding />
       <ProjectsLanding />
       <LandingAccordion />
+      <NearbyLocations />
       <LandingImg />
       <FeaturedStories />
       <Rent />
+      <VRClubCard />
       <ContactForm />
     </div>
 

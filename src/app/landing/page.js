@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import { Menu, MessageCircle } from "lucide-react"
+import VRClubCard from "../../components/landing/VRClubCard/VRClubCard"
 
 export default function LandingPage() {
     return (
@@ -53,7 +54,7 @@ export default function LandingPage() {
             </section>
 
             {/* About Section */}
-            <section className="py-20 px-6">
+            <section className="py-8 px-6">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-3xl font-light mb-8 text-yellow-600 tracking-wider">ABOUT VR HOLDING</h2>
                     <p className="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto mb-8">
@@ -71,7 +72,7 @@ export default function LandingPage() {
             </section>
 
             {/* Statistics Section */}
-            <section className="py-20 px-6 bg-white">
+            <section className="py-8 px-6 bg-white">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
                         <div>
@@ -99,7 +100,7 @@ export default function LandingPage() {
             </section>
 
             {/* Projects Section */}
-            <section className="py-20 px-6 bg-gray-50">
+            <section className="py-8 px-6 bg-gray-50">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider">PROJECTS</h2>
 
@@ -158,6 +159,9 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            {/* VR Club Card Section */}
+            <VRClubCard />
         </div>
     )
 }

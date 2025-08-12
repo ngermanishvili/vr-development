@@ -1,5 +1,4 @@
 import React from 'react'
-import { MessageCircle } from 'lucide-react'
 
 const LandingHero = () => {
     return (
@@ -33,9 +32,25 @@ const LandingHero = () => {
 
             </div>
 
-            {/* Chat Button */}
-            <button className="fixed bottom-6 right-6 z-50 bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-lg shadow-lg transition-colors">
-                <MessageCircle className="w-6 h-6" />
+            {/* Chat Button - Half embedded at hero section bottom */}
+            <button 
+                className="absolute bottom-0 right-6 z-50 transform translate-y-1/2" 
+                style={{ 
+                    width: '170px', 
+                    height: '132px', 
+                    backgroundColor: '#CDA34B',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: 'none'
+                }}
+            >
+                <img 
+                    src="/landing/hero/chaticon.svg" 
+                    alt="Chat"
+                    style={{ width: '60px', height: '50px' }}
+                    className="object-contain"
+                />
             </button>
         </section>
     )

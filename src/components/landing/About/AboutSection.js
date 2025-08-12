@@ -1,9 +1,10 @@
+"use client"
 import React from 'react'
 
 
 const AboutLanding = () => {
     return (
-        <section className="py-20 px-6">
+        <section className="py-8 px-6">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl font-light mb-8 text-yellow-600 tracking-wider">ABOUT VR HOLDING</h2>
                 <p className="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto mb-8">
@@ -12,8 +13,24 @@ const AboutLanding = () => {
                     throughout a few short implementing years every project became a success.
                 </p>
                 <button
-                    variant="outline"
-                    className="border-1 px-8 py-2  transition-all duration-300 bg-transparent"
+                    style={{
+                        border: '1px solid #000',
+                        background: 'transparent',
+                        color: '#000',
+                        padding: '8px 32px',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s',
+                        fontFamily: 'Arial, sans-serif',
+                        fontSize: '16px'
+                    }}
+                    onMouseOver={(e) => {
+                        e.target.style.background = '#000'
+                        e.target.style.color = '#fff'
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.background = 'transparent'
+                        e.target.style.color = '#000'
+                    }}
                 >
                     READ MORE
                 </button>
