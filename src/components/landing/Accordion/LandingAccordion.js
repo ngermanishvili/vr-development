@@ -32,36 +32,36 @@ const LandingAccordion = () => {
                     className="w-full flex items-center py-6 pl-4 md:pl-6 text-left hover:bg-gray-50 transition-all duration-500 ease-in-out group cursor-pointer"
                 >
                     <span
-                        className="font-light  italic w-12 md:w-16 flex-shrink-0 md:mt-4 mt-2"
-                        style={{ fontSize: isMobile ? '16px' : '24px' }}
+                        className="font-bold italic w-12 md:w-16 flex-shrink-0 md:mt-4 mt-2"
+                        style={{ fontSize: isMobile ? '16px' : '24px', fontFamily: 'Baskerville', fontWeight: 'bold' }}
                     >
                         {item.number}
                     </span>
                     <div className="flex-1 relative md:mb-5 mb-2">
                         <span
-                            className="font-light italic  text-black group-hover:text-yellow-600 transition-colors duration-500 ease-in-out absolute left-[30%] md:left-[60%]"
-                            style={{ fontSize: isMobile ? '14px' : '28px', fontFamily: 'Baskerville Display PT, serif' }}
+                            className=" font-bold  text-black  italic transition-colors duration-500 ease-in-out absolute left-[30%] md:left-[60%]"
+                            style={{ fontSize: isMobile ? '16px' : '26px', fontFamily: 'Baskerville', fontWeight: 'bold', fontStyle: 'italic' }}
                         >
                             {item.title}
                         </span>
                     </div>
-                </button>
+                </button >
 
                 <div
                     className="overflow-hidden transition-all duration-800"
                     style={{
-                        maxHeight: isOpen ? '500px' : '0px',
+                        maxHeight: isOpen ? '600px' : '0px',
                         opacity: isOpen ? 1 : 0,
                         paddingBottom: isOpen ? (isMobile ? '64px' : '48px') : '0px',
                         transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)'
                     }}
                 >
-                    <div className="pt-4 pl-4 md:pl-6">
+                    <div className=" pl-4">
                         <div className="flex">
                             <span className="w-12 md:w-16 flex-shrink-0"></span>
                             <div className="flex-1">
                                 <p
-                                    className="text-gray-600 leading-relaxed ml-[30%] md:ml-[60%] max-w-[65%] md:max-w-[35%] transition-opacity duration-600 ease-in-out"
+                                    className="text-black leading-relaxed ml-[30%] md:ml-[60%] max-w-[65%] md:max-w-[35%] transition-opacity duration-600 ease-in-out"
                                     style={{ fontSize: isMobile ? '13px' : '18px', fontFamily: 'Roboto, sans-serif' }}
                                 >
                                     {item.content}
@@ -70,7 +70,7 @@ const LandingAccordion = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 
