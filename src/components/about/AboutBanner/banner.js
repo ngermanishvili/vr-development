@@ -7,7 +7,7 @@ const AboutBanner = () => {
             <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 {/* Left Section - Company Title */}
                 <div className="lg:col-span-1 flex justify-start">
-                    <h1 className="md:text-4xl text-4xl lg:text-5xl font-bold text-black leading-tight tracking-tight">
+                    <h1 className="md:text-4xl text-4xl lg:text-5xl font-bold text-black leading-tight tracking-tight" style={{ fontFamily: 'Baskerville Display PT, serif', fontWeight: 'bold', fontSize: '35px' }}>
                         REAL ESTATE
                         <br />
                         DEVELOPMENT
@@ -30,9 +30,9 @@ const AboutBanner = () => {
                 </div>
 
                 {/* Right Section - Company Description */}
-                <div className="lg:col-span-1 flex flex-col justify-center space-y-8">
+                <div className="lg:col-span-1 md:mt-42 mt-0 flex flex-col justify-center ">
                     <div className="text-center lg:text-left">
-                        <p className="text-lg italic text-gray-700 leading-relaxed">
+                        <p className="text-md italic text-black leading-relaxed" style={{ fontFamily: 'Baskerville, serif', fontStyle: 'italic', fontSize: '18px' }}>
                             <span className="font-semibold">VR HOLDING</span> is one of the first real
                             <br />
                             estate development companies in the
