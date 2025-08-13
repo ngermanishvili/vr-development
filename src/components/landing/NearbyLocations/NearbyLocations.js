@@ -31,7 +31,7 @@ const NearbyLocations = () => {
         <>
             <section className="py-16 px-4">
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-center text-2xl font-light text-amber-700 mb-12 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>REQUEST A CALL</h2>
+                    <h2 className="text-center text-2xl font-light mb-12 tracking-wider" style={{ fontFamily: 'Baskerville, serif', color: '#BE9645' }}>REQUEST A CALL</h2>
 
                     <div style={{
                         display: 'flex',

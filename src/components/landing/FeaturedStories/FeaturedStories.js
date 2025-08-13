@@ -1,41 +1,44 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const FeaturedStories = () => {
     const stories = [
-        { height: 'h-72', title: 'Golf Development', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Golf course development' },
-        { height: 'h-94', title: 'Construction Project', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Construction development' },
-        { height: 'h-72', title: 'Resort Planning', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Resort development' },
-        { height: 'h-94', title: 'Sports Complex', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Sports events' }
+        { height: 'h-72', title: 'Golf Development', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Golf course development', slug: 'golf-development' },
+        { height: 'h-94', title: 'Construction Project', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Construction development', slug: 'construction-project' },
+        { height: 'h-72', title: 'Resort Planning', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Resort development', slug: 'resort-planning' },
+        { height: 'h-94', title: 'Sports Complex', category: 'DEVELOPMENT', date: '23.01.22', alt: 'Sports events', slug: 'sports-complex' }
     ]
 
     const StoryCard = ({ story }) => (
-        <div className="group overflow-hidden bg-white">
-            <div className={`relative ${story.height}`}>
-                <Image
-                    src="/landing/hero/landing_banner.png"
-                    alt={story.alt}
-                    fill
-                    className="object-cover"
-                />
-            </div>
-            <div className="p-2">
-                <div className="mb-2">
-                    <div className="flex items-center">
-                        <span className="text-xs text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Roboto, sans-serif' }}>{story.category}</span>
-                        <div className="flex-1 h-px bg-gray-300 ml-2"></div>
-                    </div>
-                    <div className="text-right text-xs">
-                        <span className="text-xs text-gray-400" style={{ fontFamily: 'Roboto, sans-serif' }}>{story.date}</span>
-                    </div>
+        <Link href={`/featured-stories/${story.slug}`}>
+            <div className="group overflow-hidden bg-white cursor-pointer">
+                <div className={`relative ${story.height}`}>
+                    <Image
+                        src="/landing/hero/landing_banner.png"
+                        alt={story.alt}
+                        fill
+                        className="object-cover"
+                    />
                 </div>
-                <h3 className="text-sm font-medium mb-2 text-gray-800 uppercase" style={{ fontFamily: 'Baskerville Display PT, serif' }}>{story.title}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed" style={{ fontFamily: 'Roboto, sans-serif' }}>
-                    The most important thing for us is the welfare of our customers. offers, thus making our relations more interesting.
-                </p>
+                <div className="p-2">
+                    <div className="mb-2">
+                        <div className="flex items-center">
+                            <span className="text-xs text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Roboto, sans-serif' }}>{story.category}</span>
+                            <div className="flex-1 h-px bg-gray-300 ml-2"></div>
+                        </div>
+                        <div className="text-right text-xs">
+                            <span className="text-xs text-gray-400" style={{ fontFamily: 'Roboto, sans-serif' }}>{story.date}</span>
+                        </div>
+                    </div>
+                    <h3 className="text-sm font-medium mb-2 text-gray-800 uppercase" style={{ fontFamily: 'Baskerville Display PT, serif' }}>{story.title}</h3>
+                    <p className="text-xs text-gray-600 leading-relaxed" style={{ fontFamily: 'Roboto, sans-serif' }}>
+                        The most important thing for us is the welfare of our customers. offers, thus making our relations more interesting.
+                    </p>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 
     return (
