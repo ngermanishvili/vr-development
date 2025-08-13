@@ -1,47 +1,54 @@
-import React from 'react';
+import React from "react";
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-800 text-white px-8 py-12">
-            <div className="flex justify-between">
-                <div className="text-2xl font-bold tracking-wider mb-8">
-                    VR
+        <footer className="bg-black text-white px-8 py-10">
+            <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-start">
+
+                {/* Logo + Left Links */}
+                <div className="flex flex-col space-y-6 w-full sm:w-auto">
+                    {/* Logo */}
+                    <div>
+                        <img src="/logo.svg" alt="VR Logo" className="h-8" />
+                    </div>
+                    {/* Left Menu */}
+                    <ul className="space-y-3 text-sm">
+                        <li><a href="#" className="hover:underline">Home</a></li>
+                        <li><a href="#" className="hover:underline">Projects</a></li>
+                        <li><a href="#" className="hover:underline">Opportunities</a></li>
+                        <li><a href="#" className="hover:underline">Rental</a></li>
+                        <li><a href="#" className="hover:underline">VR Club Card Partners</a></li>
+                        <li><a href="#" className="hover:underline">Investment</a></li>
+                    </ul>
                 </div>
 
-                <div className="flex gap-4">
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span className="text-black text-sm">f</span>
-                    </div>
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span className="text-black text-sm">ig</span>
-                    </div>
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span className="text-black text-sm">x</span>
-                    </div>
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span className="text-black text-sm">yt</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="grid grid-cols-3 gap-12 mt-8">
-                <div className="space-y-4">
-                    <div className="text-white">Home</div>
-                    <div className="text-white">Projects</div>
-                    <div className="text-white">Opportunities</div>
-                    <div className="text-white">Rental</div>
-                    <div className="text-white">VR Club Card Partners</div>
-                    <div className="text-white">Investment</div>
+                {/* Middle Links */}
+                <div className="flex flex-col space-y-3 text-sm mt-8 sm:mt-0">
+                    <a href="#" className="hover:underline">About</a>
+                    <a href="#" className="hover:underline">Brand resources</a>
+                    <a href="#" className="hover:underline">Contact</a>
                 </div>
 
-                <div className="space-y-4">
-                    <div className="text-white">About</div>
-                    <div className="text-white">Brand resources</div>
-                    <div className="text-white">Contact</div>
+                {/* Download Button */}
+                <div className="mt-8 sm:mt-0">
+                    <a href="#" className="text-sm hover:underline">Download Presentation</a>
                 </div>
 
-                <div>
-                    <div className="text-white">Download Presentation</div>
+                {/* Social Icons */}
+                <div className="flex space-x-4 mt-8 sm:mt-0">
+                    <a href="#" className="bg-white rounded-full p-2 text-black hover:bg-gray-300 transition">
+                        <Facebook size={18} />
+                    </a>
+                    <a href="#" className="bg-white rounded-full p-2 text-black hover:bg-gray-300 transition">
+                        <Instagram size={18} />
+                    </a>
+                    <a href="#" className="bg-white rounded-full p-2 text-black hover:bg-gray-300 transition">
+                        <Twitter size={18} />
+                    </a>
+                    <a href="#" className="bg-white rounded-full p-2 text-black hover:bg-gray-300 transition">
+                        <Youtube size={18} />
+                    </a>
                 </div>
             </div>
         </footer>

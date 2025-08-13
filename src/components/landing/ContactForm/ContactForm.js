@@ -12,15 +12,15 @@ const ContactForm = () => {
                 setIsDropdownOpen(false)
             }
         }
-        
+
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768)
         }
-        
+
         handleResize() // Check on mount
         window.addEventListener('resize', handleResize)
         document.addEventListener('click', handleClickOutside)
-        
+
         return () => {
             document.removeEventListener('click', handleClickOutside)
             window.removeEventListener('resize', handleResize)
@@ -29,22 +29,31 @@ const ContactForm = () => {
 
     return (
         <section style={{ fontFamily: 'Arial, sans-serif', margin: 0, background: '#fff' }}>
+            <div className="w-full h-px bg-black"></div>
+
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : '1fr 2fr',
+                gridTemplateColumns: isMobile ? '1fr' : '1fr 3fr',
                 minHeight: '100vh'
             }}>
                 {/* Left Side - Contact Information */}
                 <div style={{
-                    background: '#f9f9f9',
+                    background: '#f0eff0',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    padding: isMobile ? '20px 15px' : '40px 140px',
+                    justifyContent: 'center',
+                    padding: isMobile ? '20px 15px' : '50px 20px',
                     gap: isMobile ? '30px' : '60px'
                 }}>
                     {/* Location */}
-                    <div style={{ borderBottom: '1px solid #ccc', paddingBottom: '30px' }}>
+                    <div style={{
+                        borderBottom: '1px solid #000',
+                        paddingBottom: '30px',
+                        marginLeft: isMobile ? '-15px' : '-20px',
+                        marginRight: isMobile ? '-15px' : '-20px',
+                        paddingLeft: isMobile ? '15px' : '20px',
+                        paddingRight: isMobile ? '15px' : '20px'
+                    }}>
                         <div style={{
                             fontSize: isMobile ? '24px' : '40px',
                             fontStyle: 'italic',
@@ -60,7 +69,14 @@ const ContactForm = () => {
                     </div>
 
                     {/* Number */}
-                    <div style={{ borderBottom: '1px solid #ccc', paddingBottom: '30px' }}>
+                    <div style={{
+                        borderBottom: '1px solid #000',
+                        paddingBottom: '30px',
+                        marginLeft: isMobile ? '-15px' : '-20px',
+                        marginRight: isMobile ? '-15px' : '-20px',
+                        paddingLeft: isMobile ? '15px' : '20px',
+                        paddingRight: isMobile ? '15px' : '20px'
+                    }}>
                         <div style={{
                             fontSize: isMobile ? '24px' : '40px',
                             fontStyle: 'italic',
@@ -91,7 +107,12 @@ const ContactForm = () => {
                 </div>
 
                 {/* Right Side - Contact Form */}
-                <div style={{ padding: isMobile ? '20px 15px' : '40px 60px' }}>
+                <div style={{
+                    padding: isMobile ? '20px 15px' : '40px 20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center'
+                }}>
                     <div className='flex justify-center items-center mb-8'>
 
 
@@ -107,22 +128,24 @@ const ContactForm = () => {
 
                     <form>
                         {/* Toggle Buttons */}
-                        <div style={{ 
-                            display: 'flex', 
-                            gap: '10px', 
+                        <div style={{
+                            width: '350px',
+                            display: 'flex',
+                            gap: '10px',
                             marginBottom: '20px',
                             flexWrap: isMobile ? 'wrap' : 'nowrap'
                         }}>
                             <button
                                 type="button"
                                 style={{
-                                    padding: isMobile ? '6px 12px' : '8px 20px',
+                                    padding: isMobile ? '6px 12px' : '18px 20px',
                                     border: '1px solid #000',
                                     background: '#000',
                                     color: '#fff',
                                     cursor: 'pointer',
                                     fontSize: isMobile ? '12px' : '14px',
-                                    flex: isMobile ? '1' : 'auto'
+                                    flex: isMobile ? '1' : 'auto',
+                                    borderRadius: '12px'
                                 }}
                             >
                                 For residence
@@ -135,7 +158,8 @@ const ContactForm = () => {
                                     background: 'transparent',
                                     cursor: 'pointer',
                                     fontSize: isMobile ? '12px' : '14px',
-                                    flex: isMobile ? '1' : 'auto'
+                                    flex: isMobile ? '1' : 'auto',
+                                    borderRadius: '12px'
                                 }}
                             >
                                 For investment
@@ -160,9 +184,9 @@ const ContactForm = () => {
                         </div>
 
                         {/* Phone and Mail Fields */}
-                        <div style={{ 
-                            display: 'flex', 
-                            gap: '10px', 
+                        <div style={{
+                            display: 'flex',
+                            gap: '10px',
                             marginBottom: '10px',
                             flexDirection: isMobile ? 'column' : 'row'
                         }}>
@@ -194,9 +218,9 @@ const ContactForm = () => {
                         </div>
 
                         {/* Project and Property Type Fields */}
-                        <div style={{ 
-                            display: 'flex', 
-                            gap: '10px', 
+                        <div style={{
+                            display: 'flex',
+                            gap: '10px',
                             marginBottom: '10px',
                             flexDirection: isMobile ? 'column' : 'row'
                         }}>
@@ -284,21 +308,24 @@ const ContactForm = () => {
                             <p style={{ fontSize: '14px', marginBottom: '10px' }}>
                                 Have you considered your approximate budget?
                             </p>
-                            <div style={{ 
-                                display: 'flex', 
-                                gap: '10px', 
+                            <div style={{
+                                display: 'flex',
+                                gap: '10px',
                                 flexWrap: 'wrap',
+                                borderRadius: '8px',
                                 justifyContent: isMobile ? 'center' : 'flex-start'
                             }}>
                                 <button
                                     type="button"
                                     style={{
-                                        padding: isMobile ? '6px 12px' : '8px 16px',
+                                        padding: isMobile ? '6px 12px' : '16px 16px',
                                         background: '#000',
                                         color: '#fff',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        fontSize: isMobile ? '12px' : '14px'
+                                        fontSize: isMobile ? '12px' : '14px',
+                                        borderRadius: '8px',
+                                        width: isMobile ? 'auto' : '150px'
                                     }}
                                 >
                                     {"<100k"}
@@ -306,12 +333,14 @@ const ContactForm = () => {
                                 <button
                                     type="button"
                                     style={{
-                                        padding: isMobile ? '6px 12px' : '8px 16px',
+                                        padding: isMobile ? '6px 12px' : '16px 16px',
                                         background: '#000',
                                         color: '#fff',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        fontSize: isMobile ? '12px' : '14px'
+                                        fontSize: isMobile ? '12px' : '14px',
+                                        borderRadius: '8px',
+                                        width: isMobile ? 'auto' : '150px'
                                     }}
                                 >
                                     100k - 250k
@@ -319,12 +348,14 @@ const ContactForm = () => {
                                 <button
                                     type="button"
                                     style={{
-                                        padding: isMobile ? '6px 12px' : '8px 16px',
+                                        padding: isMobile ? '6px 12px' : '16px 16px',
                                         background: '#000',
                                         color: '#fff',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        fontSize: isMobile ? '12px' : '14px'
+                                        fontSize: isMobile ? '12px' : '14px',
+                                        borderRadius: '8px',
+                                        width: isMobile ? 'auto' : '150px'
                                     }}
                                 >
                                     250k - 1m
@@ -332,12 +363,14 @@ const ContactForm = () => {
                                 <button
                                     type="button"
                                     style={{
-                                        padding: isMobile ? '6px 12px' : '8px 16px',
+                                        padding: isMobile ? '6px 12px' : '16px 16px',
                                         background: '#000',
                                         color: '#fff',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        fontSize: isMobile ? '12px' : '14px'
+                                        fontSize: isMobile ? '12px' : '14px',
+                                        borderRadius: '8px',
+                                        width: isMobile ? 'auto' : '150px'
                                     }}
                                 >
                                     1m - 5m
@@ -345,12 +378,14 @@ const ContactForm = () => {
                                 <button
                                     type="button"
                                     style={{
-                                        padding: isMobile ? '6px 12px' : '8px 16px',
+                                        padding: isMobile ? '6px 12px' : '16px 16px',
                                         background: '#000',
                                         color: '#fff',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        fontSize: isMobile ? '12px' : '14px'
+                                        fontSize: isMobile ? '12px' : '14px',
+                                        borderRadius: '8px',
+                                        width: isMobile ? 'auto' : '150px'
                                     }}
                                 >
                                     5m +
