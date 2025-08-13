@@ -1,27 +1,40 @@
 "use client"
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
+    const headerColor = isHomePage ? 'text-white' : 'text-[#BE9744]';
+    const hoverColor = isHomePage ? 'hover:text-yellow-300' : 'hover:text-[#BE9744]/80';
+    const bgHover = isHomePage ? 'hover:bg-white/10' : 'hover:bg-[#BE9744]/10';
 
     return (
         <>
-            <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-4 text-white">
+            <nav className={`absolute top-0 left-0 right-0 z-50 px-6 py-4 ${headerColor}`}>
                 {/* Desktop Header */}
                 <div className="hidden md:grid grid-cols-3 items-center">
-                    <div className="flex items-center space-x-8">
-                        <button className="border border-white/30 px-4 py-2 text-sm hover:bg-white/10 transition-colors">
-                            HOUSE DEVELOPMENT
+                    <div className="flex items-center space-x-6">
+                        <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-4 py-2 text-sm ${bgHover} transition-colors`}>
+                            CHOOSE AN APARTMENT
                         </button>
-                        <button className="text-sm hover:text-yellow-300 transition-colors">JOBS</button>
-                        <button className="text-sm hover:text-yellow-300 transition-colors">CONTACT</button>
+                        <div className="flex items-center space-x-2">
+                            <Phone className="w-4 h-4 font-bold" />
+                            <span className="text-sm font-bold">*2999</span>
+                        </div>
+                        <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
+                        <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
                     </div>
 
                     <div className="text-2xl font-bold tracking-wider text-center">VR</div>
 
-                    <div className="flex items-center justify-end space-x-4">
-                        <button className="text-sm hover:text-yellow-300 transition-colors">ENG</button>
+                    <div className="flex items-center justify-end space-x-3">
+                        <div className="flex items-center space-x-1">
+                            <span className="text-sm">ENG</span>
+                            <ChevronDown className="w-4 h-4" />
+                        </div>
                         <Menu className="w-6 h-6" />
                     </div>
                 </div>
@@ -41,31 +54,33 @@ const Header = () => {
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
                 <div className="fixed inset-0 z-40 bg-black/90 md:hidden">
-                    <div className="flex flex-col items-center justify-center h-full space-y-8 text-white">
+                    <div className={`flex flex-col items-center justify-center h-full space-y-8 ${headerColor}`}>
                         <button
-                            className="border border-white/30 px-6 py-3 text-lg hover:bg-white/10 transition-colors"
+                            className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-6 py-3 text-lg ${bgHover} transition-colors`}
                             onClick={() => setIsMenuOpen(false)}
                         >
-                            HOUSE DEVELOPMENT
+                            CHOOSE AN APARTMENT
                         </button>
+                        <div className="flex items-center space-x-2">
+                            <Phone className="w-5 h-5 font-bold" />
+                            <span className="text-lg font-bold">*2999</span>
+                        </div>
                         <button
-                            className="text-lg hover:text-yellow-300 transition-colors"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            JOBS
-                        </button>
-                        <button
-                            className="text-lg hover:text-yellow-300 transition-colors"
+                            className={`text-lg font-bold ${hoverColor} transition-colors`}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             CONTACT
                         </button>
                         <button
-                            className="text-lg hover:text-yellow-300 transition-colors"
+                            className={`text-lg font-bold ${hoverColor} transition-colors`}
                             onClick={() => setIsMenuOpen(false)}
                         >
-                            ENG
+                            ABOUT
                         </button>
+                        <div className="flex items-center space-x-1">
+                            <span className="text-lg">ENG</span>
+                            <ChevronDown className="w-5 h-5" />
+                        </div>
                     </div>
                 </div>
             )}

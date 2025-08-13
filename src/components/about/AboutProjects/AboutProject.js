@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-const ProjectsLanding = () => {
+const ProjectsAbout = () => {
     const [activeIndex, setActiveIndex] = useState(0)
 
     const projects = [
@@ -23,7 +23,20 @@ const ProjectsLanding = () => {
             title: "VR Vake Sky Tower",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum",
             image: "/landing/hero/landing_banner.png"
-        }
+        },
+        {
+            id: 3,
+            title: "VR Vake Sky Tower",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum",
+            image: "/landing/hero/landing_banner.png"
+        },
+        {
+            id: 4,
+            title: "VR Vake Sky Tower",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum",
+            image: "/landing/hero/landing_banner.png"
+        },
+
     ]
 
     const handlePrevious = () => {
@@ -35,9 +48,10 @@ const ProjectsLanding = () => {
     }
 
     return (
-        <section className="py-8 px-6">
+        <section className="py-20 px-6">
             <div className="max-w-full mx-auto">
-                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider">PROJECTS</h2>
+                <h2 className="text-3xl font-light text-center mb-8 text-yellow-600 tracking-wider">COMPLETED PROJECTS</h2>
+                <h2 className="text-1xl font-light text-center mb-8 text-black tracking-wider">OUR JOURNEY</h2>
 
                 {/* Desktop View */}
                 <div className="hidden md:flex gap-2 h-[500px] overflow-hidden relative">
@@ -97,10 +111,10 @@ const ProjectsLanding = () => {
 
                 {/* Mobile View */}
                 <div className="md:hidden overflow-x-scroll"
-                     style={{
-                         scrollbarWidth: 'none',
-                         msOverflowStyle: 'none'
-                     }}>
+                    style={{
+                        scrollbarWidth: 'none',
+                        msOverflowStyle: 'none'
+                    }}>
                     <div className="flex gap-4 pb-4 w-max">
                         {projects.map((project, index) => (
                             <div key={project.id} className="relative flex-shrink-0 w-80 h-96 overflow-hidden rounded-lg">
@@ -128,4 +142,4 @@ const ProjectsLanding = () => {
     )
 }
 
-export default ProjectsLanding
+export default ProjectsAbout
