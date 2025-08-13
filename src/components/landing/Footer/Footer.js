@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className="flex flex-col space-y-6 w-full sm:w-auto">
                     {/* Logo */}
                     <div>
-                        <img src="/logo.svg" alt="VR Logo" className="h-8" />
+                        <img src="/logo/vr-logo.svg" alt="VR Logo" className="h-8" />
                     </div>
                     {/* Left Menu */}
                     <ul className="space-y-3 text-sm">

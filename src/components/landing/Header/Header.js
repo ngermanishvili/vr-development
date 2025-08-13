@@ -1,15 +1,29 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+    const [selectedLang, setSelectedLang] = useState('ENG');
     const pathname = usePathname();
     const isHomePage = pathname === '/';
     const headerColor = isHomePage ? 'text-white' : 'text-[#BE9744]';
-    const hoverColor = isHomePage ? 'hover:text-yellow-300' : 'hover:text-[#BE9744]/80';
-    const bgHover = isHomePage ? 'hover:bg-white/10' : 'hover:bg-[#BE9744]/10';
+    const hoverColor = 'hover:text-[#BE9645] cursor-pointer';
+    const bgHover = 'hover:bg-[#BE9645] hover:text-white cursor-pointer';
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest('.language-dropdown')) {
+                setIsLangMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside);
+    }, []);
 
     return (
         <>
@@ -20,20 +34,52 @@ const Header = () => {
                         <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-4 py-2 text-sm ${bgHover} transition-colors`}>
                             CHOOSE AN APARTMENT
                         </button>
-                        <div className="flex items-center space-x-2">
+                        <a href="tel:*2999" className="flex items-center space-x-2 hover:text-[#BE9645] cursor-pointer transition-colors">
                             <Phone className="w-4 h-4 font-bold" />
                             <span className="text-sm font-bold">*2999</span>
-                        </div>
+                        </a>
                         <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
-                        <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
+                        <Link href="/about">
+                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
+                        </Link>
                     </div>
 
-                    <div className="text-2xl font-bold tracking-wider text-center">VR</div>
+                    <div className="text-2xl font-bold tracking-wider text-center flex justify-center">
+                        <img 
+                            src="/logo/vr-logo.svg" 
+                            alt="VR Logo" 
+                            className="h-8" 
+                            style={{
+                                filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
+                            }}
+                        />
+                    </div>
 
                     <div className="flex items-center justify-end space-x-3">
-                        <div className="flex items-center space-x-1">
-                            <span className="text-sm">ENG</span>
-                            <ChevronDown className="w-4 h-4" />
+                        <div className="relative language-dropdown">
+                            <button 
+                                className="flex items-center space-x-1 hover:text-[#BE9645] cursor-pointer transition-colors"
+                                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                            >
+                                <span className="text-sm">{selectedLang}</span>
+                                <ChevronDown className="w-4 h-4" />
+                            </button>
+                            {isLangMenuOpen && (
+                                <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                                    {['ENG', 'GEO', 'RU'].map((lang) => (
+                                        <button
+                                            key={lang}
+                                            className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-[#BE9645] hover:text-white transition-colors text-left"
+                                            onClick={() => {
+                                                setSelectedLang(lang);
+                                                setIsLangMenuOpen(false);
+                                            }}
+                                        >
+                                            {lang}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                         <Menu className="w-6 h-6" />
                     </div>
@@ -61,25 +107,48 @@ const Header = () => {
                         >
                             CHOOSE AN APARTMENT
                         </button>
-                        <div className="flex items-center space-x-2">
+                        <a href="tel:*2999" className="flex items-center space-x-2 hover:text-[#BE9645] cursor-pointer transition-colors">
                             <Phone className="w-5 h-5 font-bold" />
                             <span className="text-lg font-bold">*2999</span>
-                        </div>
+                        </a>
                         <button
                             className={`text-lg font-bold ${hoverColor} transition-colors`}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             CONTACT
                         </button>
-                        <button
-                            className={`text-lg font-bold ${hoverColor} transition-colors`}
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            ABOUT
-                        </button>
-                        <div className="flex items-center space-x-1">
-                            <span className="text-lg">ENG</span>
-                            <ChevronDown className="w-5 h-5" />
+                        <Link href="/about">
+                            <button
+                                className={`text-lg font-bold ${hoverColor} transition-colors`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                ABOUT
+                            </button>
+                        </Link>
+                        <div className="relative language-dropdown">
+                            <button 
+                                className="flex items-center space-x-1 hover:text-[#BE9645] cursor-pointer transition-colors"
+                                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                            >
+                                <span className="text-lg">{selectedLang}</span>
+                                <ChevronDown className="w-5 h-5" />
+                            </button>
+                            {isLangMenuOpen && (
+                                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                                    {['ENG', 'GEO', 'RU'].map((lang) => (
+                                        <button
+                                            key={lang}
+                                            className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-[#BE9645] hover:text-white transition-colors text-center min-w-[60px]"
+                                            onClick={() => {
+                                                setSelectedLang(lang);
+                                                setIsLangMenuOpen(false);
+                                            }}
+                                        >
+                                            {lang}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

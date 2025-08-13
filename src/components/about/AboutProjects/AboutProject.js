@@ -50,8 +50,8 @@ const ProjectsAbout = () => {
     return (
         <section className="py-20 px-6">
             <div className="max-w-full mx-auto">
-                <h2 className="text-3xl font-light text-center mb-8 text-yellow-600 tracking-wider">COMPLETED PROJECTS</h2>
-                <h2 className="text-1xl font-light text-center mb-8 text-black tracking-wider">OUR JOURNEY</h2>
+                <h2 className="text-3xl font-light text-center mb-8 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville Display PT, serif' }}>COMPLETED PROJECTS</h2>
+                <h2 className="text-1xl font-light text-center mb-8 text-black tracking-wider" style={{ fontFamily: 'Baskerville Display PT, serif' }}>OUR JOURNEY</h2>
 
                 {/* Desktop View */}
                 <div className="hidden md:flex gap-2 h-[500px] overflow-hidden relative">
@@ -73,10 +73,10 @@ const ProjectsAbout = () => {
                             {index === activeIndex ? (
                                 <>
                                     <div className="absolute top-6 left-10 text-white">
-                                        <h3 className="text-2xl font-light mb-2">{project.title}</h3>
+                                        <h3 className="text-2xl font-light mb-2" style={{ fontFamily: 'Baskerville Display PT, serif' }}>{project.title}</h3>
                                     </div>
                                     <div className="absolute bottom-6 left-6 right-16 text-white">
-                                        <p className="text-sm opacity-90 leading-relaxed">
+                                        <p className="text-sm opacity-90 leading-relaxed" style={{ fontFamily: 'Roboto, sans-serif' }}>
                                             {project.description}
                                         </p>
                                     </div>
@@ -126,10 +126,10 @@ const ProjectsAbout = () => {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
                                 <div className="absolute top-6 left-6 text-white">
-                                    <h3 className="text-xl font-light mb-2">{project.title}</h3>
+                                    <h3 className="text-xl font-light mb-2" style={{ fontFamily: 'Baskerville Display PT, serif' }}>{project.title}</h3>
                                 </div>
                                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                                    <p className="text-sm opacity-90 leading-relaxed">
+                                    <p className="text-sm opacity-90 leading-relaxed" style={{ fontFamily: 'Roboto, sans-serif' }}>
                                         {project.description}
                                     </p>
                                 </div>

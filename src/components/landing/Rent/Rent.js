@@ -145,7 +145,8 @@ const Rent = () => {
                     fontWeight: '300',
                     marginBottom: '12px',
                     color: '#374151',
-                    fontStyle: 'italic'
+                    fontStyle: 'italic',
+                    fontFamily: 'Baskerville Display PT, serif'
                 }}>
                     {property.title}
                 </h3>
@@ -153,7 +154,8 @@ const Rent = () => {
                     fontSize: isMobile ? '14px' : '16px',
                     color: '#6B7280',
                     lineHeight: '1.6',
-                    margin: '0'
+                    margin: '0',
+                    fontFamily: 'Roboto, sans-serif'
                 }}>
                     {property.description}
                 </p>
@@ -190,7 +192,7 @@ const Rent = () => {
     return (
         <section className="py-8 px-6 bg-white">
             <div className="mx-auto">
-                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider">RENT</h2>
+                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>RENT</h2>
 
                 {/* Search Filters */}
                 <div style={{

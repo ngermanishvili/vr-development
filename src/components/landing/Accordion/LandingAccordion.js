@@ -40,7 +40,7 @@ const LandingAccordion = () => {
                     <div className="flex-1 relative md:mb-5 mb-2">
                         <span
                             className="font-light italic  text-black group-hover:text-yellow-600 transition-colors duration-500 ease-in-out absolute left-[30%] md:left-[60%]"
-                            style={{ fontSize: isMobile ? '14px' : '20px' }}
+                            style={{ fontSize: isMobile ? '14px' : '28px', fontFamily: 'Baskerville Display PT, serif' }}
                         >
                             {item.title}
                         </span>
@@ -62,7 +62,7 @@ const LandingAccordion = () => {
                             <div className="flex-1">
                                 <p
                                     className="text-gray-600 leading-relaxed ml-[30%] md:ml-[60%] max-w-[65%] md:max-w-[35%] transition-opacity duration-600 ease-in-out"
-                                    style={{ fontSize: isMobile ? '13px' : '18px' }}
+                                    style={{ fontSize: isMobile ? '13px' : '18px', fontFamily: 'Roboto, sans-serif' }}
                                 >
                                     {item.content}
                                 </p>
@@ -77,7 +77,7 @@ const LandingAccordion = () => {
     return (
         <section className="py-8 bg-white">
             <div className="w-full">
-                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider">OPPORTUNITIES</h2>
+                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>OPPORTUNITIES</h2>
 
                 <div className="w-full border-t border-black">
                     {accordionItems.map((item) => (

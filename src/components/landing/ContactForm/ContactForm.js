@@ -5,6 +5,8 @@ const ContactForm = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [selectedProperty, setSelectedProperty] = useState('Property type')
     const [isMobile, setIsMobile] = useState(false)
+    const [selectedPurpose, setSelectedPurpose] = useState('For residence')
+    const [selectedBudget, setSelectedBudget] = useState(null)
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -29,7 +31,7 @@ const ContactForm = () => {
 
     return (
         <section style={{ fontFamily: 'Arial, sans-serif', margin: 0, background: '#fff' }}>
-            <div className="w-full h-px bg-black"></div>
+            <div className="w-full h-px c bg-black"></div>
 
             <div style={{
                 display: 'grid',
@@ -59,13 +61,14 @@ const ContactForm = () => {
                             fontStyle: 'italic',
                             color: '#b48c4d',
                             fontWeight: 'bold',
-                            marginBottom: '10px'
+                            marginBottom: '10px',
+                            fontFamily: 'Baskerville, serif'
                         }}>
                             Location
                         </div>
-                        <p style={{ margin: '4px 0' }}>Merab Kostava str. 37/39</p>
-                        <p style={{ margin: '4px 0' }}>Gr, Volski str. N7</p>
-                        <p style={{ margin: '4px 0' }}>Yangzi Realty LLC 100 Riverside Blvd Suite 28 E, New York, NY 10069</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Merab Kostava str. 37/39</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Gr, Volski str. N7</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Yangzi Realty LLC 100 Riverside Blvd Suite 28 E, New York, NY 10069</p>
                     </div>
 
                     {/* Number */}
@@ -82,12 +85,13 @@ const ContactForm = () => {
                             fontStyle: 'italic',
                             color: '#b48c4d',
                             fontWeight: 'bold',
-                            marginBottom: '10px'
+                            marginBottom: '10px',
+                            fontFamily: 'Baskerville, serif'
                         }}>
                             Number
                         </div>
-                        <p style={{ margin: '4px 0' }}>+(995) 599 26 11 11</p>
-                        <p style={{ margin: '4px 0' }}>+995 32 2 50 11 11</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>+(995) 599 26 11 11</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>+995 32 2 50 11 11</p>
                     </div>
 
                     {/* Mail */}
@@ -97,12 +101,13 @@ const ContactForm = () => {
                             fontStyle: 'italic',
                             color: '#b48c4d',
                             fontWeight: 'bold',
-                            marginBottom: '10px'
+                            marginBottom: '10px',
+                            fontFamily: 'Baskerville, serif'
                         }}>
                             Mail
                         </div>
-                        <p style={{ margin: '4px 0' }}>Sales@vr.ge</p>
-                        <p style={{ margin: '4px 0' }}>Info@vr.ge</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Sales@vr.ge</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Info@vr.ge</p>
                     </div>
                 </div>
 
@@ -120,7 +125,8 @@ const ContactForm = () => {
                             color: '#b48c4d',
                             fontSize: isMobile ? '24px' : '34px',
                             letterSpacing: '1px',
-                            marginBottom: '20px'
+                            marginBottom: '20px',
+                            fontFamily: 'Baskerville Display PT, serif'
                         }}>
                             CONTACT
                         </h2>
@@ -137,11 +143,12 @@ const ContactForm = () => {
                         }}>
                             <button
                                 type="button"
+                                onClick={() => setSelectedPurpose('For residence')}
                                 style={{
                                     padding: isMobile ? '6px 12px' : '18px 20px',
                                     border: '1px solid #000',
-                                    background: '#000',
-                                    color: '#fff',
+                                    background: selectedPurpose === 'For residence' ? '#000' : 'transparent',
+                                    color: selectedPurpose === 'For residence' ? '#fff' : '#000',
                                     cursor: 'pointer',
                                     fontSize: isMobile ? '12px' : '14px',
                                     flex: isMobile ? '1' : 'auto',
@@ -152,10 +159,12 @@ const ContactForm = () => {
                             </button>
                             <button
                                 type="button"
+                                onClick={() => setSelectedPurpose('For investment')}
                                 style={{
-                                    padding: isMobile ? '6px 12px' : '8px 20px',
+                                    padding: isMobile ? '6px 12px' : '18px 20px',
                                     border: '1px solid #000',
-                                    background: 'transparent',
+                                    background: selectedPurpose === 'For investment' ? '#000' : 'transparent',
+                                    color: selectedPurpose === 'For investment' ? '#fff' : '#000',
                                     cursor: 'pointer',
                                     fontSize: isMobile ? '12px' : '14px',
                                     flex: isMobile ? '1' : 'auto',
@@ -176,7 +185,8 @@ const ContactForm = () => {
                                     padding: '10px',
                                     border: '1px solid #000',
                                     borderRadius: '4px',
-                                    fontSize: '14px',
+                                    fontSize: '18px',
+                                    fontFamily: 'Roboto, sans-serif',
                                     outline: 'none'
                                 }}
                                 required
@@ -198,7 +208,8 @@ const ContactForm = () => {
                                     padding: '10px',
                                     border: '1px solid #000',
                                     borderRadius: '4px',
-                                    fontSize: '14px',
+                                    fontSize: '18px',
+                                    fontFamily: 'Roboto, sans-serif',
                                     outline: 'none'
                                 }}
                                 required
@@ -211,7 +222,8 @@ const ContactForm = () => {
                                     padding: '10px',
                                     border: '1px solid #000',
                                     borderRadius: '4px',
-                                    fontSize: '14px',
+                                    fontSize: '18px',
+                                    fontFamily: 'Roboto, sans-serif',
                                     outline: 'none'
                                 }}
                             />
@@ -232,7 +244,8 @@ const ContactForm = () => {
                                     padding: '10px',
                                     border: '1px solid #000',
                                     borderRadius: '4px',
-                                    fontSize: '14px',
+                                    fontSize: '18px',
+                                    fontFamily: 'Roboto, sans-serif',
                                     outline: 'none'
                                 }}
                             />
@@ -295,7 +308,8 @@ const ContactForm = () => {
                                     padding: '10px',
                                     border: '1px solid #000',
                                     borderRadius: '4px',
-                                    fontSize: '14px',
+                                    fontSize: '18px',
+                                    fontFamily: 'Roboto, sans-serif',
                                     outline: 'none',
                                     resize: 'none',
                                     height: '100px'
@@ -317,11 +331,15 @@ const ContactForm = () => {
                             }}>
                                 <button
                                     type="button"
+                                    onClick={(e) => {
+                                        const budgetText = e.target.textContent;
+                                        setSelectedBudget(selectedBudget === budgetText ? null : budgetText);
+                                    }}
                                     style={{
                                         padding: isMobile ? '6px 12px' : '16px 16px',
-                                        background: '#000',
-                                        color: '#fff',
-                                        border: 'none',
+                                        background: selectedBudget === '<100k' ? '#000' : 'transparent',
+                                        color: selectedBudget === '<100k' ? '#fff' : '#000',
+                                        border: '1px solid #000',
                                         cursor: 'pointer',
                                         fontSize: isMobile ? '12px' : '14px',
                                         borderRadius: '8px',
@@ -332,11 +350,15 @@ const ContactForm = () => {
                                 </button>
                                 <button
                                     type="button"
+                                    onClick={(e) => {
+                                        const budgetText = e.target.textContent;
+                                        setSelectedBudget(selectedBudget === budgetText ? null : budgetText);
+                                    }}
                                     style={{
                                         padding: isMobile ? '6px 12px' : '16px 16px',
-                                        background: '#000',
-                                        color: '#fff',
-                                        border: 'none',
+                                        background: selectedBudget === '100k - 250k' ? '#000' : 'transparent',
+                                        color: selectedBudget === '100k - 250k' ? '#fff' : '#000',
+                                        border: '1px solid #000',
                                         cursor: 'pointer',
                                         fontSize: isMobile ? '12px' : '14px',
                                         borderRadius: '8px',
@@ -347,11 +369,15 @@ const ContactForm = () => {
                                 </button>
                                 <button
                                     type="button"
+                                    onClick={(e) => {
+                                        const budgetText = e.target.textContent;
+                                        setSelectedBudget(selectedBudget === budgetText ? null : budgetText);
+                                    }}
                                     style={{
                                         padding: isMobile ? '6px 12px' : '16px 16px',
-                                        background: '#000',
-                                        color: '#fff',
-                                        border: 'none',
+                                        background: selectedBudget === '250k - 1m' ? '#000' : 'transparent',
+                                        color: selectedBudget === '250k - 1m' ? '#fff' : '#000',
+                                        border: '1px solid #000',
                                         cursor: 'pointer',
                                         fontSize: isMobile ? '12px' : '14px',
                                         borderRadius: '8px',
@@ -362,11 +388,15 @@ const ContactForm = () => {
                                 </button>
                                 <button
                                     type="button"
+                                    onClick={(e) => {
+                                        const budgetText = e.target.textContent;
+                                        setSelectedBudget(selectedBudget === budgetText ? null : budgetText);
+                                    }}
                                     style={{
                                         padding: isMobile ? '6px 12px' : '16px 16px',
-                                        background: '#000',
-                                        color: '#fff',
-                                        border: 'none',
+                                        background: selectedBudget === '1m - 5m' ? '#000' : 'transparent',
+                                        color: selectedBudget === '1m - 5m' ? '#fff' : '#000',
+                                        border: '1px solid #000',
                                         cursor: 'pointer',
                                         fontSize: isMobile ? '12px' : '14px',
                                         borderRadius: '8px',
@@ -377,11 +407,15 @@ const ContactForm = () => {
                                 </button>
                                 <button
                                     type="button"
+                                    onClick={(e) => {
+                                        const budgetText = e.target.textContent;
+                                        setSelectedBudget(selectedBudget === budgetText ? null : budgetText);
+                                    }}
                                     style={{
                                         padding: isMobile ? '6px 12px' : '16px 16px',
-                                        background: '#000',
-                                        color: '#fff',
-                                        border: 'none',
+                                        background: selectedBudget === '5m +' ? '#000' : 'transparent',
+                                        color: selectedBudget === '5m +' ? '#fff' : '#000',
+                                        border: '1px solid #000',
                                         cursor: 'pointer',
                                         fontSize: isMobile ? '12px' : '14px',
                                         borderRadius: '8px',

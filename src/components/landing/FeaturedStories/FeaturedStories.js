@@ -23,15 +23,15 @@ const FeaturedStories = () => {
             <div className="p-2">
                 <div className="mb-2">
                     <div className="flex items-center">
-                        <span className="text-xs text-gray-500 uppercase tracking-wider">{story.category}</span>
+                        <span className="text-xs text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Roboto, sans-serif' }}>{story.category}</span>
                         <div className="flex-1 h-px bg-gray-300 ml-2"></div>
                     </div>
                     <div className="text-right text-xs">
-                        <span className="text-xs text-gray-400">{story.date}</span>
+                        <span className="text-xs text-gray-400" style={{ fontFamily: 'Roboto, sans-serif' }}>{story.date}</span>
                     </div>
                 </div>
-                <h3 className="text-sm font-medium mb-2 text-gray-800 uppercase">{story.title}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">
+                <h3 className="text-sm font-medium mb-2 text-gray-800 uppercase" style={{ fontFamily: 'Baskerville Display PT, serif' }}>{story.title}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed" style={{ fontFamily: 'Roboto, sans-serif' }}>
                     The most important thing for us is the welfare of our customers. offers, thus making our relations more interesting.
                 </p>
             </div>
@@ -41,7 +41,7 @@ const FeaturedStories = () => {
     return (
         <section className="py-8 px-6">
             <div className="mx-auto">
-                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider">FEATURED STORIES</h2>
+                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>FEATURED STORIES</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     {stories.map((story, index) => (

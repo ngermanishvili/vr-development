@@ -31,7 +31,7 @@ const NearbyLocations = () => {
         <>
             <section className="py-16 px-4">
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-center text-2xl font-light text-amber-700 mb-12 tracking-wider">REQUEST A CALL</h2>
+                    <h2 className="text-center text-2xl font-light text-amber-700 mb-12 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>REQUEST A CALL</h2>
 
                     <div style={{
                         display: 'flex',
@@ -49,7 +49,8 @@ const NearbyLocations = () => {
                                 padding: '12px 16px',
                                 border: '1px solid #000',
                                 borderRadius: '6px',
-                                fontSize: '16px',
+                                fontSize: '18px',
+                                fontFamily: 'Roboto, sans-serif',
                                 background: '#fff',
                                 outline: 'none'
                             }}
@@ -62,7 +63,8 @@ const NearbyLocations = () => {
                                 padding: '12px 16px',
                                 border: '1px solid #000',
                                 borderRadius: '6px',
-                                fontSize: '16px',
+                                fontSize: '18px',
+                                fontFamily: 'Roboto, sans-serif',
                                 background: '#fff',
                                 outline: 'none'
                             }}
@@ -83,7 +85,8 @@ const NearbyLocations = () => {
                         >
                             <div style={{
                                 padding: '12px 16px',
-                                fontSize: '16px',
+                                fontSize: '18px',
+                                fontFamily: 'Roboto, sans-serif',
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center'
@@ -122,7 +125,8 @@ const NearbyLocations = () => {
                                             padding: '12px 16px',
                                             borderBottom: index < purposeOptions.length - 1 ? '1px solid #888' : 'none',
                                             cursor: 'pointer',
-                                            fontSize: '16px',
+                                            fontSize: '18px',
+                                            fontFamily: 'Roboto, sans-serif',
                                             transition: 'background 0.2s'
                                         }}
                                         onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}

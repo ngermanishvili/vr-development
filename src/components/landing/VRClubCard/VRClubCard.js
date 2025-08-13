@@ -20,11 +20,11 @@ const VRClubCard = () => {
 
     return (
         <section className="w-full bg-black h-[400px] relative flex flex-col items-center justify-start pt-10 overflow-hidden">
-            <h2 className={`text-yellow-600 font-bold tracking-widest mb-5 text-center ${isMobile ? 'text-2xl' : 'text-5xl'}`}>
+            <h2 className={`text-yellow-600 font-bold tracking-widest mb-5 text-center ${isMobile ? 'text-2xl' : 'text-5xl'}`} style={{ fontFamily: 'Baskerville, serif' }}>
                 VR CLUB CARD
             </h2>
 
-            <div className={`text-white text-center leading-relaxed mb-10 px-5 ${isMobile ? 'text-sm' : 'text-base'}`}>
+            <div className={`text-white text-center leading-relaxed mb-10 px-5 ${isMobile ? 'text-sm' : 'text-base'}`} style={{ fontFamily: 'Roboto, sans-serif' }}>
                 <p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br /> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     <br />lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
             </div>
