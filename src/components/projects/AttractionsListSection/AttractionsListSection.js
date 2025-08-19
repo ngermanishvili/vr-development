@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 const AttractionsSection = () => {
   const [hoveredPin, setHoveredPin] = useState(null);
   const [hoveredText, setHoveredText] = useState(null);
+  const [activePin, setActivePin] = useState(null); // აქტიური პინის state
   const [currentImage, setCurrentImage] = useState("shekvetili/slide-1.webp");
   const [containerDimensions, setContainerDimensions] = useState(null);
   const mapRef = useRef(null);
@@ -299,11 +300,10 @@ const AttractionsSection = () => {
               onMouseEnter={() => {
                 setHoveredPin(true);
                 setCurrentImage("shekvetili/recreational _spaces.webp");
+                setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
+                setActivePin('vr'); // VR აქტიური ხდება
               }}
-              onMouseLeave={() => {
-                setHoveredPin(false);
-                setCurrentImage("shekvetili/recreational _spaces.webp");
-              }}
+              // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
             >
               <img
                 src="shekvetili/vr-pin.webp"
@@ -324,13 +324,15 @@ const AttractionsSection = () => {
                   setCurrentImage(
                     locations.find((loc) => loc.id === pin.id).image
                   );
+                  setActivePin(pin.id); // ეს პინი ხდება აქტიური
                 }}
-                onMouseLeave={() => {
-                  setHoveredText(null);
-                  setCurrentImage("shekvetili/slide-1.webp");
-                }}
+                // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
               >
-                <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-[#D3D2C1] border-2 border-gray-400 text-black rounded-full flex items-center justify-center text-xs lg:text-sm font-bold hover:bg-[#CA9B43] hover:text-white hover:border-[#CA9B43] transition-all duration-300 shadow-lg">
+                <div className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 border-2 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold transition-all duration-300 shadow-lg ${
+                  activePin === pin.id 
+                    ? 'bg-[#CA9B43] text-white border-[#CA9B43]' // აქტიური მდგომარეობა
+                    : 'bg-[#D3D2C1] text-black border-gray-400' // ნორმალური მდგომარეობა - hover ამოღებული
+                }`}>
                   {pin.id}
                 </div>
               </div>
@@ -362,11 +364,17 @@ const AttractionsSection = () => {
                     {column.map((location) => (
                       <li
                         key={location.id}
-                        className={`flex items-center py-2 lg:py-3 px-2 transition-all duration-300 ${
+                        className={`flex items-center py-2 lg:py-3 px-2 transition-all duration-300 cursor-pointer ${
                           hoveredText === location.id
                             ? "text-[#CA9B43] font-semibold"
                             : "text-black"
                         }`}
+                        onMouseEnter={() => {
+                          setHoveredText(location.id);
+                          setCurrentImage(location.image);
+                          setActivePin(location.id); // ტექსტზე hover-იც აქტიურს ხდის პინს
+                        }}
+                        // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
                       >
                         <span className="w-6 lg:w-8 flex-shrink-0 font-bold text-sm lg:text-base">
                           {location.id}.
