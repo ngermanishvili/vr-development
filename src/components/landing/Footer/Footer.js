@@ -50,6 +50,10 @@ const Footer = () => {
                         <Youtube size={18} />
                     </a>
                 </div>
+
+            </div>
+            <div className="right-4 absolute">
+                <div className="text-sm">&copy; {new Date().getFullYear()} Developed by  <a target="_blank" href="https://frontnback.io/" className="hover:underline">Front & Back</a></div>
             </div>
         </footer>
     );

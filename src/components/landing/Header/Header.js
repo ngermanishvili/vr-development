@@ -45,10 +45,10 @@ const Header = () => {
                     </div>
 
                     <div className="text-2xl font-bold tracking-wider text-center flex justify-center">
-                        <img 
-                            src="/logo/vr-logo.svg" 
-                            alt="VR Logo" 
-                            className="h-8" 
+                        <img
+                            src="/logo/vr-logo.svg"
+                            alt="VR Logo"
+                            className="h-8"
                             style={{
                                 filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
                             }}
@@ -57,7 +57,7 @@ const Header = () => {
 
                     <div className="flex items-center justify-end space-x-3">
                         <div className="relative language-dropdown">
-                            <button 
+                            <button
                                 className="flex items-center space-x-1 hover:text-[#BE9645] cursor-pointer transition-colors"
                                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
                             >
@@ -126,7 +126,7 @@ const Header = () => {
                             </button>
                         </Link>
                         <div className="relative language-dropdown">
-                            <button 
+                            <button
                                 className="flex items-center space-x-1 hover:text-[#BE9645] cursor-pointer transition-colors"
                                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
                             >
