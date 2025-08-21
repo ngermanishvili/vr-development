@@ -25,7 +25,7 @@ const RequestCall = () => {
 
   const purposeOptions = [
     "Investment property",
-    "Primary residence", 
+    "Primary residence",
     "Vacation home",
     "Business property",
     "Rental property",
@@ -33,16 +33,16 @@ const RequestCall = () => {
   ];
 
   return (
-    <section 
+    <section
       className="py-16 md:py-24 px-4 bg-white"
       role="region"
       aria-labelledby="request-call-title"
     >
       <div className="max-w-4xl mx-auto">
-        
+
         {/* Header */}
         <header className="text-center mb-12">
-          <h2 
+          <h2
             id="request-call-title"
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
             style={{ color: "#CA9B43" }}
@@ -52,16 +52,16 @@ const RequestCall = () => {
         </header>
 
         {/* Contact Form */}
-        <form 
+        <form
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end"
           role="form"
           aria-labelledby="request-call-title"
         >
-          
+
           {/* Full Name Field */}
           <div className="flex flex-col">
-            <label 
+            <label
               htmlFor="fullName"
               className="text-gray-700 text-sm font-medium mb-2 sr-only"
             >
@@ -82,7 +82,7 @@ const RequestCall = () => {
 
           {/* Phone Number Field */}
           <div className="flex flex-col">
-            <label 
+            <label
               htmlFor="phoneNumber"
               className="text-gray-700 text-sm font-medium mb-2 sr-only"
             >
@@ -103,7 +103,7 @@ const RequestCall = () => {
 
           {/* Purpose of Purchase Dropdown */}
           <div className="flex flex-col">
-            <label 
+            <label
               htmlFor="purposeOfPurchase"
               className="text-gray-700 text-sm font-medium mb-2 sr-only"
             >

@@ -15,7 +15,7 @@ const ProjectHighlights = () => {
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 place-items-center">
           {/* Investment */}
           <div className="text-center">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight drop-shadow-lg text-white">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight drop-shadow-lg text-white" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               $600,000,000
               <br />
               INVESTMENT
@@ -24,7 +24,7 @@ const ProjectHighlights = () => {
 
           {/* Land Area */}
           <div className="text-center">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight drop-shadow-lg text-white">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight drop-shadow-lg text-white" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               40
               <br />
               HECTARES LAND
@@ -35,7 +35,7 @@ const ProjectHighlights = () => {
 
           {/* Beach Length */}
           <div className="text-center">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight drop-shadow-lg text-white">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight drop-shadow-lg text-white" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               1200
               <br />
               METERS LONG

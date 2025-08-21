@@ -7,7 +7,7 @@ const ProjectsBanner = () => {
       role="banner"
       aria-labelledby="infinity-pool-title"
     >
-      {/* Main Large Background Image */}
+      {/* Main Largfe Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('/shekvetili/big-banner.webp')]"
         role="img"
@@ -19,11 +19,11 @@ const ProjectsBanner = () => {
         <header>
           <h4
             id="infinity-pool-title"
-            className="text-white font-light text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight"
+            className="text-white font-light text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-none"
+            style={{ fontFamily: '"Baskerville Display PT", serif' }}
           >
             INFINITY
-            <br />
-            <span className="italic font-extralight">Pool</span>
+            <span className="block italic font-extralight -mt-10" style={{ fontFamily: '"Snell Roundhand", cursive' }}>Pool</span>
           </h4>
         </header>
       </div>

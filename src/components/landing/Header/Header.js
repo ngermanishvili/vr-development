@@ -9,7 +9,7 @@ const Header = () => {
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
     const [selectedLang, setSelectedLang] = useState('ENG');
     const pathname = usePathname();
-    const isHomePage = pathname === '/';
+    const isHomePage = pathname === '/' || pathname === '/projects';
     const headerColor = isHomePage ? 'text-white' : 'text-[#BE9744]';
     const hoverColor = 'hover:text-[#BE9645] cursor-pointer';
     const bgHover = 'hover:bg-[#BE9645] hover:text-white cursor-pointer';
@@ -38,7 +38,13 @@ const Header = () => {
                             <Phone className="w-4 h-4 font-bold" />
                             <span className="text-sm font-bold">*2999</span>
                         </a>
+                        <Link href="/">
+                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>HOME</button>
+                        </Link>
                         <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
+                        <Link href="/projects">
+                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>PROJECTS</button>
+                        </Link>
                         <Link href="/about">
                             <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
                         </Link>
@@ -111,12 +117,28 @@ const Header = () => {
                             <Phone className="w-5 h-5 font-bold" />
                             <span className="text-lg font-bold">*2999</span>
                         </a>
+                        <Link href="/">
+                            <button
+                                className={`text-lg font-bold ${hoverColor} transition-colors`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                HOME
+                            </button>
+                        </Link>
                         <button
                             className={`text-lg font-bold ${hoverColor} transition-colors`}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             CONTACT
                         </button>
+                        <Link href="/projects">
+                            <button
+                                className={`text-lg font-bold ${hoverColor} transition-colors`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                PROJECTS
+                            </button>
+                        </Link>
                         <Link href="/about">
                             <button
                                 className={`text-lg font-bold ${hoverColor} transition-colors`}

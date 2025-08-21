@@ -10,6 +10,7 @@ import AttractionsSection from "@/components/projects/AttractionsListSection/Att
 import ServiceSection from "@/components/projects/ServiceSection/ServiceSection";
 import TermsOfSale from "@/components/projects/TermsOfSale/TermsOfSale";
 import AdditionalInfrastructure from "@/components/projects/AdditionalInfrastructure/AdditionalInfrastructure";
+import ContactForm from "@/components/landing/ContactForm/ContactForm";
 const ProjectsPage = () => {
   return (
     <>
@@ -24,6 +25,7 @@ const ProjectsPage = () => {
       <AdditionalInfrastructure />
       <ServiceSection />
       <TermsOfSale />
+      <ContactForm />
     </>
   );
 };

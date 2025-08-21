@@ -42,6 +42,7 @@ const ServiceSection = () => {
           <p 
             id="services-heading"
             className="text-3xl md:text-4xl font-bold tracking-wider text-[#CA9B43]"
+            style={{ fontFamily: '"Baskerville Display PT", serif' }}
           >
             SERVICES
           </p>
@@ -69,10 +70,10 @@ const ServiceSection = () => {
                 </figure>
 
                 <div className="space-y-0">
-                  <p className="font-medium text-sm md:text-base leading-tight text-[#CA9B43]">
+                  <p className="font-medium text-sm md:text-base leading-tight text-[#CA9B43]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                     {service.title}
                   </p>
-                  <p className="font-light text-sm md:text-base leading-tight text-[#CA9B43]">
+                  <p className="font-light text-sm md:text-base leading-tight text-[#CA9B43]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                     {service.subtitle}
                   </p>
                 </div>
