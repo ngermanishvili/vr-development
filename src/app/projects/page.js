@@ -14,18 +14,23 @@ import ContactForm from "@/components/landing/ContactForm/ContactForm";
 const ProjectsPage = () => {
   return (
     <>
+
+
+
       <ProjectsHero />
-      <ProjectHighlights />
-      <ProjectPhaseOne />
-      <ProjectsGallery />
-      <WhyShekvetili />
-      <RequestCall />
-      <AttractionsSection />
-      <ProjectsBanner />
-      <AdditionalInfrastructure />
-      <ServiceSection />
-      <TermsOfSale />
-      <ContactForm />
+      <div className="2xl:max-w-7xl md:max-w-full mx-auto">
+        <ProjectHighlights />
+        <ProjectPhaseOne />
+        <ProjectsGallery />
+        <WhyShekvetili />
+        <RequestCall />
+        <AttractionsSection />
+        <ProjectsBanner />
+        <AdditionalInfrastructure />
+        <ServiceSection />
+        <TermsOfSale />
+        <ContactForm />
+      </div>
     </>
   );
 };

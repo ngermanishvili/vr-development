@@ -1,50 +1,57 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Baskerville Display PT';
-  src: url('/fonts/BASKERVILE/BaskervilleURW-Bol.otf') format('opentype');
+  font-family: "Baskerville Display PT";
+  src: url("/fonts/BASKERVILE/BaskervilleURW-Bol.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Baskerville Display PT';
-  src: url('/fonts/BASKERVILE/BaskervilleURW-Reg.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Baskerville';
-  src: url('/fonts/BASKERVILE/LibreBaskerville-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Baskerville';
-  src: url('/fonts/BASKERVILE/LibreBaskerville-Bold.ttf') format('truetype');
+  font-family: "Snell";
+  src: url("/fonts/SNELL/SnellRoundhand-BoldScript.otf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Baskerville';
-  src: url('/fonts/BASKERVILE/LibreBaskerville-Italic.ttf') format('truetype');
+  font-family: "Baskerville Display PT";
+  src: url("/fonts/BASKERVILE/BaskervilleURW-Reg.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Baskerville";
+  src: url("/fonts/BASKERVILE/LibreBaskerville-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Baskerville";
+  src: url("/fonts/BASKERVILE/LibreBaskerville-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Baskerville";
+  src: url("/fonts/BASKERVILE/LibreBaskerville-Italic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('/fonts/ROBOTO/Roboto-Regular.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('/fonts/ROBOTO/Roboto-Bold.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }

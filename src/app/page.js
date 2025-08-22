@@ -25,10 +25,8 @@ export default function Home() {
         <LandingAccordion />
         <LandingImg />
         <FeaturedStories />
-
         <NearbyLocations />
         <AttractionsSectionLanding />
-
         <Rent />
         <VRClubCard />
         <ContactForm />

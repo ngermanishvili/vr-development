@@ -86,8 +86,8 @@ const AttractionsSectionLanding = () => {
         { id: 6, left: 32, top: 64 },
         { id: 7, left: 30, top: 69 },
         { id: 8, left: 28, top: 74 },
-        { id: 9, left: 33, top: 73 },
-        { id: 10, left: 52, top: 38 },
+
+
       ];
     }
 
@@ -135,8 +135,61 @@ const AttractionsSectionLanding = () => {
       : { left: 27, top: 44 }; // დესკტოპზე
   };
 
+  const getVrPinPosition2 = () => {
+    if (!mapRef.current) return { left: 30.5, top: 42 };
+
+    const containerWidth = mapRef.current.getBoundingClientRect().width;
+    const isMobile = containerWidth < 768;
+
+    return isMobile
+      ? { left: 27, top: 44 }    // მობაილზე
+      : { left: 62, top: 60 }; // დესკტოპზე
+  };
+
+  // დამატებითი VR პინების პოზიციები
+  const getVrPinPosition3 = () => {
+    if (!mapRef.current) return { left: 45, top: 50 };
+
+    const containerWidth = mapRef.current.getBoundingClientRect().width;
+    const isMobile = containerWidth < 768;
+
+    return isMobile
+      ? { left: 57, top: 53 }    // მობაილზე
+      : { left: 57, top: 53 }; // დესკტოპზე
+  };
+
+  const getVrPinPosition4 = () => {
+    if (!mapRef.current) return { left: 50, top: 48 };
+
+    const containerWidth = mapRef.current.getBoundingClientRect().width;
+    const isMobile = containerWidth < 768;
+
+    return isMobile
+      ? { left: 63, top: 60 }    // მობაილზე
+      : { left: 63.5, top: 60 }; // დესკტოპზე
+  };
+
+  const getVrPinPosition5 = () => {
+    if (!mapRef.current) return { left: 55, top: 52 };
+
+    const containerWidth = mapRef.current.getBoundingClientRect().width;
+    const isMobile = containerWidth < 768;
+
+    return isMobile
+      ? { left: 65, top: 60 }    // მობაილზე
+      : { left: 61, top: 60 }; // დესკტოპზე
+  };
+
+
   const pinPositions = getPinPositions();
   const vrPinPosition = getVrPinPosition();
+  const vrPinPosition2 = getVrPinPosition2();
+  const vrPinPosition3 = getVrPinPosition3();
+  const vrPinPosition4 = getVrPinPosition4();
+  const vrPinPosition5 = getVrPinPosition5();
+
+
+
 
   // რეალური პოზიციის გამოთვლა ზუსტი object-fit: cover ალგორითმით
   const calculateRealPosition = (pinPercent) => {
@@ -303,10 +356,96 @@ const AttractionsSectionLanding = () => {
               }}
             // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
             >
+              <div
+                className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+                style={calculateRealPosition(vrPinPosition2)}
+                onMouseEnter={() => {
+                  setHoveredPin(true);
+                  setCurrentImage("shekvetili/recreational _spaces.webp");
+                  setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
+                  setActivePin('vr'); // VR აქტიური ხდება
+                }}
+              // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
+              ></div>
               <img
                 src="shekvetili/vr-pin.webp"
                 alt="VR მდებარეობის პინი"
                 className="w-8 h-8  md:w-14 lg:h-14 object-contain drop-shadow-lg"
+                draggable={false}
+              />
+            </div>
+
+            {/* დამატებითი VR პინები */}
+            <div
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+              style={calculateRealPosition(vrPinPosition3)}
+              onMouseEnter={() => {
+                setHoveredPin(true);
+                setCurrentImage("shekvetili/recreational _spaces.webp");
+                setHoveredText('vr3');
+                setActivePin('vr3');
+              }}
+            >
+              <img
+                src="shekvetili/vr-pin.webp"
+                alt="VR მდებარეობის პინი 3"
+                className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
+                draggable={false}
+              />
+              {/* VR VAKE SKY TOWER ტექსტი */}
+              <div
+                className="text-[10px] md:text-[14px] absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center text-black font-bold leading-tight pointer-events-none"
+                style={{
+                  fontFamily: 'LibreBaskerville, Baskerville, serif',
+                  color: '#CA9B43'
+                }}
+              >
+                VR VAKE SKY TOWER
+              </div>
+            </div>
+
+            <div
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+              style={calculateRealPosition(vrPinPosition4)}
+              onMouseEnter={() => {
+                setHoveredPin(true);
+                setCurrentImage("shekvetili/recreational _spaces.webp");
+                setHoveredText('vr4');
+                setActivePin('vr4');
+              }}
+            >
+              <img
+                src="shekvetili/vr-pin.webp"
+                alt="VR მდებარეობის პინი 4"
+                className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
+                draggable={false}
+              />
+              {/* VR KRTSANISI RESIDENCE ტექსტი */}
+              <div
+                className="text-[10px] md:text-[14px] absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center text-black font-bold leading-tight pointer-events-none"
+                style={{
+                  fontFamily: 'LibreBaskerville, Baskerville, serif',
+                  color: '#CA9B43'
+                }}
+              >
+                VR KRTSANISI RESIDENCE
+              </div>
+            </div>
+
+            <div
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+              style={calculateRealPosition(vrPinPosition5)}
+              onMouseEnter={() => {
+                setHoveredPin(true);
+                setCurrentImage("shekvetili/recreational _spaces.webp");
+                setHoveredText('vr5');
+                setActivePin('vr5');
+              }}
+            >
+              <img
+                src="shekvetili/vr-pin.webp"
+                alt="VR მდებარეობის პინი 5"
+                className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
                 draggable={false}
               />
             </div>

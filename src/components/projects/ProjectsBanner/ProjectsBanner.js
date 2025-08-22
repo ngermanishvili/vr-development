@@ -23,8 +23,7 @@ const ProjectsBanner = () => {
             style={{ fontFamily: '"Baskerville Display PT", serif' }}
           >
             INFINITY
-            <span className="block italic font-extralight -mt-10" style={{ fontFamily: "Snell Roundhand" }}>Pool</span>
-          </h4>
+            <span className="block italic font-extralight -mt-10" style={{ fontFamily: "Snell" }}>Pool</span>          </h4>
         </header>
       </div>
 
