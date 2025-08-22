@@ -1,5 +1,6 @@
 import AboutLanding from "@/components/landing/About/AboutSection";
 import LandingAccordion from "@/components/landing/Accordion/LandingAccordion";
+import AttractionsSectionLanding from "@/components/landing/AttractionsListLanding/AttractionsListSection";
 import ContactForm from "@/components/landing/ContactForm/ContactForm";
 import FeaturedStories from "@/components/landing/FeaturedStories/FeaturedStories";
 import LandingHero from "@/components/landing/Hero/LandingHero";
@@ -9,7 +10,6 @@ import ProjectsLanding from "@/components/landing/Projects/Projects";
 import Rent from "@/components/landing/Rent/Rent";
 import StatisticLanding from "@/components/landing/statistic/StatisticSection";
 import VRClubCard from "@/components/landing/VRClubCard/VRClubCard";
-import AttractionsSection from "@/components/projects/AttractionsListSection/AttractionsListSection";
 
 // Force dynamic rendering in development
 export const dynamic = 'force-dynamic';
@@ -27,7 +27,7 @@ export default function Home() {
         <FeaturedStories />
 
         <NearbyLocations />
-        <AttractionsSection />
+        <AttractionsSectionLanding />
 
         <Rent />
         <VRClubCard />
