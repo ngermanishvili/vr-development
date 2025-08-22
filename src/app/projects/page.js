@@ -18,7 +18,7 @@ const ProjectsPage = () => {
 
 
       <ProjectsHero />
-      <div className="2xl:max-w-7xl md:max-w-full mx-auto">
+      <div className="md:max-w-full [@media(min-width:1920px)]:max-w-7xl mx-auto">
         <ProjectHighlights />
         <ProjectPhaseOne />
         <ProjectsGallery />
