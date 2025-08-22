@@ -13,7 +13,7 @@ const FeaturedStories = () => {
 
     const StoryCard = ({ story }) => (
         <Link href={`/featured-stories/${story.slug}`}>
-            <div className="group overflow-hidden bg-white cursor-pointer">
+            <div className=" group overflow-hidden bg-white cursor-pointer">
                 <div className={`relative ${story.height}`}>
                     <Image
                         src="/landing/hero/landing_banner.png"

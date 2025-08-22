@@ -9,24 +9,31 @@ import ProjectsLanding from "@/components/landing/Projects/Projects";
 import Rent from "@/components/landing/Rent/Rent";
 import StatisticLanding from "@/components/landing/statistic/StatisticSection";
 import VRClubCard from "@/components/landing/VRClubCard/VRClubCard";
+import AttractionsSection from "@/components/projects/AttractionsListSection/AttractionsListSection";
 
 // Force dynamic rendering in development
 export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white ">
       <LandingHero />
-      <AboutLanding />
-      <StatisticLanding />
-      <ProjectsLanding />
-      <LandingAccordion />
-      <NearbyLocations />
-      <LandingImg />
-      <FeaturedStories />
-      <Rent />
-      <VRClubCard />
-      <ContactForm />
+      <div className="2xl:max-w-7xl md:max-w-full mx-auto">
+        <AboutLanding />
+        <StatisticLanding />
+        <ProjectsLanding />
+        <LandingAccordion />
+        <LandingImg />
+        <FeaturedStories />
+
+        <NearbyLocations />
+        <AttractionsSection />
+
+        <Rent />
+        <VRClubCard />
+        <ContactForm />
+      </div>
+
     </div>
 
   );

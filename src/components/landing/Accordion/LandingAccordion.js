@@ -29,7 +29,7 @@ const LandingAccordion = () => {
             <div className="border-b border-black cursor-pointer">
                 <button
                     onClick={() => toggleItem(item.id)}
-                    className="w-full flex items-center py-6 pl-4 md:pl-6 text-left hover:bg-gray-50 transition-all duration-500 ease-in-out group cursor-pointer"
+                    className="w-full flex items-center py-8 pl-4 md:pl-6 text-left hover:bg-gray-50 transition-all duration-500 ease-in-out group cursor-pointer"
                 >
                     <span
                         className="font-bold italic w-12 md:w-16 flex-shrink-0 md:mt-4 mt-2"
@@ -40,7 +40,7 @@ const LandingAccordion = () => {
                     <div className="flex-1 relative md:mb-5 mb-2">
                         <span
                             className=" font-bold  text-black  italic transition-colors duration-500 ease-in-out absolute left-[30%] md:left-[60%]"
-                            style={{ fontSize: isMobile ? '16px' : '26px', fontFamily: 'Baskerville', fontWeight: 'bold', fontStyle: 'italic' }}
+                            style={{ fontSize: isMobile ? '16px' : '22px', fontFamily: 'Baskerville', fontWeight: 'bold', fontStyle: 'italic' }}
                         >
                             {item.title}
                         </span>

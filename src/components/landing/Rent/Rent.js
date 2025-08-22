@@ -65,7 +65,8 @@ const Rent = () => {
                 borderRadius: '6px',
                 fontSize: '16px',
                 cursor: 'pointer',
-                background: '#fff'
+                background: '#fff',
+                color: '#000',
             }}
             onClick={() => toggleDropdown(type)}
         >
@@ -76,7 +77,7 @@ const Rent = () => {
                 justifyContent: 'space-between',
                 alignItems: 'center'
             }}>
-                <span>{dropdowns[type].selected}</span>
+                <span className='text-black'>{dropdowns[type].selected}</span>
                 <svg
                     width="12" height="8" viewBox="0 0 12 8" fill="none"
                     style={{

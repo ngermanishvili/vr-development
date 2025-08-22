@@ -2,7 +2,7 @@ import React from 'react'
 
 const LandingImg = () => {
     return (
-        <section className="relative h-[500px] flex items-center justify-center">
+        <section className="relative h-[700px] flex items-center justify-center">
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{

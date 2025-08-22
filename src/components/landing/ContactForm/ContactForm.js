@@ -36,10 +36,11 @@ const ContactForm = () => {
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : '1fr 3fr',
-                minHeight: '100vh'
+                minHeight: '20vh'
             }}>
                 {/* Left Side - Contact Information */}
                 <div style={{
+                    width: '100%',
                     background: '#f0eff0',
                     display: 'flex',
                     flexDirection: 'column',

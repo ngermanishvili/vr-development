@@ -27,65 +27,69 @@ const Header = () => {
 
     return (
         <>
-            <nav className={`absolute top-0 left-0 right-0 z-50 px-6 py-4 ${headerColor}`}>
+
+            <nav className={`absolute  top-0 left-0 right-0 z-50 px-6 py-4 ${headerColor}`}>
                 {/* Desktop Header */}
-                <div className="hidden md:grid grid-cols-3 items-center">
-                    <div className="flex items-center space-x-6">
-                        <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-4 py-2 text-sm ${bgHover} transition-colors`}>
-                            CHOOSE AN APARTMENT
-                        </button>
-                        <a href="tel:*2999" className="flex items-center space-x-2 hover:text-[#BE9645] cursor-pointer transition-colors">
-                            <Phone className="w-4 h-4 font-bold" />
-                            <span className="text-sm font-bold">*2999</span>
-                        </a>
-                        <Link href="/">
-                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>HOME</button>
-                        </Link>
-                        <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
-                        <Link href="/projects">
-                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>PROJECTS</button>
-                        </Link>
-                        <Link href="/about">
-                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
-                        </Link>
-                    </div>
+                <div className="2xl:max-w-7xl md:w-full mx-auto flex flex-wrap justify-between items-start">
 
-                    <img
-                        src="/logo/vr-logo.svg"
-                        alt="VR Logo"
-                        className="h-8 w-auto max-w-[50px]  mx-auto"
-                        style={{
-                            filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
-                        }}
-                    />
-
-                    <div className="flex items-center justify-end space-x-3">
-                        <div className="relative language-dropdown">
-                            <button
-                                className="flex items-center space-x-1 hover:text-[#BE9645] cursor-pointer transition-colors"
-                                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                            >
-                                <span className="text-sm">{selectedLang}</span>
-                                <ChevronDown className="w-4 h-4" />
+                    <div className="hidden md:grid grid-cols-3 items-center ">
+                        <div className="flex items-center space-x-6">
+                            <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-4 py-2 text-sm ${bgHover} transition-colors`}>
+                                CHOOSE AN APARTMENT
                             </button>
-                            {isLangMenuOpen && (
-                                <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg z-50">
-                                    {['ENG', 'GEO', 'RU'].map((lang) => (
-                                        <button
-                                            key={lang}
-                                            className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-[#BE9645] hover:text-white transition-colors text-left"
-                                            onClick={() => {
-                                                setSelectedLang(lang);
-                                                setIsLangMenuOpen(false);
-                                            }}
-                                        >
-                                            {lang}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
+                            <a href="tel:*2999" className="flex items-center space-x-2 hover:text-[#BE9645] cursor-pointer transition-colors">
+                                <Phone className="w-4 h-4 font-bold" />
+                                <span className="text-sm font-bold">*2999</span>
+                            </a>
+                            <Link href="/">
+                                <button className={`text-sm font-bold ${hoverColor} transition-colors`}>HOME</button>
+                            </Link>
+                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
+                            <Link href="/projects">
+                                <button className={`text-sm font-bold ${hoverColor} transition-colors`}>PROJECTS</button>
+                            </Link>
+                            <Link href="/about">
+                                <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
+                            </Link>
                         </div>
-                        <Menu className="w-6 h-6" />
+
+                        <img
+                            src="/logo/vr-logo.svg"
+                            alt="VR Logo"
+                            className="h-8 w-auto max-w-[50px]  mx-auto"
+                            style={{
+                                filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
+                            }}
+                        />
+
+                        <div className="flex items-center justify-end space-x-3">
+                            <div className="relative language-dropdown">
+                                <button
+                                    className="flex items-center space-x-1 hover:text-[#BE9645] cursor-pointer transition-colors"
+                                    onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                                >
+                                    <span className="text-sm">{selectedLang}</span>
+                                    <ChevronDown className="w-4 h-4" />
+                                </button>
+                                {isLangMenuOpen && (
+                                    <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                                        {['ENG', 'GEO', 'RU'].map((lang) => (
+                                            <button
+                                                key={lang}
+                                                className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-[#BE9645] hover:text-white transition-colors text-left"
+                                                onClick={() => {
+                                                    setSelectedLang(lang);
+                                                    setIsLangMenuOpen(false);
+                                                }}
+                                            >
+                                                {lang}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                            <Menu className="w-6 h-6" />
+                        </div>
                     </div>
                 </div>
 
