@@ -9,7 +9,7 @@ const Header = () => {
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
     const [selectedLang, setSelectedLang] = useState('ENG');
     const pathname = usePathname();
-    const isHomePage = pathname === '/';
+    const isHomePage = pathname === '/' || pathname === '/projects';
     const headerColor = isHomePage ? 'text-white' : 'text-[#BE9744]';
     const hoverColor = 'hover:text-[#BE9645] cursor-pointer';
     const bgHover = 'hover:bg-[#BE9645] hover:text-white cursor-pointer';
@@ -38,22 +38,26 @@ const Header = () => {
                             <Phone className="w-4 h-4 font-bold" />
                             <span className="text-sm font-bold">*2999</span>
                         </a>
+                        <Link href="/">
+                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>HOME</button>
+                        </Link>
                         <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
+                        <Link href="/projects">
+                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>PROJECTS</button>
+                        </Link>
                         <Link href="/about">
                             <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
                         </Link>
                     </div>
 
-                    <div className="text-2xl font-bold tracking-wider text-center flex justify-center">
-                        <img
-                            src="/logo/vr-logo.svg"
-                            alt="VR Logo"
-                            className="h-8"
-                            style={{
-                                filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
-                            }}
-                        />
-                    </div>
+                    <img
+                        src="/logo/vr-logo.svg"
+                        alt="VR Logo"
+                        className="h-8 w-auto max-w-[50px]  mx-auto"
+                        style={{
+                            filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
+                        }}
+                    />
 
                     <div className="flex items-center justify-end space-x-3">
                         <div className="relative language-dropdown">
@@ -111,12 +115,28 @@ const Header = () => {
                             <Phone className="w-5 h-5 font-bold" />
                             <span className="text-lg font-bold">*2999</span>
                         </a>
+                        <Link href="/">
+                            <button
+                                className={`text-lg font-bold ${hoverColor} transition-colors`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                HOME
+                            </button>
+                        </Link>
                         <button
                             className={`text-lg font-bold ${hoverColor} transition-colors`}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             CONTACT
                         </button>
+                        <Link href="/projects">
+                            <button
+                                className={`text-lg font-bold ${hoverColor} transition-colors`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                PROJECTS
+                            </button>
+                        </Link>
                         <Link href="/about">
                             <button
                                 className={`text-lg font-bold ${hoverColor} transition-colors`}

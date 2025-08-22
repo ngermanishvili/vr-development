@@ -25,6 +25,7 @@ const WhyShekvetili = () => {
           <h2 
             id="services-title"
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
+            style={{ fontFamily: '"Baskerville Display PT", serif' }}
           >
             WHY ADJARA & SHEKVETILI?
           </h2>
@@ -40,7 +41,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Premier destination for tourism,<br />
                 investment, and natural beauty
               </p>
@@ -51,7 +52,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Simplicity and Transparency
               </p>
             </article>
@@ -61,7 +62,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Attractive Tax Environment:<br />
                 only 5% tax on rental income
               </p>
@@ -72,7 +73,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 No ownership restrictions<br />
                 for foreign citizens in Georgia
               </p>
@@ -86,7 +87,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Property registration in just<br />
                 one business day for only $60
               </p>
@@ -97,7 +98,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 One of the safest country
               </p>
             </article>
@@ -107,7 +108,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Pure sea water
               </p>
             </article>
@@ -117,7 +118,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Humid subtropical and ionized air
               </p>
             </article>
@@ -127,7 +128,7 @@ const WhyShekvetili = () => {
                 className="w-3 h-3 bg-white rounded-full flex-shrink-0 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white min-w-[300px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Healing magnetic sand
               </p>
             </article>

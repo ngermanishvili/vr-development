@@ -84,6 +84,7 @@ const ProjectGallery = () => {
                     : "bg-transparent text-black border border-black hover:bg-gray-100"
                 }`}
                 onClick={() => handleTabChange("interior")}
+                style={{ fontFamily: '"Roboto", sans-serif' }}
               >
                 INTERIOR
               </button>
@@ -97,6 +98,7 @@ const ProjectGallery = () => {
                     : "bg-transparent text-black border border-black hover:bg-gray-100"
                 }`}
                 onClick={() => handleTabChange("exterior")}
+                style={{ fontFamily: '"Roboto", sans-serif' }}
               >
                 EXTERIOR
               </button>
@@ -106,6 +108,7 @@ const ProjectGallery = () => {
             <h2 
               id="gallery-title"
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-black uppercase"
+              style={{ fontFamily: '"Baskerville Display PT", serif' }}
             >
               GALLERY
             </h2>
@@ -113,7 +116,7 @@ const ProjectGallery = () => {
 
           {/* Right Side - Image Counter */}
           <div className="text-right">
-            <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-black">
+            <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-black" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               {String(currentPosition).padStart(2, '0')}/{String(currentTotal).padStart(2, '0')}
             </span>
           </div>

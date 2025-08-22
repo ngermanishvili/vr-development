@@ -5,10 +5,10 @@ const TermsOfSale = () => {
     <section className="py-16 px-6 max-w-6xl mx-auto">
       {/* Title */}
       <div className="mb-22">
-        <p className="text-4xl md:text-5xl font-bold mb-6 text-[#CA9B43]">
+        <p className="text-4xl md:text-5xl font-bold mb-6 text-[#CA9B43]" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
           TERMS OF SALE
         </p>
-        <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
+        <p className="text-gray-600 text-lg leading-relaxed max-w-2xl" style={{ fontFamily: '"Roboto", sans-serif' }}>
           Don't miss this unique opportunity to own a five-star apartment
           <br /> in an unprecedented project. Located in the best area on the
           <br /> Black Sea coast – starting from only $1,000 per month.
@@ -23,10 +23,10 @@ const TermsOfSale = () => {
           <div className="hidden md:block absolute left-0 top-0 w-px h-full bg-[#CA9B43]"></div>
 
           <div className="md:text-left md:pl-8">
-            <p className="text-5xl md:text-6xl font-bold text-black mb-2">
+            <p className="text-5xl md:text-6xl font-bold text-black mb-2" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               -15%
             </p>
-            <p className="text-lg text-black font-medium">for Single Payment</p>
+            <p className="text-lg text-black font-medium" style={{ fontFamily: '"Baskerville Display PT", serif' }}>for Single Payment</p>
           </div>
 
           {/* Vertical divider for desktop, horizontal for mobile */}
@@ -37,10 +37,10 @@ const TermsOfSale = () => {
         {/* Installments Column */}
         <div className="relative md:px-8">
           <div className="">
-            <p className="text-5xl md:text-6xl font-bold text-black mb-2">
+            <p className="text-5xl md:text-6xl font-bold text-black mb-2" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               10 year
             </p>
-            <p className="text-lg text-black font-medium">Installments</p>
+            <p className="text-lg text-black font-medium" style={{ fontFamily: '"Baskerville Display PT", serif' }}>Installments</p>
           </div>
 
           {/* Vertical divider for desktop, horizontal for mobile */}
@@ -51,8 +51,8 @@ const TermsOfSale = () => {
         {/* Internal Installments Column */}
         <div className="md:pl-8">
           <div className=" md:text-left">
-            <p className="text-5xl md:text-6xl font-bold text-black mb-2">0%</p>
-            <p className="text-lg text-black font-medium mb-8">
+            <p className="text-5xl md:text-6xl font-bold text-black mb-2" style={{ fontFamily: '"Baskerville Display PT", serif' }}>0%</p>
+            <p className="text-lg text-black font-medium mb-8" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               Internal Installments
             </p>
 
@@ -60,8 +60,8 @@ const TermsOfSale = () => {
             <div className="mb-4">
               {/* Percentage Labels Above */}
               <div className="flex justify-between mb-2">
-                <span className="text-black font-bold text-lg">20%</span>
-                <span className="text-black font-bold text-lg">80%</span>
+                <span className="text-black font-bold text-lg" style={{ fontFamily: '"Baskerville Display PT", serif' }}>20%</span>
+                <span className="text-black font-bold text-lg" style={{ fontFamily: '"Baskerville Display PT", serif' }}>80%</span>
               </div>
 
               {/* Progress Bar */}
@@ -76,13 +76,13 @@ const TermsOfSale = () => {
             {/* Description Text */}
             <div className="flex justify-between  md:text-left">
               <div className="">
-                <span className="text-black text-sm">
+                <span className="text-black text-sm" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   Initial
                   <br /> contribution
                 </span>
               </div>
               <div className="text-end">
-                <span className="text-black text-sm">
+                <span className="text-black text-sm" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   Distributed until
                   <br /> construction is complete
                 </span>

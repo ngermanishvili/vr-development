@@ -19,7 +19,7 @@ const ProjectsBanner = () => {
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <header className="text-center text-white">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 lg:mb-8 tracking-tight">
+            <h1 className="md:text-6xl text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 tracking-tight">
               FIRST WORLD-CLASS RESORT
               <br />
               ON THE BLACK SEA IN
@@ -35,7 +35,7 @@ const ProjectsBanner = () => {
             >
               <a
                 href="#presentation"
-                className="w-full sm:w-auto px-6 sm:px-8 lg:px-10 py-3 sm:py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-gray-900 transition-all duration-300 text-sm sm:text-base lg:text-lg font-medium tracking-wide uppercase focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 bg-transparent"
                 role="button"
                 aria-label="Download project presentation PDF"
               >
@@ -44,7 +44,7 @@ const ProjectsBanner = () => {
 
               <a
                 href="#video"
-                className="w-full sm:w-auto px-6 sm:px-8 lg:px-10 py-3 sm:py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-gray-900 transition-all duration-300 text-sm sm:text-base lg:text-lg font-medium tracking-wide uppercase focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 bg-transparent"
                 role="button"
                 aria-label="Watch resort promotional video"
               >

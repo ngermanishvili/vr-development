@@ -183,7 +183,7 @@ const AdditionalInfrastructure = () => {
 
           {/* Title Overlay - Top */}
           <div className="absolute top-6 left-6 right-6">
-            <h3 className="text-white text-lg md:text-xl font-medium leading-tight">
+            <h3 className="text-white text-lg md:text-xl font-medium leading-tight" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               {slideItems[0].title}
             </h3>
           </div>
@@ -205,7 +205,7 @@ const AdditionalInfrastructure = () => {
 
           {/* Title Overlay - Top */}
           <div className="absolute top-6 left-6 right-6">
-            <h3 className="text-white text-lg md:text-xl font-medium leading-tight">
+            <h3 className="text-white text-lg md:text-xl font-medium leading-tight" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               {slideItems[1].title}
             </h3>
           </div>
@@ -229,7 +229,7 @@ const AdditionalInfrastructure = () => {
 
             {/* Title Overlay - Top */}
             <div className="absolute top-4 left-4 right-4">
-              <h3 className="text-white text-base md:text-lg font-medium leading-tight">
+              <h3 className="text-white text-base md:text-lg font-medium leading-tight" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
                 {slideItems[2].title}
               </h3>
             </div>
@@ -251,7 +251,7 @@ const AdditionalInfrastructure = () => {
 
             {/* Title Overlay - Top */}
             <div className="absolute top-4 left-4 right-4">
-              <h3 className="text-white text-base md:text-lg font-medium leading-tight">
+              <h3 className="text-white text-base md:text-lg font-medium leading-tight" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
                 {slideItems[3].title}
               </h3>
             </div>
@@ -272,6 +272,7 @@ const AdditionalInfrastructure = () => {
           <p
             id="infrastructure-heading"
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight max-w-md"
+            style={{ fontFamily: '"Baskerville Display PT", serif' }}
           >
             ADDITIONAL
             <br />
