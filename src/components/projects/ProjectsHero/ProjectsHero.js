@@ -19,7 +19,7 @@ const ProjectsBanner = () => {
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <header className="text-center text-white">
-            <h1 className="md:text-6xl text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 tracking-tight">
+            <h1 style={{ fontFamily: '"Baskerville Display PT", serif' }} className="md:text-6xl text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 tracking-tight">
               FIRST WORLD-CLASS RESORT
               <br />
               ON THE BLACK SEA IN
