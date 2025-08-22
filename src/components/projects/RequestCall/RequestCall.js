@@ -45,7 +45,7 @@ const RequestCall = () => {
           <h2
             id="request-call-title"
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
-            style={{ color: "#CA9B43" }}
+            style={{ color: "#CA9B43", fontFamily: '"Baskerville Display PT", serif' }}
           >
             REQUEST A CALL
           </h2>
