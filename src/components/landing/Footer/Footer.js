@@ -49,6 +49,7 @@ const Footer = () => {
                     <a href="#" className="bg-white rounded-full p-2 text-black hover:bg-gray-300 transition">
                         <Youtube size={18} />
                     </a>
+                    {/*  */}
                 </div>
 
             </div>
