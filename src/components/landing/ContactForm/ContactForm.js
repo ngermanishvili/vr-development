@@ -67,9 +67,9 @@ const ContactForm = () => {
                         }}>
                             Location
                         </div>
-                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Merab Kostava str. 37/39</p>
-                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Gr, Volski str. N7</p>
-                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Yangzi Realty LLC 100 Riverside Blvd Suite 28 E, New York, NY 10069</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }} className="text-black">Merab Kostava str. 37/39</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }} className="text-black">Gr, Volski str. N7</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }} className="text-black">Yangzi Realty LLC 100 Riverside Blvd Suite 28 E, New York, NY 10069</p>
                     </div>
 
                     {/* Number */}
@@ -91,8 +91,8 @@ const ContactForm = () => {
                         }}>
                             Number
                         </div>
-                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>+(995) 599 26 11 11</p>
-                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>+995 32 2 50 11 11</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }} className="text-black">+(995) 599 26 11 11</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }} className="text-black">+995 32 2 50 11 11</p>
                     </div>
 
                     {/* Mail */}
@@ -107,8 +107,8 @@ const ContactForm = () => {
                         }}>
                             Mail
                         </div>
-                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Sales@vr.ge</p>
-                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }}>Info@vr.ge</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }} className="text-black">Sales@vr.ge</p>
+                        <p style={{ margin: '4px 0', fontFamily: 'Roboto, sans-serif' }} className="text-black">Info@vr.ge</p>
                     </div>
                 </div>
 

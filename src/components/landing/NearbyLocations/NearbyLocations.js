@@ -10,7 +10,7 @@ const NearbyLocations = () => {
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 768)
-        
+
         const handleClickOutside = (e) => {
             if (!e.target.closest('.custom-dropdown')) {
                 setDropdownOpen(false)
@@ -20,7 +20,7 @@ const NearbyLocations = () => {
         handleResize()
         window.addEventListener('resize', handleResize)
         document.addEventListener('click', handleClickOutside)
-        
+
         return () => {
             window.removeEventListener('resize', handleResize)
             document.removeEventListener('click', handleClickOutside)
@@ -91,7 +91,7 @@ const NearbyLocations = () => {
                                 justifyContent: 'space-between',
                                 alignItems: 'center'
                             }}>
-                                <span>{selectedPurpose}</span>
+                                <span className="text-black">{selectedPurpose}</span>
                                 <svg
                                     width="12" height="8" viewBox="0 0 12 8" fill="none"
                                     style={{
@@ -104,23 +104,24 @@ const NearbyLocations = () => {
                             </div>
                             <div
                                 style={{
-                                    position: 'absolute', 
-                                    top: '100%', 
-                                    left: 0, 
+                                    position: 'absolute',
+                                    top: '100%',
+                                    left: 0,
                                     right: 0,
-                                    background: '#fff', 
-                                    border: '1px solid #000', 
+                                    background: '#fff',
+                                    border: '1px solid #000',
                                     borderTop: 'none',
-                                    borderRadius: '0 0 6px 6px', 
+                                    borderRadius: '0 0 6px 6px',
                                     display: dropdownOpen ? 'block' : 'none',
-                                    zIndex: 1000, 
-                                    maxHeight: '200px', 
+                                    zIndex: 1000,
+                                    maxHeight: '200px',
                                     overflowY: 'auto'
                                 }}
                             >
                                 {purposeOptions.map((option, index) => (
                                     <div
                                         key={option}
+                                        className="text-black"
                                         style={{
                                             padding: '12px 16px',
                                             borderBottom: index < purposeOptions.length - 1 ? '1px solid #888' : 'none',

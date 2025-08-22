@@ -30,7 +30,7 @@ const Header = () => {
 
             <nav className={`absolute  top-0 left-0 right-0 z-50 px-6 py-4 ${headerColor}`}>
                 {/* Desktop Header */}
-                <div className="2xl:max-w-7xl md:w-full mx-auto flex flex-wrap justify-between items-start">
+                <div className="md:w-full [@media(min-width:2000px)]:max-w-7xl mx-auto flex flex-wrap justify-between items-start">
 
                     <div className="hidden md:grid grid-cols-3 items-center ">
                         <div className="flex items-center space-x-6">

@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white ">
       <LandingHero />
-      <div className="md:max-w-full [@media(min-width:1920px)]:max-w-7xl mx-auto">
+      <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
         <AboutLanding />
         <StatisticLanding />
         <ProjectsLanding />

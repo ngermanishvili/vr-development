@@ -124,11 +124,11 @@ const RequestCall = () => {
               required
               aria-required="true"
             >
-              <option value="" disabled>
+              <option value="" disabled className="text-black">
                 Purpose of purchase
               </option>
               {purposeOptions.map((option, index) => (
-                <option key={index} value={option}>
+                <option key={index} value={option} className="text-black">
                   {option}
                 </option>
               ))}
