@@ -9,7 +9,7 @@ const AboutLanding = () => {
                 <h2 className="text-3xl font-light mb-8 text-[#BE9744] tracking-wider" style={{ fontFamily: 'Baskerville Display PT, serif' }}>ABOUT VR HOLDING</h2>
                 <p className="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto mb-8" style={{ fontFamily: 'Baskerville, serif' }}>
                     One of the first real estate development companies in the Georgian market is extending the highest standard
-                    within the construction industry. In 2019 businessman Nikoloz Namoradze laid foundation to the company and
+                    within the construction industry. In 2019 businessman Noshrevan Namoradze laid foundation to the company and
                     throughout a few short implementing years every project became a success.
                 </p>
                 <button

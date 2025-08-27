@@ -34,7 +34,7 @@ const LandingHero = () => {
 
             {/* Chat Button - Half embedded at hero section bottom */}
             <button
-                className="absolute bottom-0 right-6 z-50 transform translate-y-1/2"
+                className="absolute bottom-0 right-6  transform translate-y-1/2"
                 style={{
                     width: '170px',
                     height: '132px',

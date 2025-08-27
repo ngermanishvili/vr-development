@@ -11,6 +11,29 @@ import ServiceSection from "@/components/projects/ServiceSection/ServiceSection"
 import TermsOfSale from "@/components/projects/TermsOfSale/TermsOfSale";
 import AdditionalInfrastructure from "@/components/projects/AdditionalInfrastructure/AdditionalInfrastructure";
 import ContactForm from "@/components/landing/ContactForm/ContactForm";
+
+export const metadata = {
+    title: "VR Holding Projects - Luxury Real Estate Developments in Georgia",
+    description: "Explore VR Holding's prestigious real estate projects including VR Shekvetili Forest Beach resort, VR Krtsanisi Resort Residence, VR Vake Sky Tower, and other premium developments across Georgia.",
+    keywords: "VR Holding projects, VR Shekvetili Forest Beach, VR Krtsanisi Resort, VR Vake Sky Tower, luxury projects Georgia, beachfront development, resort projects, premium real estate Georgia",
+    openGraph: {
+        title: "VR Holding Projects - Luxury Real Estate Developments",
+        description: "Discover our portfolio of luxury real estate projects - from beachfront resorts to urban towers, each designed to the highest standards of quality and luxury.",
+        images: [
+            {
+                url: '/shekvetili/big-banner.webp',
+                width: 1200,
+                height: 630,
+                alt: 'VR Holding Luxury Projects Portfolio',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "VR Holding Projects - Luxury Real Estate Developments",
+        description: "Explore our portfolio of premium real estate developments across Georgia.",
+    },
+};
 const ProjectsPage = () => {
     return (
         <>
