@@ -12,8 +12,8 @@ const LandingHero = () => {
                 <div className="absolute inset-0 bg-black/30"></div>
             </div>
 
-            <div className="relative z-10 text-center text-[#CDA34B] max-w-4xl px-6">
-                <h1 className="text-6xl md:text-7xl  mb-4 tracking-wider" style={{ fontFamily: 'Baskerville Display PT, serif' }}>VR HOLDING</h1>
+            <div className="relative z-10 text-center text-[#ca9b43] max-w-4xl px-6">
+                <h1 className="text-6xl md:text-7xl  mb-4 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>VR HOLDING</h1>
                 <p className="text-2xl md:text-7xl font-light  mb-8 text-white" style={{ fontFamily: 'Baskerville Display PT, serif' }}>Live Life to the Fullest</p>
                 <div className='flex gap-4 justify-center'>
                     <button

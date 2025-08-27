@@ -22,7 +22,7 @@ const AboutPartners = () => {
             <div className="max-w-7xl mx-auto">
                 {/* PARTNERS Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-light text-black tracking-[0.2em]">PARTNERS</h2>
+                    <h2 className="text-4xl font-light text-[#ca9b43] tracking-[0.2em]" style={{ fontFamily: 'Baskerville, serif' }}>PARTNERS</h2>
                 </div>
 
                 {/* Partners Grid */}

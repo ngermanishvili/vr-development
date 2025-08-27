@@ -27,7 +27,7 @@ const AboutTeam = () => {
             <div className="max-w-7xl mx-auto">
                 {/* TEAM Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-light text-[#BE9744] tracking-[0.2em]">TEAM</h2>
+                    <h2 className="text-4xl font-light text-[#ca9b43] tracking-[0.2em]" style={{ fontFamily: 'Baskerville, serif' }}>TEAM</h2>
                 </div>
 
                 {/* Team Members Slider */}
@@ -49,7 +49,7 @@ const AboutTeam = () => {
                                 />
                                 {/* Name and Position Overlay */}
                                 <div className="absolute bottom-4 left-4 text-left">
-                                    <h3 className="text-[#BE9744] font-bold mb-1" style={{ fontSize: '21px' }}>{member.name}</h3>
+                                    <h3 className="text-[#ca9b43] font-bold mb-1" style={{ fontSize: '21px', fontFamily: 'Baskerville, serif' }}>{member.name}</h3>
                                     <p className="text-white" style={{ fontSize: '18px' }}>{member.position}</p>
                                 </div>
                             </div>

@@ -77,7 +77,7 @@ const LandingAccordion = () => {
     return (
         <section className="py-8 bg-white">
             <div className="w-full">
-                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>OPPORTUNITIES</h2>
+                <h2 className="text-3xl font-light text-center mb-16 text-[#ca9b43] tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>OPPORTUNITIES</h2>
 
                 <div className="w-full border-t border-black">
                     {accordionItems.map((item) => (

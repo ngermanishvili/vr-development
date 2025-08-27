@@ -99,7 +99,7 @@ export default function FeaturedStoryPage({ params }) {
                 <Header />
                 <div className="pt-24 px-6">
                     <div className="max-w-4xl mx-auto text-center">
-                        <h1 className="text-4xl font-light text-gray-800 mb-4">Story Not Found</h1>
+                        <h1 className="text-4xl font-light text-[#ca9b43] mb-4" style={{ fontFamily: 'Baskerville, serif' }}>Story Not Found</h1>
                         <p className="text-gray-600">The requested story could not be found.</p>
                     </div>
                 </div>
@@ -147,8 +147,8 @@ export default function FeaturedStoryPage({ params }) {
 
                     {/* Story Title */}
                     <h1
-                        className="text-4xl font-medium mb-6 text-gray-800 uppercase"
-                        style={{ fontFamily: 'Baskerville Display PT, serif' }}
+                        className="text-4xl font-medium mb-6 text-[#ca9b43] uppercase"
+                        style={{ fontFamily: 'Baskerville, serif' }}
                     >
                         {story.title}
                     </h1>

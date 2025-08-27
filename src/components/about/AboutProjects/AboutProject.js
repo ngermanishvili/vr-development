@@ -50,7 +50,7 @@ const ProjectsAbout = () => {
     return (
         <section className="py-20 px-6">
             <div className="max-w-full mx-auto">
-                <h2 className="text-3xl font-light text-center mb-8 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville Display PT, serif', fontWeight: 'bold' }}>COMPLETED PROJECTS</h2>
+                <h2 className="text-3xl font-light text-center mb-8 text-[#ca9b43] tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>COMPLETED PROJECTS</h2>
                 <h2 className="text-1xl font-light text-center mb-8 text-black tracking-wider" style={{ fontFamily: 'Baskerville, serif', fontStyle: 'italic' }}>OUR JOURNEY</h2>
 
                 {/* Desktop View */}
@@ -58,7 +58,7 @@ const ProjectsAbout = () => {
                     {projects.map((project, index) => (
                         <div
                             key={project.id}
-                            className={`relative overflow-hidden cursor-pointer transition-all duration-500 ease-in-out ${index === activeIndex ? 'flex-[0.6]' : 'flex-[0.2]'
+                            className={`relative overflow-hidden cursor-pointer transition-all duration-1000 ease-in-out ${index === activeIndex ? 'flex-[0.6]' : 'flex-[0.2]'
                                 }`}
                             onClick={() => setActiveIndex(index)}
                         >
@@ -66,19 +66,20 @@ const ProjectsAbout = () => {
                                 src={project.image}
                                 alt={project.title}
                                 fill
-                                className="object-cover"
+                                className={`object-cover transition-all duration-1000 ${index === activeIndex ? 'filter-none' : 'grayscale brightness-125'}`}
                             />
                             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
 
+                            {/* Year title centered for all projects */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <h3 className="text-5xl font-bold text-white" style={{ fontFamily: 'Baskerville, serif' }}>1998</h3>
+                            </div>
+
                             {index === activeIndex ? (
                                 <>
-                                    {/* Left side text for active project, centered vertically */}
-                                    <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white">
-                                        <h2 className="font-bold text-white mb-2" style={{ fontFamily: 'Roboto, sans-serif', fontWeight: 'bold', fontSize: '24px' }}>
-                                            1998
-                                        </h2>
-                                        <p className="text-sm text-white max-w-xs leading-relaxed" style={{ fontFamily: 'Roboto, sans-serif' }}>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    <div className="absolute bottom-6 left-6 right-16 text-white">
+                                        <p className="text-sm opacity-90 leading-relaxed" style={{ fontFamily: 'Baskerville, serif' }}>
+                                            {project.description}
                                         </p>
                                     </div>
                                     <div className="absolute bottom-6 right-6">
@@ -94,23 +95,17 @@ const ProjectsAbout = () => {
                                     </div>
                                 </>
                             ) : (
-                                <>
-                                    {/* Title for inactive projects */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Baskerville Display PT, serif', fontWeight: 'bold' }}>1998</h3>
-                                    </div>
-                                    <div className="absolute bottom-6 right-6">
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation()
-                                                setActiveIndex(index)
-                                            }}
-                                            className="w-10 h-10 rounded-full border border-white/50 bg-black/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/40 transition-all"
-                                        >
-                                            -
-                                        </button>
-                                    </div>
-                                </>
+                                <div className="absolute bottom-6 right-6">
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            setActiveIndex(index)
+                                        }}
+                                        className="w-10 h-10 rounded-full border border-white/50 bg-black/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/40 transition-all"
+                                    >
+                                        -
+                                    </button>
+                                </div>
                             )}
                         </div>
                     ))}
@@ -133,13 +128,12 @@ const ProjectsAbout = () => {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
                                 
-                                {/* Center Text for each mobile project */}
-                                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                    <h2 className="text-5xl font-bold text-white mb-2" style={{ fontFamily: 'Roboto, sans-serif', fontWeight: 'bold' }}>
-                                        1998
-                                    </h2>
-                                    <p className="text-xs text-white max-w-xs text-center leading-relaxed px-4" style={{ fontFamily: 'Roboto, sans-serif' }}>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <h3 className="text-4xl font-bold text-white" style={{ fontFamily: 'Baskerville, serif' }}>1998</h3>
+                                </div>
+                                <div className="absolute bottom-6 left-6 right-6 text-white">
+                                    <p className="text-sm opacity-90 leading-relaxed" style={{ fontFamily: 'Baskerville, serif' }}>
+                                        {project.description}
                                     </p>
                                 </div>
                             </div>

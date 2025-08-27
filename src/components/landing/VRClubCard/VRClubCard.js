@@ -20,6 +20,14 @@ const VRClubCard = () => {
 
     return (
         <section className="w-full bg-black h-[400px] relative flex flex-col items-center justify-start pt-10 overflow-hidden">
+            {/* White gradient overlay on top-right */}
+            <div 
+                className="absolute top-0 right-0 w-3/4 h-3/4 pointer-events-none"
+                style={{
+                    background: 'radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), transparent)',
+                }}
+            />
+            
             <h2 className={`text-yellow-600 font-bold tracking-widest mb-5 text-center ${isMobile ? 'text-2xl' : 'text-5xl'}`} style={{ fontFamily: 'Baskerville, serif' }}>
                 VR CLUB CARD
             </h2>

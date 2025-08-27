@@ -46,7 +46,7 @@ const AboutBanner = () => {
                     {/* Chat Contact Icon */}
                     <div className="flex justify-center md:mt-14">
                         <button
-                            className="z-50"
+                            className=""
                             style={{
                                 width: '170px',
                                 height: '132px',
