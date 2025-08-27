@@ -12,7 +12,9 @@ if (typeof window !== "undefined") {
 const ProjectsBanner = () => {
   const containerRef = useRef(null);
   const slidesRef = useRef([]);
+  const titlesRef = useRef([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const enterFromTop = true; // Toggle: true -> slides enter from top, false -> from bottom
 
   const slides = [
     {
@@ -22,14 +24,14 @@ const ProjectsBanner = () => {
       subtitle: "Pool"
     },
     {
-      bgImage: "/shekvetili/big-banner.webp",
-      smallImage: "/shekvetili/small-banner.webp", 
+      bgImage: "/shekvetili/batumi.jpg",
+      smallImage: "/shekvetili/batumi.jpg",
       title: "LUXURY",
       subtitle: "Resort"
     },
     {
-      bgImage: "/shekvetili/big-banner.webp",
-      smallImage: "/shekvetili/small-banner.webp",
+      bgImage: "/shekvetili/batumi2.jpg",
+      smallImage: "/shekvetili/batumi2.jpg",
       title: "PARADISE",
       subtitle: "Experience"
     }
@@ -38,57 +40,83 @@ const ProjectsBanner = () => {
   useEffect(() => {
     const container = containerRef.current;
     const slideElements = slidesRef.current;
+    const titleElements = titlesRef.current;
 
     if (!container || slideElements.length === 0) return;
 
-    // Create timeline for slide animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: `+=${slides.length * 100}%`, // Each slide takes 100% of viewport height
-        scrub: 1,
-        pin: true, // Pin the section while scrolling through slides
-        snap: {
-          snapTo: (value) => {
-            // Snap to slide positions (0, 0.5, 1 for 3 slides)
-            const slideIndex = Math.round(value * (slides.length - 1));
-            setCurrentSlide(slideIndex);
-            return slideIndex / (slides.length - 1);
-          },
-          duration: 0.5,
-          ease: "power2.inOut"
-        },
-        onUpdate: (self) => {
-          // Update current slide based on progress
-          const slideIndex = Math.floor(self.progress * slides.length);
-          const clampedIndex = Math.min(slideIndex, slides.length - 1);
-          setCurrentSlide(clampedIndex);
-        }
+    // Initial state
+    slideElements.forEach((slide, index) => {
+      gsap.set(slide, {
+        y: index === 0 ? "0%" : (enterFromTop ? "-100%" : "100%"),
+        zIndex: index + 1,
+        willChange: "transform"
+      });
+      if (titleElements[index]) {
+        gsap.set(titleElements[index], {
+          y: index === 0 ? 0 : 70,
+          opacity: index === 0 ? 1 : 0,
+          scale: index === 0 ? 1 : 0.88
+        });
       }
     });
 
-    // Animate slides
-    slideElements.forEach((slide, index) => {
-      if (index === 0) return; // First slide is already visible
+    // Master timeline for smoother, predictable flow
+    const tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        end: `+=${slides.length * 180}%`,
+        scrub: 2.2,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
 
-      // Set initial position
-      gsap.set(slide, { y: "100%" });
+    for (let i = 1; i < slideElements.length; i++) {
+      const current = slideElements[i];
+      const prev = slideElements[i - 1];
+      const currentTitle = titleElements[i];
+      const prevTitle = titleElements[i - 1];
 
-      // Animate slide in
-      tl.to(slideElements[index - 1], {
-        y: "-100%",
-        duration: 1,
-        ease: "power2.inOut"
-      }, index)
-      .to(slide, {
-        y: "0%", 
-        duration: 1,
-        ease: "power2.inOut"
-      }, index);
+      // Slide-in
+      tl.to(current, { y: "0%", duration: 1 }, ">");
+
+      // Subtle depth on previous
+      if (prev) tl.to(prev, { scale: 0.985, duration: 1 }, "<");
+
+      // Title crossfade
+      if (prevTitle) {
+        tl.to(prevTitle, { y: -40, opacity: 0, scale: 1.03, duration: 0.45, ease: "power1.inOut" }, "<+0.35");
+      }
+      if (currentTitle) {
+        tl.fromTo(currentTitle,
+          { y: 70, opacity: 0, scale: 0.88 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" },
+          "<+0.35"
+        );
+      }
+    }
+
+    // Ensure first title remains visible without conflicting intro tween
+    if (titleElements[0]) {
+      gsap.set(titleElements[0], { y: 0, opacity: 1, scale: 1 });
+    }
+
+    // Progress indicator based on overall scroll
+    const progressTrigger = ScrollTrigger.create({
+      trigger: container,
+      start: "top top",
+      end: `+=${slides.length * 180}%`,
+      onUpdate: (self) => {
+        const idx = Math.max(0, Math.min(slides.length - 1, Math.round(self.progress * (slides.length - 1))));
+        setCurrentSlide(idx);
+      }
     });
 
     return () => {
+      tl.kill();
+      progressTrigger.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, [slides.length]);
@@ -109,22 +137,25 @@ const ProjectsBanner = () => {
             {/* Background Image */}
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ 
+              style={{
                 backgroundImage: `url('${slide.bgImage}')`,
                 backgroundColor: '#a3a3a3'
               }}
             />
 
             {/* Content */}
-            <div className="absolute top-8 left-8 md:top-12 md:left-12 z-20">
+            <div
+              ref={el => titlesRef.current[index] = el}
+              className="absolute top-8 left-8 md:top-12 md:left-12 z-20"
+            >
               <h4
                 className="text-white font-light text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-none drop-shadow-2xl"
                 style={{ fontFamily: '"Baskerville Display PT", serif' }}
               >
                 {slide.title}
-                <span 
-                  className="block italic font-extralight -mt-[14px] sm:-mt-10 font-snell-bold " 
-                 
+                <span
+                  className="block italic font-extralight -mt-[14px] sm:-mt-10 font-snell-bold "
+
                 >
                   {slide.subtitle}
                 </span>
@@ -153,7 +184,7 @@ const ProjectsBanner = () => {
               {String(currentSlide + 1).padStart(2, '0')}
             </span>
             <div className="w-12 h-px bg-white/30 relative overflow-hidden">
-              <div 
+              <div
                 className="absolute top-0 left-0 h-full bg-white transition-all duration-500 ease-out"
                 style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
               />
