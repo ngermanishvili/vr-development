@@ -8,13 +8,6 @@
 }
 
 @font-face {
-  font-family: "Snell";
-  src: url("/fonts/SNELL/SnellRoundhand-BoldScript.otf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Baskerville Display PT";
   src: url("/fonts/BASKERVILE/BaskervilleURW-Reg.otf") format("opentype");
   font-weight: normal;
@@ -54,6 +47,227 @@
   src: url("/fonts/ROBOTO/Roboto-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "Snell";
+  src: url("/fonts/SNELL/SnellRoundhand-BoldScript.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* BASKERVILLE ფონტები */
+@font-face {
+  font-family: "BaskervilleURW";
+  src: url("/fonts/BASKERVILE/BaskervilleURW-Bol.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BaskervilleURW";
+  src: url("/fonts/BASKERVILE/BaskervilleURW-Reg.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreBaskerville";
+  src: url("/fonts/BASKERVILE/LibreBaskerville-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreBaskerville";
+  src: url("/fonts/BASKERVILE/LibreBaskerville-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "LibreBaskerville";
+  src: url("/fonts/BASKERVILE/LibreBaskerville-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ROBOTO ფონტები */
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/ROBOTO/Roboto-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* SNELL ფონტები */
+@font-face {
+  font-family: "SnellRoundhand";
+  src: url("/fonts/Snell/snellroundhand_black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SnellRoundhand";
+  src: url("/fonts/Snell/snellroundhand_bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SnellRoundhand";
+  src: url("/fonts/SNSnellELL/SnellRoundhand-BoldScript.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* ფონტ კლასები */
+.font-baskerville-bold {
+  font-family: "BaskervilleURW", serif;
+  font-weight: bold;
+}
+
+.font-baskerville-regular {
+  font-family: "BaskervilleURW", serif;
+  font-weight: normal;
+}
+
+.font-libre-baskerville {
+  font-family: "LibreBaskerville", serif;
+  font-weight: normal;
+}
+
+.font-libre-baskerville-bold {
+  font-family: "LibreBaskerville", serif;
+  font-weight: bold;
+}
+
+.font-libre-baskerville-italic {
+  font-family: "LibreBaskerville", serif;
+  font-style: italic;
+}
+
+.font-roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+
+.font-roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.font-roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.font-roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+}
+
+.font-roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.font-roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
+
+.font-roboto-italic {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+}
+
+.font-snell-black {
+  font-family: "SnellRoundhand", cursive;
+  font-weight: 900;
+}
+
+.font-snell-bold {
+  font-family: "SnellRoundhand", cursive;
+  font-weight: bold;
 }
 
 :root {

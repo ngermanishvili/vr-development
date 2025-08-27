@@ -9,7 +9,7 @@ const ProjectPhaseOne = () => {
     >
       {/* Background Image with Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('/shekvetili/vr-bg.webp')]"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('/shekvetili/pattern-vr.png')]"
         role="img"
         aria-label="Shekvetili resort first phase development area with modern architectural visualization"
       >

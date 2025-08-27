@@ -14,7 +14,7 @@ const ProjectGallery = () => {
         alt: "Modern apartment interior with luxury furnishings and sea view"
       },
       {
-        src: "/shekvetili/vr-bg.webp", 
+        src: "/shekvetili/big-banner.webp", 
         alt: "Elegant living space with contemporary design elements"
       }
     ],
@@ -58,16 +58,15 @@ const ProjectGallery = () => {
 
   return (
     <section 
-      className="pt-12 md:pt-16 px-4 bg-white"
+      className="pt-22 md:pt-16 bg-white"
       role="region"
       aria-labelledby="gallery-title"
     >
-      <div className="max-w-7xl mx-auto">
-        
+      <div >
         {/* Gallery Header */}
-        <header className="flex justify-between items-end mb-8">
+        <header className="max-w-7xl mx-auto flex justify-between items-end mb-8 px-4">
           {/* Left Side - Tabs and Title */}
-          <div>
+          <div className="">
             {/* Tab Navigation */}
             <nav 
               className="flex gap-0 mb-4"

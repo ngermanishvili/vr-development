@@ -16,61 +16,61 @@ const AttractionsSection = () => {
       id: 1,
       name: "Paragraph Resort & Spa",
       distance: "100 m",
-      image: "shekvetili/slide-1.webp",
+      image: "shekvetili/Paragraph Resort & Spa.jpg",
     },
     {
       id: 2,
       name: "Black Sea Arena",
       distance: "1.8 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Black Sea Arena.jpg",
     },
     {
       id: 3,
       name: "Dendrological Park",
       distance: "2.8 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Dendrological Park.jpg",
     },
     {
       id: 4,
       name: "Tsitsinatela Amusement Park",
       distance: "5 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Tsitsinatela Amusement Park.webp",
     },
     {
       id: 5,
       name: "Musicians Park Miniature Park",
       distance: "1.7 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Musicians Park Miniature Park.webp",
     },
     {
       id: 6,
       name: "Miniature Park",
       distance: "5.6 m",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Miniature Park.webp",
     },
     {
       id: 7,
       name: "Kobuleti City Centre",
       distance: "13.3 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Kobuleti City Centre.jpg",
     },
     {
       id: 8,
       name: "Batumi City Centre",
       distance: "34 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Batumi City Centre.jpg",
     },
     {
       id: 9,
       name: "Batumi International Airport",
       distance: "54 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Batumi International Airport.jpg",
     },
     {
       id: 10,
       name: "Kutaisi International Airport",
       distance: "77 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Kutaisi International Airport.jpg",
     },
   ];
 
@@ -97,30 +97,30 @@ const AttractionsSection = () => {
     if (isMobile) {
       // პატარა ეკრანებისთვის 
       return [
-        { id: 1, left: 33, top: 47 },
-        { id: 2, left: 37, top: 53},
-        { id: 3, left: 35, top: 42},
-        { id: 4, left: 33, top: 59 },
-        { id: 5, left: 32.5, top: 52.5 },
-        { id: 6, left: 32, top: 64 },
-        { id: 7, left: 30, top: 69 },
-        { id: 8, left: 28, top: 74 },
-        { id: 9, left: 33, top: 73 },
-        { id: 10, left: 52, top: 38 },
+        { id: 1, left: 42.3, top: 40 },
+        { id: 2, left: 44, top: 48.4},
+        { id: 3, left: 42.4, top: 32.6},
+        { id: 4, left: 42, top: 54 },
+        { id: 5, left: 42, top: 46},
+        { id: 6, left: 41.4, top: 64 },
+        { id: 7, left: 40.5, top: 72 },
+        { id: 8, left: 39, top: 79 },
+        { id: 9, left: 42, top: 78 },
+        { id: 10, left: 53, top: 30 },
       ];
     } else {
       // დესკტოპი
       return [
-        { id: 1, left: 32.5, top: 47 },
-        { id: 2, left: 35, top: 53},
-        { id: 3, left: 33.5, top: 43},
-        { id: 4, left: 32.7, top: 57 },
-        { id: 5, left: 32.4, top: 51 },
-        { id: 6, left: 32, top: 64 },
-        { id: 7, left: 30, top: 69 },
-        { id: 8, left: 28, top: 74 },
-        { id: 9, left: 32, top: 73 },
-        { id: 10, left: 52, top: 38 },
+        { id: 1, left: 42, top: 39 },
+        { id: 2, left: 44, top: 48.5 },
+        { id: 3, left: 43, top: 33},
+        { id: 4, left: 42.1, top: 54 },
+        { id: 5, left: 42, top: 45.8 },
+        { id: 6, left: 41.4, top: 63 },
+        { id: 7, left: 40.4, top: 70 },
+        { id: 8, left: 39.3, top: 77 },
+        { id: 9, left: 42, top: 77 },
+        { id: 10, left: 54, top: 27 },
       ];
     }
   };
@@ -133,8 +133,8 @@ const AttractionsSection = () => {
     const isMobile = containerWidth < 768;
     
     return isMobile 
-      ? { left: 30, top: 43 }    // მობაილზე
-      : {  left: 30, top: 43}; // დესკტოპზე
+      ? { left: 40.7, top: 36 }    // მობაილზე
+      : {  left: 40.5, top: 32}; // დესკტოპზე
   }; 
 
   const pinPositions = getPinPositions();
@@ -153,8 +153,8 @@ const AttractionsSection = () => {
     const containerHeight = containerRect.height;
     
     //  რუკის ზუსტი ზომები
-    const imageNaturalWidth = image.naturalWidth || 1667;
-    const imageNaturalHeight = image.naturalHeight || 1250;
+    const imageNaturalWidth = image.naturalWidth || 3628;
+    const imageNaturalHeight = image.naturalHeight || 1128;
     
     // object-fit: cover ალგორითმი
     const imageRatio = imageNaturalWidth / imageNaturalHeight;
@@ -258,88 +258,83 @@ const AttractionsSection = () => {
   const columnGroups = [locations.slice(0, 5), locations.slice(5, 10)];
 
   return (
-    <section className="bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <article className="max-w-7xl mx-auto">
-          {/* რუკის სექცია */}
+    <section className="bg-gray-50">
+      {/* რუკის სექცია - მთელ ეკრანზე */}
+      <div
+        ref={mapRef}
+        className="relative w-full overflow-hidden bg-gray-200 max-md:h-[500px] md:h-auto"
+      >
+        {/* რუკის ფოტო */}
+        <img
+          ref={imageRef}
+          src="shekvetili/vr map-long.png"
+          alt="პროექტის მდებარეობის რუკა"
+          className="w-full h-full object-cover block"
+          onLoad={updatePositions}
+          onError={(e) => {
+            console.error('Image failed to load:', e);
+          }}
+        />
+
+        {/* პროექტის მდებარეობის ტექსტი */}
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 p-2 lg:p-4 text-right z-30">
+          <h2 className="font-baskerville-bold text-xs sm:text-sm lg:text-xl font-bold mb-1 lg:mb-2 text-black leading-tight">
+            PROJECT<br/> LOCATION
+          </h2>
+          <p className="font-libre-baskerville-italic text-xs lg:text-sm text-black leading-tight">Next To Icon hotel Paragraph</p>
+          <p className="font-libre-baskerville-italic text-xs lg:text-sm text-black leading-tight">Resort & Spa. Autograph</p>
+          <p className="font-libre-baskerville-italic text-xs lg:text-sm text-black leading-tight">Collection</p>
+        </div>
+
+        {/* VR პინი */}
+        <div
+          className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+          style={calculateRealPosition(vrPinPosition)}
+          onMouseEnter={() => {
+            setHoveredPin(true);
+            setCurrentImage("shekvetili/slide-1.webp");
+            setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
+            setActivePin('vr'); // VR აქტიური ხდება
+          }}
+          // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
+        >
+          <img
+            src="shekvetili/vr-pin.webp"
+            alt="VR მდებარეობის პინი"
+            className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-20 object-contain drop-shadow-lg"
+            draggable={false}
+          />
+        </div>
+
+        {/* რიცხვიანი პინები */}
+        {pinPositions.map((pin) => (
           <div
-            ref={mapRef}
-            className="relative mb-8 w-full overflow-hidden bg-gray-200"
-            style={{ 
-              width: "110%", 
-              marginLeft: "-5%", 
-              height: "clamp(500px, 50vw, 800px)"
+            key={pin.id}
+            className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-all duration-300 z-10"
+            style={calculateRealPosition(pin)}
+            onMouseEnter={() => {
+              setHoveredText(pin.id);
+              setCurrentImage(
+                locations.find((loc) => loc.id === pin.id).image
+              );
+              setActivePin(pin.id); // ეს პინი ხდება აქტიური
             }}
+            // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
           >
-            {/* რუკის ფოტო */}
-            <img
-              ref={imageRef}
-              src="shekvetili/map-close.png"
-              alt="პროექტის მდებარეობის რუკა"
-              className="w-full h-full object-cover block"
-              onLoad={updatePositions}
-              onError={(e) => {
-                console.error('Image failed to load:', e);
-              }}
-            />
-
-            {/* პროექტის მდებარეობის ტექსტი */}
-            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 p-2 lg:p-4 text-right z-30">
-              <h2 className="text-xs sm:text-sm lg:text-xl font-bold mb-1 lg:mb-2 text-black leading-tight">
-                PROJECT<br/> LOCATION
-              </h2>
-              <p className="text-xs lg:text-sm text-black leading-tight">Next To Icon hotel Paragraph</p>
-              <p className="text-xs lg:text-sm text-black leading-tight">Resort & Spa. Autograph</p>
-              <p className="text-xs lg:text-sm text-black leading-tight">Collection</p>
+            <div className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 border-2 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold transition-all duration-300 shadow-lg ${
+              activePin === pin.id 
+                ? 'bg-[#CA9B43] text-white border-[#CA9B43]' // აქტიური მდგომარეობა
+                : 'bg-[#D3D2C1] text-black border-gray-400' // ნორმალური მდგომარეობა - hover ამოღებული
+            }`}>
+              {pin.id}
             </div>
-
-            {/* VR პინი */}
-            <div
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
-              style={calculateRealPosition(vrPinPosition)}
-              onMouseEnter={() => {
-                setHoveredPin(true);
-                setCurrentImage("shekvetili/recreational _spaces.webp");
-                setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
-                setActivePin('vr'); // VR აქტიური ხდება
-              }}
-              // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
-            >
-              <img
-                src="shekvetili/vr-pin.webp"
-                alt="VR მდებარეობის პინი"
-                className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-20 object-contain drop-shadow-lg"
-                draggable={false}
-              />
-            </div>
-
-            {/* რიცხვიანი პინები */}
-            {pinPositions.map((pin) => (
-              <div
-                key={pin.id}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-all duration-300 z-10"
-                style={calculateRealPosition(pin)}
-                onMouseEnter={() => {
-                  setHoveredText(pin.id);
-                  setCurrentImage(
-                    locations.find((loc) => loc.id === pin.id).image
-                  );
-                  setActivePin(pin.id); // ეს პინი ხდება აქტიური
-                }}
-                // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
-              >
-                <div className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 border-2 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold transition-all duration-300 shadow-lg ${
-                  activePin === pin.id 
-                    ? 'bg-[#CA9B43] text-white border-[#CA9B43]' // აქტიური მდგომარეობა
-                    : 'bg-[#D3D2C1] text-black border-gray-400' // ნორმალური მდგომარეობა - hover ამოღებული
-                }`}>
-                  {pin.id}
-                </div>
-              </div>
-            ))}
           </div>
+        ))}
+      </div>
 
-          {/* ქვედა სექცია */}
+      {/* ქვედა სექცია - კონტეინერში */}
+      <div className="container mx-auto px-4 py-8">
+        <article className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16">
             {/* ფოტო */}
             <div className="relative">
@@ -348,6 +343,7 @@ const AttractionsSection = () => {
                   src={currentImage}
                   alt="მდებარეობის გამოსახულება"
                   className="w-full h-48 sm:h-60 lg:h-80 object-cover transition-opacity duration-500 shadow-lg"
+                  style={{ objectPosition: 'bottom' }}
                 />
               </div>
 
@@ -379,10 +375,10 @@ const AttractionsSection = () => {
                         <span className="w-6 lg:w-8 flex-shrink-0 font-bold text-sm lg:text-base">
                           {location.id}.
                         </span>
-                        <span className="flex-1 px-2 lg:px-3 text-sm lg:text-base leading-tight">
+                        <span className="font-roboto-bold flex-1 px-2 lg:px-3 text-sm lg:text-base leading-tight">
                           {location.name}
                         </span>
-                        <span className="font-black flex-shrink-0 text-sm lg:text-base">
+                        <span className="font-roboto-bold font-black flex-shrink-0 text-sm lg:text-base">
                           {location.distance}
                         </span>
                       </li>

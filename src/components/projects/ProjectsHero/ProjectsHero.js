@@ -18,40 +18,42 @@ const ProjectsBanner = () => {
       {/* Main Content */}
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <header className="text-center text-white">
-            <h1 style={{ fontFamily: '"Baskerville Display PT", serif' }} className="md:text-6xl text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 tracking-tight">
+          {/* Title - perfectly centered */}
+          <div className="text-center text-white">
+            <h1 className="md:text-6xl text-4xl font-bold tracking-tight font-baskerville-regular">
               FIRST WORLD-CLASS RESORT
               <br />
               ON THE BLACK SEA IN
               <br />
               GEORGIA
             </h1>
+          </div>
 
-            {/* Call-to-Action Buttons */}
-            <nav
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-8 sm:mt-12 lg:mt-16"
-              role="navigation"
-              aria-label="Main actions"
+          {/* Call-to-Action Buttons - positioned absolutely lower */}
+          <nav
+            className="absolute left-1/2 transform -translate-x-1/2 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+            style={{ top: '80%' }}
+            role="navigation"
+            aria-label="Main actions"
+          >
+            <a
+              href="#presentation"
+              className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 bg-transparent whitespace-nowrap font-roboto-regular"
+              role="button"
+              aria-label="Download project presentation PDF"
             >
-              <a
-                href="#presentation"
-                className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 bg-transparent"
-                role="button"
-                aria-label="Download project presentation PDF"
-              >
-                DOWNLOAD PRESENTATION
-              </a>
+              DOWNLOAD PRESENTATION
+            </a>
 
-              <a
-                href="#video"
-                className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 bg-transparent"
-                role="button"
-                aria-label="Watch resort promotional video"
-              >
-                WATCH VIDEO
-              </a>
-            </nav>
-          </header>
+            <a
+              href="#video"
+              className="font-roboto-regular border border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 bg-transparent whitespace-nowrap"
+              role="button"
+              aria-label="Watch resort promotional video"
+            >
+              WATCH VIDEO
+            </a>
+          </nav>
         </div>
       </div>
     </section>

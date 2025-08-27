@@ -23,7 +23,7 @@ const TermsOfSale = () => {
           <div className="hidden md:block absolute left-0 top-0 w-px h-full bg-[#CA9B43]"></div>
 
           <div className="md:text-left md:pl-8">
-            <p className="text-5xl md:text-6xl font-bold text-black mb-2" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
+            <p className="text-5xl md:text-6xl font-bold text-black mb-2 font-libre-baskerville-italic" style={{ fontFamily: '"Baskerville Display PT", serif' }}>
               -15%
             </p>
             <p className="text-lg text-black font-medium" style={{ fontFamily: '"Baskerville Display PT", serif' }}>for Single Payment</p>

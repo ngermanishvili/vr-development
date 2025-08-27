@@ -12,27 +12,24 @@ import TermsOfSale from "@/components/projects/TermsOfSale/TermsOfSale";
 import AdditionalInfrastructure from "@/components/projects/AdditionalInfrastructure/AdditionalInfrastructure";
 import ContactForm from "@/components/landing/ContactForm/ContactForm";
 const ProjectsPage = () => {
-  return (
-    <>
-
-
-
-      <ProjectsHero />
-      <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
-        <ProjectHighlights />
-        <ProjectPhaseOne />
-        <ProjectsGallery />
-        <WhyShekvetili />
-        <RequestCall />
-        <AttractionsSection />
-        <ProjectsBanner />
-        <AdditionalInfrastructure />
-        <ServiceSection />
-        <TermsOfSale />
-        <ContactForm />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <ProjectsHero />
+            <ProjectHighlights />
+            <ProjectPhaseOne />
+            <ProjectsGallery />
+            <WhyShekvetili />
+            <RequestCall />
+            <AttractionsSection />
+            <ProjectsBanner />
+            <AdditionalInfrastructure />
+            <ServiceSection />
+            <TermsOfSale />
+            <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
+                <ContactForm />
+            </div>
+        </>
+    );
 };
 
 export default ProjectsPage;

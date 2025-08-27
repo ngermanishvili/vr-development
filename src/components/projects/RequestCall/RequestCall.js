@@ -44,8 +44,8 @@ const RequestCall = () => {
         <header className="text-center mb-12">
           <h2
             id="request-call-title"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
-            style={{ color: "#CA9B43", fontFamily: '"Baskerville Display PT", serif' }}
+            className="font-baskerville-regular text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
+            style={{ color: "#CA9B43" }}
           >
             REQUEST A CALL
           </h2>
@@ -124,11 +124,11 @@ const RequestCall = () => {
               required
               aria-required="true"
             >
-              <option value="" disabled className="text-black">
+              <option value="" disabled>
                 Purpose of purchase
               </option>
               {purposeOptions.map((option, index) => (
-                <option key={index} value={option} className="text-black">
+                <option key={index} value={option}>
                   {option}
                 </option>
               ))}
