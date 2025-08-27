@@ -310,172 +310,173 @@ const AttractionsSectionLanding = () => {
 
   return (
     <section className="bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <article className="max-w-7xl mx-auto">
-          {/* რუკის სექცია */}
+      {/* რუკის სექცია - ფულსქრინ */}
+      <div
+        ref={mapRef}
+        className="relative mb-8 w-full overflow-hidden bg-gray-200"
+        style={{
+          width: "100vw",
+          marginLeft: "calc(-50vw + 50%)",
+          height: "clamp(500px, 50vw, 800px)"
+        }}
+      >
+        {/* რუკის ფოტო */}
+        <img
+          ref={imageRef}
+          src="landing/map/VR-map.webp"
+          alt="პროექტის მდებარეობის რუკა"
+          className="w-full h-full object-cover block"
+          onLoad={updatePositions}
+          onError={(e) => {
+            console.error('Image failed to load:', e);
+          }}
+        />
+
+        {/* პროექტის მდებარეობის ტექსტი */}
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 p-2 lg:p-4 text-right z-30">
+          <h2 className="text-xs sm:text-sm lg:text-xl font-bold mb-1 lg:mb-2 text-black leading-tight">
+            PROJECT<br /> LOCATION
+          </h2>
+          <p className="text-xs lg:text-sm text-black leading-tight">Next To Icon hotel Paragraph</p>
+          <p className="text-xs lg:text-sm text-black leading-tight">Resort & Spa. Autograph</p>
+          <p className="text-xs lg:text-sm text-black leading-tight">Collection</p>
+        </div>
+
+        {/* VR პინი */}
+        <div
+          className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+          style={calculateRealPosition(vrPinPosition)}
+          onMouseEnter={() => {
+            setHoveredPin(true);
+            setCurrentImage("shekvetili/recreational _spaces.webp");
+            setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
+            setActivePin('vr'); // VR აქტიური ხდება
+          }}
+        // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
+        >
           <div
-            ref={mapRef}
-            className="relative mb-8 w-full overflow-hidden bg-gray-200"
+            className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+            style={calculateRealPosition(vrPinPosition2)}
+            onMouseEnter={() => {
+              setHoveredPin(true);
+              setCurrentImage("shekvetili/recreational _spaces.webp");
+              setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
+              setActivePin('vr'); // VR აქტიური ხდება
+            }}
+          // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
+          ></div>
+          <img
+            src="shekvetili/vr-pin.webp"
+            alt="VR მდებარეობის პინი"
+            className="w-8 h-8  md:w-14 lg:h-14 object-contain drop-shadow-lg"
+            draggable={false}
+          />
+        </div>
+
+        {/* დამატებითი VR პინები */}
+        <div
+          className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+          style={calculateRealPosition(vrPinPosition3)}
+          onMouseEnter={() => {
+            setHoveredPin(true);
+            setCurrentImage("shekvetili/recreational _spaces.webp");
+            setHoveredText('vr3');
+            setActivePin('vr3');
+          }}
+        >
+          <img
+            src="shekvetili/vr-pin.webp"
+            alt="VR მდებარეობის პინი 3"
+            className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
+            draggable={false}
+          />
+          {/* VR VAKE SKY TOWER ტექსტი */}
+          <div
+            className="text-[10px] md:text-[14px] absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center text-black font-bold leading-tight pointer-events-none"
             style={{
-              width: "110%",
-              marginLeft: "-5%",
-              height: "clamp(500px, 50vw, 800px)"
+              fontFamily: 'LibreBaskerville, Baskerville, serif',
+              color: '#CA9B43'
             }}
           >
-            {/* რუკის ფოტო */}
-            <img
-              ref={imageRef}
-              src="landing/map/VR-map.webp"
-              alt="პროექტის მდებარეობის რუკა"
-              className="w-full h-full object-cover block"
-              onLoad={updatePositions}
-              onError={(e) => {
-                console.error('Image failed to load:', e);
-              }}
-            />
-
-            {/* პროექტის მდებარეობის ტექსტი */}
-            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 p-2 lg:p-4 text-right z-30">
-              <h2 className="text-xs sm:text-sm lg:text-xl font-bold mb-1 lg:mb-2 text-black leading-tight">
-                PROJECT<br /> LOCATION
-              </h2>
-              <p className="text-xs lg:text-sm text-black leading-tight">Next To Icon hotel Paragraph</p>
-              <p className="text-xs lg:text-sm text-black leading-tight">Resort & Spa. Autograph</p>
-              <p className="text-xs lg:text-sm text-black leading-tight">Collection</p>
-            </div>
-
-            {/* VR პინი */}
-            <div
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
-              style={calculateRealPosition(vrPinPosition)}
-              onMouseEnter={() => {
-                setHoveredPin(true);
-                setCurrentImage("shekvetili/recreational _spaces.webp");
-                setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
-                setActivePin('vr'); // VR აქტიური ხდება
-              }}
-            // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
-            >
-              <div
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
-                style={calculateRealPosition(vrPinPosition2)}
-                onMouseEnter={() => {
-                  setHoveredPin(true);
-                  setCurrentImage("shekvetili/recreational _spaces.webp");
-                  setHoveredText('vr'); // VR-ისთვის სპეციალური მნიშვნელობა
-                  setActivePin('vr'); // VR აქტიური ხდება
-                }}
-              // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
-              ></div>
-              <img
-                src="shekvetili/vr-pin.webp"
-                alt="VR მდებარეობის პინი"
-                className="w-8 h-8  md:w-14 lg:h-14 object-contain drop-shadow-lg"
-                draggable={false}
-              />
-            </div>
-
-            {/* დამატებითი VR პინები */}
-            <div
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
-              style={calculateRealPosition(vrPinPosition3)}
-              onMouseEnter={() => {
-                setHoveredPin(true);
-                setCurrentImage("shekvetili/recreational _spaces.webp");
-                setHoveredText('vr3');
-                setActivePin('vr3');
-              }}
-            >
-              <img
-                src="shekvetili/vr-pin.webp"
-                alt="VR მდებარეობის პინი 3"
-                className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
-                draggable={false}
-              />
-              {/* VR VAKE SKY TOWER ტექსტი */}
-              <div
-                className="text-[10px] md:text-[14px] absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center text-black font-bold leading-tight pointer-events-none"
-                style={{
-                  fontFamily: 'LibreBaskerville, Baskerville, serif',
-                  color: '#CA9B43'
-                }}
-              >
-                VR VAKE SKY TOWER
-              </div>
-            </div>
-
-            <div
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
-              style={calculateRealPosition(vrPinPosition4)}
-              onMouseEnter={() => {
-                setHoveredPin(true);
-                setCurrentImage("shekvetili/recreational _spaces.webp");
-                setHoveredText('vr4');
-                setActivePin('vr4');
-              }}
-            >
-              <img
-                src="shekvetili/vr-pin.webp"
-                alt="VR მდებარეობის პინი 4"
-                className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
-                draggable={false}
-              />
-              {/* VR KRTSANISI RESIDENCE ტექსტი */}
-              <div
-                className="text-[10px] md:text-[14px] absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center text-black font-bold leading-tight pointer-events-none"
-                style={{
-                  fontFamily: 'LibreBaskerville, Baskerville, serif',
-                  color: '#CA9B43'
-                }}
-              >
-                VR KRTSANISI RESIDENCE
-              </div>
-            </div>
-
-            <div
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
-              style={calculateRealPosition(vrPinPosition5)}
-              onMouseEnter={() => {
-                setHoveredPin(true);
-                setCurrentImage("shekvetili/recreational _spaces.webp");
-                setHoveredText('vr5');
-                setActivePin('vr5');
-              }}
-            >
-              <img
-                src="shekvetili/vr-pin.webp"
-                alt="VR მდებარეობის პინი 5"
-                className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
-                draggable={false}
-              />
-            </div>
-
-            {/* რიცხვიანი პინები */}
-            {pinPositions.map((pin) => (
-              <div
-                key={pin.id}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-all duration-300 z-10"
-                style={calculateRealPosition(pin)}
-                onMouseEnter={() => {
-                  setHoveredText(pin.id);
-                  setCurrentImage(
-                    locations.find((loc) => loc.id === pin.id).image
-                  );
-                  setActivePin(pin.id); // ეს პინი ხდება აქტიური
-                }}
-              // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
-              >
-                <div className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 border-2 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold transition-all duration-300 shadow-lg ${activePin === pin.id
-                  ? 'bg-[#CA9B43] text-white border-[#CA9B43]' // აქტიური მდგომარეობა
-                  : 'bg-[#D3D2C1] text-black border-gray-400' // ნორმალური მდგომარეობა - hover ამოღებული
-                  }`}>
-                  {pin.id}
-                </div>
-              </div>
-            ))}
+            VR VAKE SKY TOWER
           </div>
+        </div>
 
-          {/* ქვედა სექცია */}
+        <div
+          className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+          style={calculateRealPosition(vrPinPosition4)}
+          onMouseEnter={() => {
+            setHoveredPin(true);
+            setCurrentImage("shekvetili/recreational _spaces.webp");
+            setHoveredText('vr4');
+            setActivePin('vr4');
+          }}
+        >
+          <img
+            src="shekvetili/vr-pin.webp"
+            alt="VR მდებარეობის პინი 4"
+            className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
+            draggable={false}
+          />
+          {/* VR KRTSANISI RESIDENCE ტექსტი */}
+          <div
+            className="text-[10px] md:text-[14px] absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center text-black font-bold leading-tight pointer-events-none"
+            style={{
+              fontFamily: 'LibreBaskerville, Baskerville, serif',
+              color: '#CA9B43'
+            }}
+          >
+            VR KRTSANISI RESIDENCE
+          </div>
+        </div>
+
+        <div
+          className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 z-20"
+          style={calculateRealPosition(vrPinPosition5)}
+          onMouseEnter={() => {
+            setHoveredPin(true);
+            setCurrentImage("shekvetili/recreational _spaces.webp");
+            setHoveredText('vr5');
+            setActivePin('vr5');
+          }}
+        >
+          <img
+            src="shekvetili/vr-pin.webp"
+            alt="VR მდებარეობის პინი 5"
+            className="w-8 h-8 md:w-14 lg:h-14 object-contain drop-shadow-lg"
+            draggable={false}
+          />
+        </div>
+
+        {/* რიცხვიანი პინები */}
+        {pinPositions.map((pin) => (
+          <div
+            key={pin.id}
+            className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-all duration-300 z-10"
+            style={calculateRealPosition(pin)}
+            onMouseEnter={() => {
+              setHoveredText(pin.id);
+              setCurrentImage(
+                locations.find((loc) => loc.id === pin.id).image
+              );
+              setActivePin(pin.id); // ეს პინი ხდება აქტიური
+            }}
+          // onMouseLeave ამოღებული - ჰოვერი მუდმივი ხდება
+          >
+            <div className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 border-2 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold transition-all duration-300 shadow-lg ${activePin === pin.id
+              ? 'bg-[#CA9B43] text-white border-[#CA9B43]' // აქტიური მდგომარეობა
+              : 'bg-[#D3D2C1] text-black border-gray-400' // ნორმალური მდგომარეობა - hover ამოღებული
+              }`}>
+              {pin.id}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ქვედა სექცია კონტეინერით */}
+
+      <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
+        <article className="max-w-7xl mx-auto ">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16">
             {/* ფოტო */}
             <div className="relative">
@@ -537,6 +538,7 @@ const AttractionsSectionLanding = () => {
           </div>
         </article>
       </div>
+
     </section>
   );
 };

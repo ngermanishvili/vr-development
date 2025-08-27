@@ -32,25 +32,18 @@ const Header = () => {
                 {/* Desktop Header */}
                 <div className="md:w-full [@media(min-width:2000px)]:max-w-7xl mx-auto flex flex-wrap justify-between items-start">
 
-                    <div className="hidden md:grid grid-cols-3 items-center ">
-                        <div className="flex items-center space-x-6">
-                            <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-4 py-2 text-sm ${bgHover} transition-colors`}>
+                    <div className="hidden md:flex justify-between items-center w-full">
+                        <div className="flex items-center text-left space-x-6 ">
+                            <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-2 py-2  text-sm ${bgHover} transition-colors whitespace-nowrap`}>
                                 CHOOSE AN APARTMENT
                             </button>
                             <a href="tel:*2999" className="flex items-center space-x-2 hover:text-[#BE9645] cursor-pointer transition-colors">
                                 <Phone className="w-4 h-4 font-bold" />
                                 <span className="text-sm font-bold">*2999</span>
                             </a>
-                            <Link href="/">
-                                <button className={`text-sm font-bold ${hoverColor} transition-colors`}>HOME</button>
-                            </Link>
+
                             <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
-                            <Link href="/projects">
-                                <button className={`text-sm font-bold ${hoverColor} transition-colors`}>PROJECTS</button>
-                            </Link>
-                            <Link href="/about">
-                                <button className={`text-sm font-bold ${hoverColor} transition-colors`}>ABOUT</button>
-                            </Link>
+
                         </div>
 
                         <img
@@ -62,7 +55,7 @@ const Header = () => {
                             }}
                         />
 
-                        <div className="flex items-center justify-end space-x-3">
+                        <div className="flex items-center justify-end space-x-6">
                             <div className="relative language-dropdown">
                                 <button
                                     className="flex items-center space-x-1 hover:text-[#BE9645] cursor-pointer transition-colors"
@@ -88,7 +81,29 @@ const Header = () => {
                                     </div>
                                 )}
                             </div>
-                            <Menu className="w-6 h-6" />
+                            <svg
+                                className="w-8 h-8 cursor-pointer"
+                                viewBox="0 0 317.2 100"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <rect
+                                    className={isHomePage ? 'fill-white' : 'fill-[#BE9744]'}
+                                    width="317.2"
+                                    height="20.43"
+                                />
+                                <rect
+                                    className={isHomePage ? 'fill-white' : 'fill-[#BE9744]'}
+                                    y="39.78"
+                                    width="317.2"
+                                    height="20.43"
+                                />
+                                <rect
+                                    className={isHomePage ? 'fill-white' : 'fill-[#BE9744]'}
+                                    y="79.57"
+                                    width="317.2"
+                                    height="20.43"
+                                />
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -100,7 +115,31 @@ const Header = () => {
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="p-2"
                     >
-                        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        {isMenuOpen ? <X className="w-6 h-6" /> :
+                            <svg
+                                className="w-6 h-6"
+                                viewBox="0 0 317.2 100"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <rect
+                                    className={isHomePage ? 'fill-white' : 'fill-[#BE9744]'}
+                                    width="317.2"
+                                    height="20.43"
+                                />
+                                <rect
+                                    className={isHomePage ? 'fill-white' : 'fill-[#BE9744]'}
+                                    y="39.78"
+                                    width="317.2"
+                                    height="20.43"
+                                />
+                                <rect
+                                    className={isHomePage ? 'fill-white' : 'fill-[#BE9744]'}
+                                    y="79.57"
+                                    width="317.2"
+                                    height="20.43"
+                                />
+                            </svg>
+                        }
                     </button>
                 </div>
             </nav>
@@ -110,7 +149,7 @@ const Header = () => {
                 <div className="fixed inset-0 z-40 bg-black/90 md:hidden">
                     <div className={`flex flex-col items-center justify-center h-full space-y-8 ${headerColor}`}>
                         <button
-                            className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-6 py-3 text-lg ${bgHover} transition-colors`}
+                            className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-6 py-3 text-lg ${bgHover} transition-colors whitespace-nowrap`}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             CHOOSE AN APARTMENT

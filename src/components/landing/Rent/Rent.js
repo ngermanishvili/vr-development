@@ -19,8 +19,7 @@ const Rent = () => {
     const properties = [
         { title: 'Shekvetili Resort', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
         { title: 'Batumi Apartment', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-        { title: 'Tbilisi Penthouse', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
-        { title: 'Luxury Villa', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
+        { title: 'Tbilisi Penthouse', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
     ]
 
     useEffect(() => {
@@ -191,9 +190,9 @@ const Rent = () => {
     )
 
     return (
-        <section className="py-8 px-6 bg-white">
+        <section className="py-8 px-6  bg-white">
             <div className="mx-auto">
-                <h2 className="text-3xl font-light text-center mb-16 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>RENT</h2>
+                <h2 className="text-3xl  font-light text-center mb-16 text-yellow-600 tracking-wider" style={{ fontFamily: 'Baskerville, serif' }}>RENT</h2>
 
                 {/* Search Filters */}
                 <div style={{
@@ -205,7 +204,8 @@ const Rent = () => {
                     marginBottom: '48px',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-                    width: '100%'
+                    width: '100%',
+                    maxWidth: '1280px'
                 }}>
                     <div style={{
                         display: 'flex',
@@ -231,16 +231,10 @@ const Rent = () => {
                 {/* Rental Properties */}
                 <div style={{
                     display: 'flex',
-                    overflowX: 'auto',
+                    justifyContent: 'center',
                     gap: '24px',
-                    marginBottom: '48px',
-                    paddingBottom: '10px',
-                    scrollbarWidth: 'none',
-                    msOverflowStyle: 'none'
+                    marginBottom: '48px'
                 }}>
-                    <style jsx>{`
-                        div::-webkit-scrollbar { display: none; }
-                    `}</style>
                     {properties.map((property, index) => (
                         <PropertyCard key={index} property={property} />
                     ))}

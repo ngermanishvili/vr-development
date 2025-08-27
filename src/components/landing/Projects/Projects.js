@@ -44,7 +44,7 @@ const ProjectsLanding = () => {
                     {projects.map((project, index) => (
                         <div
                             key={project.id}
-                            className={`relative overflow-hidden cursor-pointer transition-all duration-500 ease-in-out ${index === activeIndex ? 'flex-[0.6]' : 'flex-[0.2]'
+                            className={`relative overflow-hidden cursor-pointer transition-all duration-1000 ease-in-out ${index === activeIndex ? 'flex-[0.6]' : 'flex-[0.2]'
                                 }`}
                             onClick={() => setActiveIndex(index)}
                         >
@@ -52,15 +52,17 @@ const ProjectsLanding = () => {
                                 src={project.image}
                                 alt={project.title}
                                 fill
-                                className="object-cover"
+                                className={`object-cover transition-all duration-1000 ${index === activeIndex ? 'filter-none' : 'grayscale brightness-125'}`}
                             />
                             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
 
+                            {/* სათაური ყველა პროექტისთვის */}
+                            <div className="absolute top-6 left-10 text-white">
+                                <h3 className="text-2xl font-light mb-2" style={{ fontFamily: 'Baskerville Display PT, serif' }}>{project.title}</h3>
+                            </div>
+
                             {index === activeIndex ? (
                                 <>
-                                    <div className="absolute top-6 left-10 text-white">
-                                        <h3 className="text-2xl font-light mb-2" style={{ fontFamily: 'Baskerville Display PT, serif' }}>{project.title}</h3>
-                                    </div>
                                     <div className="absolute bottom-6 left-6 right-16 text-white">
                                         <p className="text-sm opacity-90 leading-relaxed" style={{ fontFamily: 'Baskerville, serif' }}>
                                             {project.description}
@@ -97,10 +99,10 @@ const ProjectsLanding = () => {
 
                 {/* Mobile View */}
                 <div className="md:hidden overflow-x-scroll"
-                     style={{
-                         scrollbarWidth: 'none',
-                         msOverflowStyle: 'none'
-                     }}>
+                    style={{
+                        scrollbarWidth: 'none',
+                        msOverflowStyle: 'none'
+                    }}>
                     <div className="flex gap-4 pb-4 w-max">
                         {projects.map((project, index) => (
                             <div key={project.id} className="relative flex-shrink-0 w-80 h-96 overflow-hidden rounded-lg">

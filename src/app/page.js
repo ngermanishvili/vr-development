@@ -18,20 +18,26 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white ">
       <LandingHero />
+      <AboutLanding />
+      <StatisticLanding />
       <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
-        <AboutLanding />
-        <StatisticLanding />
         <ProjectsLanding />
-        <LandingAccordion />
-        <LandingImg />
+      </div>
+      <LandingAccordion />
+      <LandingImg />
+      <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
         <FeaturedStories />
-        <NearbyLocations />
-        <AttractionsSectionLanding />
-        <Rent />
-        <VRClubCard />
-        <ContactForm />
       </div>
 
+      <NearbyLocations />
+      <AttractionsSectionLanding />
+      <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
+        <Rent />
+      </div>
+      <VRClubCard />
+      <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
+        <ContactForm />
+      </div>
     </div>
 
   );
