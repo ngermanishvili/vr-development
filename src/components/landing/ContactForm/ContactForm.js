@@ -180,7 +180,7 @@ const ContactForm = () => {
                         </div>
 
                         {/* Name Field */}
-                        <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                        <div style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
                             <input
                                 type="text"
                                 placeholder="Name surname *"
@@ -200,8 +200,8 @@ const ContactForm = () => {
                         {/* Phone and Mail Fields */}
                         <div style={{
                             display: 'flex',
-                            gap: '10px',
-                            marginBottom: '10px',
+                            gap: '20px',
+                            marginBottom: '20px',
                             flexDirection: isMobile ? 'column' : 'row'
                         }}>
                             <input
@@ -236,8 +236,8 @@ const ContactForm = () => {
                         {/* Project and Property Type Fields */}
                         <div style={{
                             display: 'flex',
-                            gap: '10px',
-                            marginBottom: '10px',
+                            gap: '20px',
+                            marginBottom: '20px',
                             flexDirection: isMobile ? 'column' : 'row'
                         }}>
                             <input
@@ -245,7 +245,7 @@ const ContactForm = () => {
                                 placeholder="Project"
                                 style={{
                                     width: '100%',
-                                    padding: '10px',
+                                    paddingLeft: '10px',
                                     border: '1px solid #000',
                                     borderRadius: '4px',
                                     fontSize: '18px',
@@ -259,14 +259,15 @@ const ContactForm = () => {
                                     position: 'relative',
                                     width: '100%',
                                     border: '1px solid #000',
-                                    borderRadius: '6px',
-                                    fontSize: '16px',
+                                    borderRadius: '4px',
+                                    fontSize: '18px',
+                                    fontFamily: 'Roboto, sans-serif',
                                     cursor: 'pointer',
                                     background: '#fff'
                                 }}
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             >
-                                <div style={{ padding: '10px' }}>
+                                <div style={{ padding: '10px', fontSize: '18px', fontFamily: 'Roboto, sans-serif' }}>
                                     {selectedProperty}
                                 </div>
                                 <div
@@ -304,7 +305,7 @@ const ContactForm = () => {
                         </div>
 
                         {/* Message Field */}
-                        <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                        <div style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
                             <textarea
                                 placeholder="Write a message"
                                 style={{
