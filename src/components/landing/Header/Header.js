@@ -35,27 +35,33 @@ const Header = () => {
 
                     <div className="hidden md:flex items-center w-full relative">
                         <div className="flex items-center text-left space-x-6 flex-1">
-                            <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-2 py-2  text-sm ${bgHover} transition-colors whitespace-nowrap`}>
-                                CHOOSE AN APARTMENT
-                            </button>
+                            <Link href="/">
+                                <button className={`border ${isHomePage ? 'border-white/30' : 'border-[#BE9744]'} px-2 py-2  text-sm ${bgHover} transition-colors whitespace-nowrap`}>
+                                    CHOOSE AN APARTMENT
+                                </button>
+                            </Link>
                             <a href="tel:*2999" className="flex items-center space-x-2 hover:text-[#BE9645] cursor-pointer transition-colors">
                                 <Phone className="w-4 h-4 font-bold" />
                                 <span className="text-sm font-bold">*2999</span>
                             </a>
 
-                            <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
+                            <Link href="/">
+                                <button className={`text-sm font-bold ${hoverColor} transition-colors`}>CONTACT</button>
+                            </Link>
 
                         </div>
 
                         <div className="absolute left-1/2 transform -translate-x-1/2 mt-8">
-                            <img
-                                src="/logo/vr-logo.svg"
-                                alt="VR Logo"
-                                className="h-18 w-auto max-w-[105px]"
-                                style={{
-                                    filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
-                                }}
-                            />
+                            <Link href="/">
+                                <img
+                                    src="/logo/vr-logo.svg"
+                                    alt="VR Logo"
+                                    className="h-18 w-auto max-w-[105px] cursor-pointer"
+                                    style={{
+                                        filter: isHomePage ? 'none' : 'brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)'
+                                    }}
+                                />
+                            </Link>
                         </div>
 
                         <div className="flex items-center justify-end space-x-6 flex-1">
@@ -91,7 +97,7 @@ const Header = () => {
 
                 {/* Mobile Header */}
                 <div className="md:hidden flex items-center justify-between">
-                    <div className="text-2xl font-bold tracking-wider">VR</div>
+                    <Link href="/" className="text-2xl font-bold tracking-wider">VR</Link>
                     <BurgerMenu />
                 </div>
             </nav>

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -12,16 +13,18 @@ const Footer = () => {
                     <div className="flex flex-col space-y-4 sm:space-y-6">
                         {/* Logo */}
                         <div>
-                            <img src="/logo/vr-logo.svg" alt="VR Logo" className="h-6 sm:h-8" />
+                            <Link href="/">
+                                <img src="/logo/vr-logo.svg" alt="VR Logo" className="h-6 sm:h-8 cursor-pointer" />
+                            </Link>
                         </div>
                         {/* Left Menu */}
                         <ul className="grid grid-cols-2 sm:grid-cols-1 gap-y-2 sm:gap-y-3 text-xs sm:text-sm">
-                            <li><a href="#" className="hover:underline">Home</a></li>
-                            <li><a href="#" className="hover:underline">Projects</a></li>
-                            <li><a href="#" className="hover:underline">Opportunities</a></li>
-                            <li><a href="#" className="hover:underline">Rental</a></li>
-                            <li><a href="#" className="hover:underline">VR Club Card Partners</a></li>
-                            <li><a href="#" className="hover:underline">Investment</a></li>
+                            <li><Link href="/" className="hover:underline">Home</Link></li>
+                            <li><Link href="/projects" className="hover:underline">Projects</Link></li>
+                            <li><Link href="/" className="hover:underline">Opportunities</Link></li>
+                            <li><Link href="/" className="hover:underline">Rental</Link></li>
+                            <li><Link href="/" className="hover:underline">VR Club Card Partners</Link></li>
+                            <li><Link href="/" className="hover:underline">Investment</Link></li>
                         </ul>
                     </div>
 
@@ -29,14 +32,14 @@ const Footer = () => {
                     <div className="flex flex-col sm:flex-row sm:space-x-12 lg:space-x-16 space-y-6 sm:space-y-0">
                         {/* Middle Links */}
                         <div className="flex flex-col space-y-2 sm:space-y-3 text-xs sm:text-sm">
-                            <a href="#" className="hover:underline">About</a>
-                            <a href="#" className="hover:underline">Brand resources</a>
-                            <a href="#" className="hover:underline">Contact</a>
+                            <Link href="/about" className="hover:underline">About</Link>
+                            <Link href="/" className="hover:underline">Brand resources</Link>
+                            <Link href="/" className="hover:underline">Contact</Link>
                         </div>
 
                         {/* Download Button */}
                         <div>
-                            <a href="#" className="text-xs sm:text-sm hover:underline">Download Presentation</a>
+                            <Link href="/" className="text-xs sm:text-sm hover:underline">Download Presentation</Link>
                         </div>
                     </div>
 

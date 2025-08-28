@@ -16,61 +16,61 @@ const AttractionsSectionLanding = () => {
       id: 1,
       name: "Paragraph Resort & Spa",
       distance: "100 m",
-      image: "shekvetili/slide-1.webp",
+      image: "shekvetili/Paragraph Resort & Spa.jpg",
     },
     {
       id: 2,
       name: "Black Sea Arena",
       distance: "1.8 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Black Sea Arena.jpg",
     },
     {
       id: 3,
       name: "Dendrological Park",
       distance: "2.8 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Dendrological Park.jpg",
     },
     {
       id: 4,
       name: "Tsitsinatela Amusement Park",
       distance: "5 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Tsitsinatela Amusement Park.webp",
     },
     {
       id: 5,
       name: "Musicians Park Miniature Park",
       distance: "1.7 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Musicians Park Miniature Park.webp",
     },
     {
       id: 6,
       name: "Miniature Park",
       distance: "5.6 m",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/miniature park.webp",
     },
     {
       id: 7,
       name: "Kobuleti City Centre",
       distance: "13.3 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Kobuleti City Centre.jpg",
     },
     {
       id: 8,
       name: "Batumi City Centre",
       distance: "34 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Batumi City Centre.jpg",
     },
     {
       id: 9,
       name: "Batumi International Airport",
       distance: "54 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/batumi international airport.jpg",
     },
     {
       id: 10,
       name: "Kutaisi International Airport",
       distance: "77 km",
-      image: "shekvetili/1200_meters.webp",
+      image: "shekvetili/Kutaisi International Airport copy.jpg",
     },
   ];
 
@@ -334,12 +334,12 @@ const AttractionsSectionLanding = () => {
 
         {/* პროექტის მდებარეობის ტექსტი */}
         <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 p-2 lg:p-4 text-right z-30">
-          <h2 className="text-xs sm:text-sm lg:text-xl font-bold mb-1 lg:mb-2 text-black leading-tight">
+          <h2 className="font-baskerville-bold text-xs sm:text-sm lg:text-xl font-bold mb-1 lg:mb-2 text-black leading-tight">
             PROJECT<br /> LOCATION
           </h2>
-          <p className="text-xs lg:text-sm text-black leading-tight">Next To Icon hotel Paragraph</p>
-          <p className="text-xs lg:text-sm text-black leading-tight">Resort & Spa. Autograph</p>
-          <p className="text-xs lg:text-sm text-black leading-tight">Collection</p>
+          <p className="font-libre-baskerville-italic text-xs lg:text-sm text-black leading-tight">Next To Icon hotel Paragraph</p>
+          <p className="font-libre-baskerville-italic text-xs lg:text-sm text-black leading-tight">Resort & Spa. Autograph</p>
+          <p className="font-libre-baskerville-italic text-xs lg:text-sm text-black leading-tight">Collection</p>
         </div>
 
         {/* VR პინი */}
@@ -502,7 +502,7 @@ const AttractionsSectionLanding = () => {
                       <li
                         key={location.id}
                         className={`flex items-center py-2 lg:py-3 px-2 transition-all duration-300 cursor-pointer ${hoveredText === location.id
-                          ? "text-[#CA9B43] font-semibold"
+                          ? "text-[#CA9B43]"
                           : "text-black"
                           }`}
                         onMouseEnter={() => {
@@ -515,10 +515,10 @@ const AttractionsSectionLanding = () => {
                         <span className="w-6 lg:w-8 flex-shrink-0 font-bold text-sm lg:text-base">
                           {location.id}.
                         </span>
-                        <span className="flex-1 px-2 lg:px-3 text-sm lg:text-base leading-tight">
+                        <span className="font-roboto-bold flex-1 px-2 lg:px-3 text-sm lg:text-base leading-tight">
                           {location.name}
                         </span>
-                        <span className="font-black flex-shrink-0 text-sm lg:text-base">
+                        <span className="font-roboto-bold font-black flex-shrink-0 text-sm lg:text-base">
                           {location.distance}
                         </span>
                       </li>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { usePathname } from 'next/navigation';
@@ -188,12 +189,12 @@ export default function BurgerMenu() {
                                             { label: "HOME", highlight: true, href: "/" },
                                             { label: "ABOUT US", href: "/about" },
                                             { label: "PROJECTS", href: "/projects" },
-                                            { label: "RENT", href: "/rent" },
-                                            { label: "OFFERS", href: "/offers" },
-                                            { label: "CONTACT", href: "/contact" },
+                                            { label: "RENT", href: "/" },
+                                            { label: "OFFERS", href: "/" },
+                                            { label: "CONTACT", href: "/" },
                                         ].map((item) => (
                                             <li key={item.label} className="">
-                                                <a
+                                                <Link
                                                     href={item.href}
                                                     className={
                                                         "block pl-6 pr-12 md:pl-10 md:pr-16 lg:pl-16 lg:pr-20 py-2 md:py-3 lg:py-3.5 text-lg md:text-xl lg:text-2xl tracking-[0.08em] uppercase border-t border-black/10 font-serif transition text-right " +
@@ -202,7 +203,7 @@ export default function BurgerMenu() {
                                                     onClick={() => setOpen(false)}
                                                 >
                                                     {item.label}
-                                                </a>
+                                                </Link>
                                             </li>
                                         ))}
                                         {/* bottom hairline */}
@@ -218,13 +219,14 @@ export default function BurgerMenu() {
                                                 "Partners",
                                                 "Investment",
                                             ].map((l) => (
-                                                <a
+                                                <Link
                                                     key={l}
-                                                    href="#"
+                                                    href="/"
                                                     className="hover:text-[#B48B3E] transition"
+                                                    onClick={() => setOpen(false)}
                                                 >
                                                     {l}
-                                                </a>
+                                                </Link>
                                             ))}
                                         </div>
                                     </div>
