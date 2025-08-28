@@ -231,9 +231,12 @@ const Rent = () => {
                 {/* Rental Properties */}
                 <div style={{
                     display: 'flex',
+                    flexDirection: isMobile ? 'column' : 'row',
                     justifyContent: 'center',
-                    gap: '24px',
-                    marginBottom: '48px'
+                    alignItems: isMobile ? 'center' : 'stretch',
+                    gap: isMobile ? '32px' : '24px',
+                    marginBottom: '48px',
+                    width: '100%'
                 }}>
                     {properties.map((property, index) => (
                         <PropertyCard key={index} property={property} />
