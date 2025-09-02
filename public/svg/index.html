@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учет склада - Остатки с предупреждениями</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .alert-banner {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .btn-add { background-color: #27ae60; color: white; }
+        .btn-export { background-color: #3498db; color: white; }
+        .btn-add:hover { background-color: #219a52; }
+        .btn-export:hover { background-color: #2980b9; }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-card.critical {
+            background: #e74c3c;
+            animation: pulse 2s infinite;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .table-container {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            font-size: 13px;
+        }
+        
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        td:first-child {
+            text-align: left;
+            min-width: 180px;
+            font-weight: 500;
+        }
+        
+        .critical-stock {
+            background-color: #e74c3c !important;
+            color: white;
+            font-weight: bold;
+            animation: blink 1.5s infinite;
+        }
+        
+        .low-stock {
+            background-color: #f39c12 !important;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .good-stock {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.6; }
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .input-small {
+            width: 50px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        .btn-operation {
+            padding: 4px 8px;
+            font-size: 11px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 1px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .btn-in { background-color: #27ae60; }
+        .btn-out { background-color: #e74c3c; }
+        .btn-in:hover { background-color: #219a52; }
+        .btn-out:hover { background-color: #c0392b; }
+        
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .shopping-list {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 5px;
+        }
+        
+        .shopping-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 Учет склада - Контроль остатков</h1>
+        
+        <div id="alertBanner" class="alert-banner">
+            ⚠️ ВНИМАНИЕ! Есть товары с критически низкими остатками!
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-number" id="totalItems">50</span>
+                <span>Всего позиций</span>
+            </div>
+            <div class="stat-card critical" id="criticalCard">
+                <span class="stat-number" id="criticalItems">0</span>
+                <span>СРОЧНО докупить!</span>
+            </div>
+            <div class="stat-card" style="background: #f39c12;">
+                <span class="stat-number" id="lowItems">0</span>
+                <span>Заканчивается</span>
+            </div>
+            <div class="stat-card" style="background: #27ae60;">
+                <span class="stat-number" id="goodItems">0</span>
+                <span>В наличии достаточно</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Поиск товара..." onkeyup="filterTable()">
+            <button class="btn btn-add" onclick="addNewProduct()">➕ Добавить товар</button>
+            <button class="btn btn-export" onclick="exportToCSV()">📊 Экспорт</button>
+            <button class="btn btn-export" onclick="generateShoppingList()">🛒 Список покупок</button>
+        </div>
+        
+        <div class="table-container">
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>Наименование товара</th>
+                        <th>Категория</th>
+                        <th>Текущий остаток</th>
+                        <th>Мин. остаток</th>
+                        <th>Ед. изм.</th>
+                        <th>Приход</th>
+                        <th>Расход</th>
+                        <th>Операции</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryBody">
+                    <!-- Товары будут добавлены через JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="legend">
+            <strong>Цветовые обозначения:</strong>
+            <span class="legend-item critical-stock">Критически мало! Докупить срочно!</span>
+            <span class="legend-item low-stock">Заканчивается</span>
+            <span class="legend-item good-stock">Достаточно на складе</span>
+        </div>
+        
+        <div id="shoppingList" class="shopping-list" style="display: none;">
+            <h3>📋 Список товаров для закупки:</h3>
+            <div id="shoppingItems"></div>
+        </div>
+    </div>
+
+    <script>
+        // Массив товаров для склада
+        let products = [
+            {name: "Болты М8х20", category: "Крепеж", current: 3, minimum: 50, unit: "шт", income: 0, outcome: 0},
+            {name: "Гайки М8", category: "Крепеж", current: 25, minimum: 100, unit: "шт", income: 0, outcome: 0},
+            {name: "Провод ПВС 2х1.5", category: "Электрика", current: 8, minimum: 50, unit: "м", income: 0, outcome: 0},
+            {name: "Выключатель одноклавишный", category: "Электрика", current: 15, minimum: 20, unit: "шт", income: 0, outcome: 0},
+            {name: "Труба ПВХ 32мм", category: "Сантехника", current: 2, minimum: 20, unit: "м", income: 0, outcome: 0},
+            {name: "Розетка с заземлением", category: "Электрика", current: 7, minimum: 15, unit: "шт", income: 0, outcome: 0},
+            {name: "Лампа LED 10W", category: "Освещение", current: 30, minimum: 25, unit: "шт", income: 0, outcome: 0},
+            {name: "Кабель ВВГ 3х2.5", category: "Электрика", current: 45, minimum: 30, unit: "м", income: 0, outcome: 0},
+            {name: "Автомат 16А", category: "Электрика", current: 1, minimum: 10, unit: "шт", income: 0, outcome: 0},
+            {name: "Дрель аккумуляторная", category: "Инструмент", current: 4, minimum: 5, unit: "шт", income: 0, outcome: 0},
+            {name: "Шурупы 4х50", category: "Крепеж", current: 150, minimum: 200, unit: "шт", income: 0, outcome: 0},
+            {name: "Отвертка крестовая PH2", category: "Инструмент", current: 8, minimum: 10, unit: "шт", income: 0, outcome: 0},
+            {name: "Изолента черная", category: "Электрика", current: 5, minimum: 20, unit: "рулон", income: 0, outcome: 0},
+            {name: "Сверло по металлу 8мм", category: "Инструмент", current: 3, minimum: 15, unit: "шт", income: 0, outcome: 0},
+            {name: "Клеммы винтовые", category: "Электрика", current: 45, minimum: 50, unit: "шт", income: 0, outcome: 0},
+            {name: "Щиток электрический", category: "Электрика", current: 2, minimum: 5, unit: "шт", income: 0, outcome: 0},
+            {name: "Краска белая 1л", category: "Отделка", current: 6, minimum: 12, unit: "банка", income: 0, outcome: 0},
+            {name: "Кисть малярная 50мм", category: "Инструмент", current: 11, minimum: 10, unit: "шт", income: 0, outcome: 0},
+            {name: "Герметик силиконовый", category: "Сантехника", current: 7, minimum: 15, unit: "туба", income: 0, outcome: 0},
+            {name: "Труба металлопластик 20мм", category: "Сантехника", current: 35, minimum: 25, unit: "м", income: 0, outcome: 0},
+            {name: "Саморезы по дереву 3х20", category: "Крепеж", current: 8, minimum: 100, unit: "шт", income: 0, outcome: 0},
+            {name: "Уголок металлический 40х40", category: "Металл", current: 22, minimum: 20, unit: "шт", income: 0, outcome: 0},
+            {name: "Цемент М400", category: "Стройматериалы", current: 1, minimum: 10, unit: "мешок", income: 0, outcome: 0},
+            {name: "Песок строительный", category: "Стройматериалы", current: 12, minimum: 15, unit: "м³", income: 0, outcome: 0},
+            {name: "Кирпич красный", category: "Стройматериалы", current: 450, minimum: 500, unit: "шт", income: 0, outcome: 0},
+            {name: "Доска обрезная 40х150", category: "Пиломатериалы", current: 25, minimum: 30, unit: "м", income: 0, outcome: 0},
+            {name: "Фанера березовая 12мм", category: "Пиломатериалы", current: 3, minimum: 15, unit: "лист", income: 0, outcome: 0},
+            {name: "Гипсокартон 12.5мм", category: "Отделка", current: 35, minimum: 30, unit: "лист", income: 0, outcome: 0},
+            {name: "Шпаклевка финишная", category: "Отделка", current: 2, minimum: 10, unit: "кг", income: 0, outcome: 0},
+            {name: "Грунтовка глубокого проникновения", category: "Отделка", current: 9, minimum: 12, unit: "л", income: 0, outcome: 0},
+            {name: "Плитка керамическая", category: "Отделка", current: 45, minimum: 40, unit: "м²", income: 0, outcome: 0},
+            {name: "Ламинат 33 класс", category: "Напольные покрытия", current: 28, minimum: 30, unit: "м²", income: 0, outcome: 0},
+            {name: "Утеплитель минвата", category: "Изоляция", current: 5, minimum: 20, unit: "м³", income: 0, outcome: 0},
+            {name: "Пена монтажная", category: "Герметики", current: 9, minimum: 15, unit: "баллон", income: 0, outcome: 0},
+            {name: "Перчатки рабочие", category: "СИЗ", current: 35, minimum: 50, unit: "пара", income: 0, outcome: 0},
+            {name: "Каска защитная", category: "СИЗ", current: 2, minimum: 10, unit: "шт", income: 0, outcome: 0},
+            {name: "Молоток слесарный 300г", category: "Инструмент", current: 7, minimum: 8, unit: "шт", income: 0, outcome: 0},
+            {name: "Плоскогубцы 180мм", category: "Инструмент", current: 5, minimum: 8, unit: "шт", income: 0, outcome: 0},
+            {name: "Уровень строительный 600мм", category: "Инструмент", current: 3, minimum: 6, unit: "шт", income: 0, outcome: 0},
+            {name: "Рулетка 5м", category: "Инструмент", current: 11, minimum: 10, unit: "шт", income: 0, outcome: 0},
+            {name: "Ножовка по дереву", category: "Инструмент", current: 4, minimum: 8, unit: "шт", income: 0, outcome: 0},
+            {name: "Лобзик электрический", category: "Инструмент", current: 2, minimum: 3, unit: "шт", income: 0, outcome: 0},
+            {name: "Перфоратор", category: "Инструмент", current: 1, minimum: 2, unit: "шт", income: 0, outcome: 0},
+            {name: "Ведро пластиковое 10л", category: "Тара", current: 15, minimum: 20, unit: "шт", income: 0, outcome: 0},
+            {name: "Мешки для мусора", category: "Расходники", current: 25, minimum: 30, unit: "упак", income: 0, outcome: 0},
+            {name: "Замок навесной", category: "Фурнитура", current: 3, minimum: 8, unit: "шт", income: 0, outcome: 0},
+            {name: "Петли дверные", category: "Фурнитура", current: 15, minimum: 20, unit: "шт", income: 0, outcome: 0},
+            {name: "Стекло оконное 4мм", category: "Остекление", current: 2, minimum: 10, unit: "м²", income: 0, outcome: 0},
+            {name: "Люстра подвесная", category: "Освещение", current: 3, minimum: 5, unit: "шт", income: 0, outcome: 0},
+            {name: "УЗО 25А", category: "Электрика", current: 1, minimum: 8, unit: "шт", income: 0, outcome: 0}
+        ];
+
+        function getStockStatus(current, minimum) {
+            if (current === 0) return 'critical';
+            if (current < minimum * 0.5) return 'critical';  // Меньше 50% от минимума
+            if (current < minimum) return 'low';             // Меньше минимума
+            return 'good';                                   // Достаточно
+        }
+
+        function updateProduct(index, field, value) {
+            products[index][field] = parseInt(value) || 0;
+            renderTable();
+        }
+
+        function addIncome(index) {
+            const incomeValue = parseInt(document.getElementById(`income-${index}`).value) || 0;
+            if (incomeValue > 0) {
+                products[index].current += incomeValue;
+                products[index].income += incomeValue;
+                document.getElementById(`income-${index}`).value = '';
+                renderTable();
+            }
+        }
+
+        function addOutcome(index) {
+            const outcomeValue = parseInt(document.getElementById(`outcome-${index}`).value) || 0;
+            if (outcomeValue > 0 && products[index].current >= outcomeValue) {
+                products[index].current -= outcomeValue;
+                products[index].outcome += outcomeValue;
+                document.getElementById(`outcome-${index}`).value = '';
+                renderTable();
+            } else {
+                alert('Недостаточно товара на складе!');
+            }
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('inventoryBody');
+            tbody.innerHTML = '';
+            
+            let criticalCount = 0;
+            let lowCount = 0;
+            let goodCount = 0;
+            
+            products.forEach((product, index) => {
+                const row = tbody.insertRow();
+                const status = getStockStatus(product.current, product.minimum);
+                
+                if (status === 'critical') criticalCount++;
+                else if (status === 'low') lowCount++;
+                else goodCount++;
+                
+                const currentCellClass = `quantity-cell ${status}-stock`;
+                
+                row.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>${product.category}</td>
+                    <td class="${currentCellClass}">${product.current}</td>
+                    <td>${product.minimum}</td>
+                    <td>${product.unit}</td>
+                    <td>
+                        <input type="number" id="income-${index}" class="input-small" placeholder="0" min="0">
+                        <button class="btn-operation btn-in" onclick="addIncome(${index})">+</button>
+                    </td>
+                    <td>
+                        <input type="number" id="outcome-${index}" class="input-small" placeholder="0" min="0" max="${product.current}">
+                        <button class="btn-operation btn-out" onclick="addOutcome(${index})">−</button>
+                    </td>
+                    <td>
+                        <small>Приход: ${product.income}</small><br>
+                        <small>Расход: ${product.outcome}</small>
+                    </td>
+                `;
+            });
+            
+            // Обновляем статистику
+            document.getElementById('totalItems').textContent = products.length;
+            document.getElementById('criticalItems').textContent = criticalCount;
+            document.getElementById('lowItems').textContent = lowCount;
+            document.getElementById('goodItems').textContent = goodCount;
+            
+            // Показываем предупреждение если есть критические товары
+            const alertBanner = document.getElementById('alertBanner');
+            const criticalCard = document.getElementById('criticalCard');
+            
+            if (criticalCount > 0) {
+                alertBanner.style.display = 'block';
+                criticalCard.style.display = 'block';
+            } else {
+                alertBanner.style.display = 'none';
+                criticalCard.style.background = '#27ae60';
+            }
+        }
+
+        function filterTable() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const tbody = document.getElementById('inventoryBody');
+            const rows = tbody.getElementsByTagName('tr');
+            
+            for (let i = 0; i < rows.length; i++) {
+                const productName = rows[i].cells[0].textContent.toLowerCase();
+                const category = rows[i].cells[1].textContent.toLowerCase();
+                if (productName.includes(searchTerm) || category.includes(searchTerm)) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        function generateShoppingList() {
+            const shoppingList = document.getElementById('shoppingList');
+            const shoppingItems = document.getElementById('shoppingItems');
+            
+            const itemsToRestock = products.filter(p => {
+                const status = getStockStatus(p.current, p.minimum);
+                return status === 'critical' || status === 'low';
+            }).sort((a, b) => {
+                const aStatus = getStockStatus(a.current, a.minimum);
+                const bStatus = getStockStatus(b.current, b.minimum);
+                if (aStatus === 'critical' && bStatus !== 'critical') return -1;
+                if (bStatus === 'critical' && aStatus !== 'critical') return 1;
+                return 0;
+            });
+            
+            if (itemsToRestock.length === 0) {
+                shoppingItems.innerHTML = '<p>✅ Все товары в достаточном количестве!</p>';
+            } else {
+                shoppingItems.innerHTML = itemsToRestock.map(item => {
+                    const needed = item.minimum - item.current;
+                    const urgency = getStockStatus(item.current, item.minimum) === 'critical' ? '🚨 СРОЧНО' : '⚠️';
+                    return `
+                        <div class="shopping-item">
+                            <strong>${urgency} ${item.name}</strong><br>
+                            Остаток: ${item.current} ${item.unit} | Минимум: ${item.minimum} ${item.unit} | 
+                            <strong>Нужно докупить: ${Math.max(needed, item.minimum * 0.5)} ${item.unit}</strong>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            shoppingList.style.display = 'block';
+        }
+
+        function exportToCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Наименование,Категория,Текущий остаток,Минимальный остаток,Ед.изм.,Общий приход,Общий расход,Статус\n";
+            
+            products.forEach(product => {
+                const status = getStockStatus(product.current, product.minimum);
+                const statusText = status === 'critical' ? 'КРИТИЧЕСКИ МАЛО' : 
+                                 status === 'low' ? 'ЗАКАНЧИВАЕТСЯ' : 'ДОСТАТОЧНО';
+                csvContent += `"${product.name}","${product.category}","${product.current}","${product.minimum}","${product.unit}","${product.income}","${product.outcome}","${statusText}"\n`;
+            });
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "inventory_" + new Date().toISOString().slice(0,10) + ".csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTable();
+        });
+    </script>
+</body>
+</html>

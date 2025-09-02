@@ -11,6 +11,8 @@ import ServiceSection from "@/components/projects/ServiceSection/ServiceSection"
 import TermsOfSale from "@/components/projects/TermsOfSale/TermsOfSale";
 import AdditionalInfrastructure from "@/components/projects/AdditionalInfrastructure/AdditionalInfrastructure";
 import ContactForm from "@/components/landing/ContactForm/ContactForm";
+import Header from "@/components/landing/Header/Header";
+import Footer from "@/components/landing/Footer/Footer";
 
 export const metadata = {
     title: "VR Holding Projects - Luxury Real Estate Developments in Georgia",
@@ -37,6 +39,7 @@ export const metadata = {
 const ProjectsPage = () => {
     return (
         <>
+            <Header />
             <ProjectsHero />
             <ProjectHighlights />
             <ProjectPhaseOne />
@@ -51,6 +54,7 @@ const ProjectsPage = () => {
             <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
                 <ContactForm />
             </div>
+            <Footer />
         </>
     );
 };

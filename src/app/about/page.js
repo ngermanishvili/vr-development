@@ -5,6 +5,8 @@ import AboutStatistic from '@/components/about/AboutStatistic/AboutStatistic'
 import AboutPartners from '@/components/about/Partners/AboutPartners'
 import AboutTeam from '@/components/about/Team/AboutTeam'
 import ContactForm from '@/components/landing/ContactForm/ContactForm'
+import Header from '@/components/landing/Header/Header'
+import Footer from '@/components/landing/Footer/Footer'
 import React from 'react'
 
 export const metadata = {
@@ -33,6 +35,7 @@ export const metadata = {
 const AboutPage = () => {
     return (
         <div>
+            <Header />
             <AboutBanner />
             <AboutStatistic />
             <AboutPriorities />
@@ -40,6 +43,7 @@ const AboutPage = () => {
             <AboutTeam />
             <AboutPartners />
             <ContactForm />
+            <Footer />
         </div>
     )
 }

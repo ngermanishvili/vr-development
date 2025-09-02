@@ -10,6 +10,8 @@ import ProjectsLanding from "@/components/landing/Projects/Projects";
 import Rent from "@/components/landing/Rent/Rent";
 import StatisticLanding from "@/components/landing/statistic/StatisticSection";
 import VRClubCard from "@/components/landing/VRClubCard/VRClubCard";
+import Header from "@/components/landing/Header/Header";
+import Footer from "@/components/landing/Footer/Footer";
 
 // Force dynamic rendering in development
 export const dynamic = 'force-dynamic';
@@ -40,6 +42,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-white ">
+      <Header />
       <LandingHero />
       <AboutLanding />
       <StatisticLanding />
@@ -61,6 +64,7 @@ export default function Home() {
       <div className="md:max-w-full [@media(min-width:2000px)]:max-w-7xl mx-auto">
         <ContactForm />
       </div>
+      <Footer />
     </div>
 
   );
