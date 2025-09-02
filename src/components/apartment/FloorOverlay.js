@@ -34,7 +34,7 @@ const FloorOverlay = ({ selectedBlock }) => {
         <div className="absolute inset-0 w-full h-full">
             <svg
                 className="w-full h-full"
-                viewBox="0 0 1920 1080"
+                viewBox="0 0 1920 970"
                 preserveAspectRatio="xMidYMid slice"
                 style={{ pointerEvents: 'auto' }}
             >
@@ -45,12 +45,19 @@ const FloorOverlay = ({ selectedBlock }) => {
                         fill="transparent"
                         stroke="transparent"
                         strokeWidth="2"
-                        className="hover:fill-yellow-400 hover:fill-opacity-50 hover:stroke-yellow-500 hover:stroke-opacity-80 transition-all duration-200 cursor-pointer"
+                        className="transition-all duration-200 cursor-pointer"
                         onMouseEnter={(e) => {
+                            e.target.style.fill = '#CA9B43'
+                            e.target.style.fillOpacity = '0.7'
                             console.log(`Hovering floor ${floor.floor_number}`)
                         }}
+                        onMouseLeave={(e) => {
+                            e.target.style.fill = 'transparent'
+                        }}
                         onClick={(e) => {
-                            console.log(`Clicked floor ${floor.floor_number}`, floor)
+                            e.stopPropagation()
+                            console.log(`Navigating to floor ${floor.floor_number}`)
+                            window.location.href = `/floor/${selectedBlock}/${floor.floor_number}`
                         }}
                     />
                 ))}

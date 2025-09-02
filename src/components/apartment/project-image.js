@@ -6,7 +6,12 @@ const ProjectImage = ({ onImageClick, isFullscreen, selectedBlock }) => {
         console.log('Selected block:', block) // Debug
         if (block === 'C1') {
             return '/choose-apartment/BLOCK-C-IMG.jpg'
+        } else if (block === 'B1') {
+            return '/choose-apartment/BLOCK-B1-IMG.jpg'
+        } else if (block === 'B2') {
+            return '/choose-apartment/BLOCK-B2-IMG.jpg'
         }
+
         // Default image for other blocks
         return '/choose-apartment/building-render.jpg'
     }
