@@ -12,6 +12,7 @@
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "lucide-react": "^0.539.0",
+    "mysql2": "^3.14.4",
     "next": "15.4.6",
     "playwright": "^1.54.2",
     "react": "19.1.0",
