@@ -51,6 +51,32 @@ export default function Sidebar({ isCollapsed, isMobile }) {
         console.log(`Filter changed: ${filterType} = ${value}`)
         // TODO: Apply filters to apartment search
     }
+
+    const handleChooseApartment = () => {
+        // Build query string with current filters
+        const queryParams = new URLSearchParams()
+        
+        if (filters.selectedBlock && filters.selectedBlock !== 'ALL') {
+            queryParams.append('block', filters.selectedBlock)
+        }
+        if (filters.apartmentType && filters.apartmentType !== 'ALL') {
+            queryParams.append('apartmentType', filters.apartmentType)
+        }
+        if (filters.minArea && filters.minArea !== 25.90) {
+            queryParams.append('minArea', filters.minArea.toString())
+        }
+        if (filters.maxArea && filters.maxArea !== 440.10) {
+            queryParams.append('maxArea', filters.maxArea.toString())
+        }
+        if (filters.floor && filters.floor !== 'ALL') {
+            queryParams.append('floor', filters.floor.toString())
+        }
+
+        // Navigate to apartments page with filters
+        const url = `/apartments?${queryParams.toString()}`
+        console.log('Navigating to:', url)
+        window.location.href = url
+    }
     if (isMobile) {
         return (
             <div className="bg-white shadow p-4 font-sans">
@@ -193,7 +219,10 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                     </div>
 
                     {/* Choose Apartment Button */}
-                    <button className="w-full bg-[#cfa84f] text-white py-2 uppercase font-semibold text-sm">
+                    <button 
+                        onClick={handleChooseApartment}
+                        className="w-full bg-[#cfa84f] hover:bg-[#b8863c] text-white py-2 uppercase font-semibold text-sm transition-colors"
+                    >
                         Choose an apartment
                     </button>
                 </>
@@ -283,11 +312,19 @@ export default function Sidebar({ isCollapsed, isMobile }) {
             <div className="text-center mb-6">
                 <h2 className="italic text-gray-400 mb-2">Total Area</h2>
                 <div className="flex justify-between text-[#cfa84f] text-sm mb-2">
-                    <span>From 35 m²</span>
-                    <span>To 200 m²</span>
+                    <span>From {statistics?.overall?.min_area || 25.90} m²</span>
+                    <span>To {statistics?.overall?.max_area || 440.10} m²</span>
                 </div>
-                <input type="range" className="w-full accent-[#cfa84f]" />
-                <button className="mt-2 border border-gray-400 px-4 py-1">Exact Numer</button>
+                <input 
+                    type="range" 
+                    className="w-full accent-[#cfa84f]"
+                    min={statistics?.overall?.min_area || 25.90}
+                    max={statistics?.overall?.max_area || 440.10}
+                    value={filters.maxArea}
+                    onChange={(e) => handleFilterChange('maxArea', parseFloat(e.target.value))}
+                />
+                <div className="text-xs text-gray-600 mt-1">Current: {filters.maxArea} m²</div>
+                <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Number</button>
             </div>
 
             {/* Price */}
@@ -306,10 +343,19 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                 <h2 className="italic text-gray-400 mb-2">Floor</h2>
                 <div className="flex justify-between text-[#cfa84f] text-sm mb-2">
                     <span>From 1</span>
-                    <span>To 20</span>
+                    <span>To {blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}</span>
                 </div>
-                <input type="range" className="w-full accent-[#cfa84f]" />
-                <button className="mt-2 border border-gray-400 px-4 py-1">Exact Numer</button>
+                <input 
+                    type="range" 
+                    className="w-full accent-[#cfa84f]"
+                    min="1"
+                    max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}
+                    onChange={(e) => handleFilterChange('floor', parseInt(e.target.value))}
+                />
+                <div className="text-xs text-gray-600 mt-1">
+                    {filters.floor === 'ALL' ? 'All Floors' : `Floor ${filters.floor}`}
+                </div>
+                <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Number</button>
             </div>
 
             {/* Additional Parameters */}
@@ -323,7 +369,10 @@ export default function Sidebar({ isCollapsed, isMobile }) {
             </div>
 
             {/* Choose Apartment Button */}
-            <button className="w-full bg-[#cfa84f] text-white py-3 uppercase font-semibold">
+            <button 
+                onClick={handleChooseApartment}
+                className="w-full bg-[#cfa84f] hover:bg-[#b8863c] text-white py-3 uppercase font-semibold transition-colors"
+            >
                 Choose an apartment
             </button>
         </div>

@@ -34,7 +34,7 @@ const FloorOverlay = ({ selectedBlock }) => {
         <div className="absolute inset-0 w-full h-full">
             <svg
                 className="w-full h-full"
-                viewBox="0 0 1920 970"
+                viewBox="0 0 1920 1080"
                 preserveAspectRatio="xMidYMid slice"
                 style={{ pointerEvents: 'auto' }}
             >
