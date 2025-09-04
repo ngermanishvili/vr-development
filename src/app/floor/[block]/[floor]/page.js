@@ -292,22 +292,22 @@ const FloorDetailPage = () => {
                                                         <polygon
                                                             points={apartment.coords}
                                                             fill={
-                                                                apartment.status === 'თავისუფალია' ? 'rgba(34, 197, 94, 0.3)' :  // მწვანე
-                                                                    apartment.status === 'გაყიდული' ? 'rgba(239, 68, 68, 0.3)' :      // წითელი
-                                                                        apartment.status === 'დაჯავშნილია' ? 'rgba(251, 191, 36, 0.3)' :  // ყვითელი
-                                                                            'rgba(156, 163, 175, 0.3)'  // ნაცრისფერი default
+                                                                apartment.status === 'თავისუფალია' ? 'rgba(34, 197, 94, 0.6)' :  // მწვანე - მუქი
+                                                                    apartment.status === 'გაყიდული' ? 'rgba(239, 68, 68, 0.6)' :      // წითელი - მუქი
+                                                                        apartment.status === 'დაჯავშნილია' ? 'rgba(203, 172, 109, 0.6)' :  // ოქროსფერი #cbac6d
+                                                                            'rgba(156, 163, 175, 0.6)'  // ნაცრისფერი default - მუქი
                                                             }
                                                             stroke={
-                                                                apartment.status === 'თავისუფალია' ? '#22c55e' :
-                                                                    apartment.status === 'გაყიდული' ? '#ef4444' :
-                                                                        apartment.status === 'დაჯავშნილია' ? '#fbbf24' :
-                                                                            '#9ca3af'
+                                                                apartment.status === 'თავისუფალია' ? '#16a34a' :  // ნაკლებად მუქი მწვანე
+                                                                    apartment.status === 'გაყიდული' ? '#dc2626' :      // ნაკლებად მუქი წითელი
+                                                                        apartment.status === 'დაჯავშნილია' ? '#cbac6d' :    // ოქროსფერი
+                                                                            '#6b7280'  // ნაკლებად მუქი ნაცრისფერი
                                                             }
-                                                            strokeWidth="1.5"
+                                                            strokeWidth="0.8"
                                                             className="transition-all duration-200 cursor-pointer hover:stroke-2 pointer-events-auto"
                                                             onMouseEnter={(e) => {
-                                                                e.target.style.fillOpacity = '0.6'
-                                                                e.target.style.strokeWidth = '3'
+                                                                e.target.style.fillOpacity = '0.8'
+                                                                e.target.style.strokeWidth = '1.5'
 
                                                                 // Show tooltip at cursor position
                                                                 setTooltipData({
@@ -326,8 +326,8 @@ const FloorDetailPage = () => {
                                                                 }))
                                                             }}
                                                             onMouseLeave={(e) => {
-                                                                e.target.style.fillOpacity = '0.3'
-                                                                e.target.style.strokeWidth = '1.5'
+                                                                e.target.style.fillOpacity = '0.6'
+                                                                e.target.style.strokeWidth = '0.8'
 
                                                                 // Hide tooltip
                                                                 setTooltipData(prev => ({
@@ -554,16 +554,16 @@ const FloorDetailPage = () => {
                                                     <polygon
                                                         points={apartment.coords}
                                                         fill={
-                                                            apartment.status === 'თავისუფალია' ? 'rgba(34, 197, 94, 0.3)' :
-                                                                apartment.status === 'გაყიდული' ? 'rgba(239, 68, 68, 0.3)' :
-                                                                    apartment.status === 'დაჯავშნილია' ? 'rgba(251, 191, 36, 0.3)' :
-                                                                        'rgba(156, 163, 175, 0.3)'
+                                                            apartment.status === 'თავისუფალია' ? 'rgba(34, 197, 94, 0.6)' :  // მწვანე - მუქი
+                                                                apartment.status === 'გაყიდული' ? 'rgba(239, 68, 68, 0.6)' :      // წითელი - მუქი
+                                                                    apartment.status === 'დაჯავშნილია' ? 'rgba(203, 172, 109, 0.6)' :  // ოქროსფერი #cbac6d
+                                                                        'rgba(156, 163, 175, 0.6)'  // ნაცრისფერი default - მუქი
                                                         }
                                                         stroke={
-                                                            apartment.status === 'თავისუფალია' ? '#22c55e' :
-                                                                apartment.status === 'გაყიდული' ? '#ef4444' :
-                                                                    apartment.status === 'დაჯავშნილია' ? '#fbbf24' :
-                                                                        '#9ca3af'
+                                                            apartment.status === 'თავისუფალია' ? '#16a34a' :  // ნაკლებად მუქი მწვანე
+                                                                apartment.status === 'გაყიდული' ? '#dc2626' :      // ნაკლებად მუქი წითელი
+                                                                    apartment.status === 'დაჯავშნილია' ? '#cbac6d' :    // ოქროსფერი
+                                                                        '#6b7280'  // ნაკლებად მუქი ნაცრისფერი
                                                         }
                                                         strokeWidth="1.5"
                                                         className="transition-all duration-200 cursor-pointer hover:stroke-2"
