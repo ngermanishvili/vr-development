@@ -30,11 +30,22 @@ const FloorOverlay = ({ selectedBlock, onTooltipChange }) => {
         return null
     }
 
+    const getViewBox = (block) => {
+        const blockUpper = block?.toUpperCase()
+        if (blockUpper === 'B2' || blockUpper === 'B1') {
+            return "0 0 1920 970"
+        } else if (blockUpper === 'C1') {
+            return "0 0 1920 1080"
+        }
+        // Default viewBox
+        return "0 0 1920 1080"
+    }
+
     return (
         <div className="absolute inset-0 w-full h-full">
             <svg
                 className="w-full h-full"
-                viewBox="0 0 1920 1080"
+                viewBox={getViewBox(selectedBlock)}
                 preserveAspectRatio="xMidYMid slice"
                 style={{ pointerEvents: 'auto' }}
             >
@@ -50,7 +61,7 @@ const FloorOverlay = ({ selectedBlock, onTooltipChange }) => {
                             e.target.style.fill = '#CA9B43'
                             e.target.style.fillOpacity = '0.7'
                             console.log(`Hovering floor ${floor.floor_number}`)
-                            
+
                             // Show floor tooltip
                             if (onTooltipChange) {
                                 onTooltipChange({
@@ -78,7 +89,7 @@ const FloorOverlay = ({ selectedBlock, onTooltipChange }) => {
                         }}
                         onMouseLeave={(e) => {
                             e.target.style.fill = 'transparent'
-                            
+
                             // Hide tooltip
                             if (onTooltipChange) {
                                 onTooltipChange({
