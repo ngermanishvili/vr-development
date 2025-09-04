@@ -5,11 +5,11 @@ import * as SliderPrimitive from '@radix-ui/react-slider';
 
 import { cn } from '@/lib/utils';
 
-const DualRangeSlider = React.forwardRef(({ 
-  className, 
-  label, 
-  labelPosition = 'top', 
-  ...props 
+const DualRangeSlider = React.forwardRef(({
+  className,
+  label,
+  labelPosition = 'top',
+  ...props
 }, ref) => {
   const [internalValue, setInternalValue] = React.useState(props.value || [props.min, props.max])
 
@@ -34,7 +34,7 @@ const DualRangeSlider = React.forwardRef(({
       value={internalValue}
       onValueChange={handleValueChange}
     >
-      <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-gray-200">
+      <SliderPrimitive.Track className="relative h-[1px] w-full grow overflow-hidden rounded-full bg-gray-200">
         <SliderPrimitive.Range className="absolute h-full bg-[#cfa84f]" />
       </SliderPrimitive.Track>
       {internalValue && internalValue.map((_, index) => (

@@ -20,7 +20,7 @@ const FloorDetailPage = () => {
     const [loadingFloorData, setLoadingFloorData] = useState(false)
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
     const [zoomLevel, setZoomLevel] = useState(1.2)
-    
+
     // Tooltip state
     const [tooltipData, setTooltipData] = useState({
         visible: false,
@@ -28,7 +28,7 @@ const FloorDetailPage = () => {
         x: 0,
         y: 0
     })
-    
+
     // Floor Tooltip state
     const [floorTooltipData, setFloorTooltipData] = useState({
         visible: false,
@@ -63,7 +63,7 @@ const FloorDetailPage = () => {
             const blocksData = await blocksResponse.json()
             if (blocksData.success) {
                 // Case-insensitive block code comparison
-                const currentBlock = blocksData.data.find(b => 
+                const currentBlock = blocksData.data.find(b =>
                     b.block_code.toUpperCase() === block.toUpperCase()
                 )
                 setBlockInfo(currentBlock)
@@ -148,63 +148,30 @@ const FloorDetailPage = () => {
                         block === 'a' || block === 'A' || block === 'A1' || block === 'a1' ||
                         block === 'b1' || block === 'B1' || block === 'b2' || block === 'B2') && (
                             <div className="relative overflow-hidden">
-                                {/* Floor Selector - Inside Photo */}
+                                {/* Floor Selector - Vertical Column Design */}
                                 {blockInfo && blockInfo.total_floors > 0 && (
-                                    <div className="absolute top-4 right-4 z-20 bg-white rounded-lg shadow-lg p-3">
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-sm font-semibold text-gray-700">Floor:</span>
-                                            <div className="flex gap-1">
+                                    <div className="absolute top-0 right-0 z-20">
+                                        <div className="flex flex-col items-center justify-start bg-white/10 w-20 py-6 rounded-lg backdrop-blur-sm">
+                                            <h2 className="text-white font-bold mb-6 text-sm">FLOOR</h2>
+                                            <ul className="flex flex-col space-y-4 text-white text-lg">
                                                 {Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1).map((floorNum) => (
-                                                    <button
-                                                        key={floorNum}
-                                                        onClick={() => {
-                                                            setCurrentFloor(floorNum.toString())
-                                                            // Update URL when floor changes
-                                                            window.history.pushState({}, '', `/floor/${block}/${floorNum}`)
-                                                        }}
-                                                        onMouseEnter={async (e) => {
-                                                            // Fetch available count for this floor
-                                                            try {
-                                                                const response = await fetch(`/api/floors?block_code=${block}`)
-                                                                const data = await response.json()
-                                                                if (data.success) {
-                                                                    const floorData = data.data.find(f => f.floor_number === floorNum)
-                                                                    const availableCount = floorData?.available_count || 0
-                                                                    
-                                                                    setFloorTooltipData({
-                                                                        visible: true,
-                                                                        floorNumber: floorNum,
-                                                                        availableCount: availableCount,
-                                                                        x: e.clientX,
-                                                                        y: e.clientY
-                                                                    })
-                                                                }
-                                                            } catch (error) {
-                                                                console.error('Error fetching floor data:', error)
-                                                            }
-                                                        }}
-                                                        onMouseMove={(e) => {
-                                                            setFloorTooltipData(prev => ({
-                                                                ...prev,
-                                                                x: e.clientX,
-                                                                y: e.clientY
-                                                            }))
-                                                        }}
-                                                        onMouseLeave={() => {
-                                                            setFloorTooltipData(prev => ({
-                                                                ...prev,
-                                                                visible: false
-                                                            }))
-                                                        }}
-                                                        className={`px-2 py-1 rounded text-sm transition-all duration-200 ${parseInt(currentFloor) === floorNum
-                                                            ? 'bg-blue-600 text-white shadow-md'
-                                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                                            }`}
-                                                    >
-                                                        {floorNum}
-                                                    </button>
+                                                    <li key={floorNum}>
+                                                        <button
+                                                            onClick={() => {
+                                                                setCurrentFloor(floorNum.toString())
+                                                                // Update URL when floor changes
+                                                                window.history.pushState({}, '', `/floor/${block}/${floorNum}`)
+                                                            }}
+                                                            className={`px-4 py-1 font-bold rounded transition-all duration-200 cursor-pointer ${parseInt(currentFloor) === floorNum
+                                                                ? 'bg-white/60 text-black'
+                                                                : 'text-white'
+                                                                }`}
+                                                        >
+                                                            {floorNum}
+                                                        </button>
+                                                    </li>
                                                 ))}
-                                            </div>
+                                            </ul>
                                         </div>
                                     </div>
                                 )}
@@ -268,7 +235,7 @@ const FloorDetailPage = () => {
                                                             onMouseEnter={(e) => {
                                                                 e.target.style.fillOpacity = '0.6'
                                                                 e.target.style.strokeWidth = '3'
-                                                                
+
                                                                 // Show tooltip at cursor position
                                                                 setTooltipData({
                                                                     visible: true,
@@ -288,7 +255,7 @@ const FloorDetailPage = () => {
                                                             onMouseLeave={(e) => {
                                                                 e.target.style.fillOpacity = '0.3'
                                                                 e.target.style.strokeWidth = '1.5'
-                                                                
+
                                                                 // Hide tooltip
                                                                 setTooltipData(prev => ({
                                                                     ...prev,
@@ -425,7 +392,7 @@ const FloorDetailPage = () => {
                                                 if (data.success) {
                                                     const floorData = data.data.find(f => f.floor_number === floorNum)
                                                     const availableCount = floorData?.available_count || 0
-                                                    
+
                                                     setFloorTooltipData({
                                                         visible: true,
                                                         floorNumber: floorNum,
@@ -541,7 +508,7 @@ const FloorDetailPage = () => {
                 </div>
                 <Sidebar isCollapsed={false} isMobile={true} onToggleSidebar={toggleSidebar} />
             </div>
-            
+
             {/* Custom Tooltips */}
             <ApartmentTooltip
                 apartment={tooltipData.apartment}
@@ -550,7 +517,7 @@ const FloorDetailPage = () => {
                 y={tooltipData.y}
                 visible={tooltipData.visible}
             />
-            
+
             <FloorTooltip
                 floorNumber={floorTooltipData.floorNumber}
                 availableCount={floorTooltipData.availableCount}
