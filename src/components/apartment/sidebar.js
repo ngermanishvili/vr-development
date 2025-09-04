@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-export default function Sidebar({ isCollapsed, isMobile }) {
+export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
     const [blocks, setBlocks] = useState([])
     const [statistics, setStatistics] = useState(null)
     const [filters, setFilters] = useState({
@@ -87,9 +87,22 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                         <button className="border border-[#cfa84f] px-4 py-2 text-[#cfa84f] uppercase text-xs">
                             Back
                         </button>
-                        <button className="border border-gray-300 w-8 h-8 flex items-center justify-center">
-                            <span className="text-lg">←</span>
-                        </button>
+                        <div className="flex items-center gap-2">
+                            {onToggleSidebar && (
+                                <button
+                                    onClick={onToggleSidebar}
+                                    className="border border-gray-300 w-8 h-8 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                                    title="Hide Sidebar"
+                                >
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+                            )}
+                            <button className="border border-gray-300 w-8 h-8 flex items-center justify-center">
+                                <span className="text-lg">←</span>
+                            </button>
+                        </div>
                     </div>
 
                     {/* Building */}
@@ -229,13 +242,23 @@ export default function Sidebar({ isCollapsed, isMobile }) {
 
     // Desktop version
     return (
-        <div className={`${isCollapsed ? 'w-0 overflow-hidden' : 'w-full'} h-full bg-white shadow ${isCollapsed ? 'p-0' : 'p-6'} font-sans overflow-y-auto`}>
+        <div className={`${isCollapsed ? 'w-0 overflow-hidden' : 'w-full'} h-screen bg-white shadow ${isCollapsed ? 'p-0' : 'px-2 py-6'} font-sans overflow-y-auto`}>
             {/* Back Button */}
             <div className="flex justify-between items-center mb-6">
                 <button className="border border-[#cfa84f] px-6 py-2 text-[#cfa84f] uppercase text-sm">
                     Back
                 </button>
-
+                {onToggleSidebar && (
+                    <button
+                        onClick={onToggleSidebar}
+                        className="border border-gray-300 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors shadow-lg rounded"
+                        title="Hide Sidebar"
+                    >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                )}
             </div>
 
             {/* Building */}
