@@ -42,7 +42,7 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
         const currentPath = window.location.pathname
         const pathSegments = currentPath.split('/')
         const blockFromPath = pathSegments[2] // /floor/[block]/[floor] structure
-        
+
         if (blockFromUrl) {
             setFilters(prev => ({ ...prev, selectedBlock: blockFromUrl }))
         } else if (blockFromPath) {
@@ -56,8 +56,8 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
             const currentBlock = blocks.find(b => b.block_code === filters.selectedBlock)
             if (currentBlock && currentBlock.total_floors) {
                 const totalFloors = Number(currentBlock.total_floors);
-                setFilters(prev => ({ 
-                    ...prev, 
+                setFilters(prev => ({
+                    ...prev,
                     minFloor: 1,
                     maxFloor: totalFloors,
                     // Set initial slider range to show a subset, not the full range
@@ -93,7 +93,7 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
     const handleFilterChange = (filterType, value) => {
         setFilters(prev => ({ ...prev, [filterType]: value }))
         console.log(`Filter changed: ${filterType} = ${value}`)
-        
+
         // If block is changed, navigate to the new block's page
         if (filterType === 'selectedBlock' && value) {
             const currentPath = window.location.pathname
@@ -125,7 +125,7 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
             ...prev,
             [type]: !prev[type]
         }))
-        
+
         // ინიციალიზება temp values-ების
         if (!exactInputs[type]) {
             if (type === 'area') {
@@ -198,7 +198,7 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
     }
     if (isMobile) {
         return (
-            <div className="bg-white shadow p-4 font-sans">
+            <div className="bg-white shadow p-4 font-sans max-h-screen">
                 {/* Mobile content - always visible, no scroll */}
                 <>
                     {/* Back Button */}
@@ -304,9 +304,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         <div className="text-xs text-gray-600 mt-3">
                             Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
                         </div>
-                        
+
                         {!exactInputs.area ? (
-                            <button 
+                            <button
                                 onClick={() => toggleExactInput('area')}
                                 className="mt-2 border border-gray-400 px-3 py-1 text-xs hover:bg-gray-100 transition-colors"
                             >
@@ -335,13 +335,13 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
-                                    <button 
+                                    <button
                                         onClick={() => applyExactValues('area')}
                                         className="flex-1 bg-[#cfa84f] text-white px-3 py-1 text-xs rounded hover:bg-[#b8863c] transition-colors"
                                     >
                                         Apply
                                     </button>
-                                    <button 
+                                    <button
                                         onClick={() => toggleExactInput('area')}
                                         className="flex-1 border border-gray-400 px-3 py-1 text-xs rounded hover:bg-gray-100 transition-colors"
                                     >
@@ -376,9 +376,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         <div className="text-xs text-gray-600 mt-3">
                             Range: Floor {filters.sliderMinFloor} - {filters.sliderMaxFloor}
                         </div>
-                        
+
                         {!exactInputs.floor ? (
-                            <button 
+                            <button
                                 onClick={() => toggleExactInput('floor')}
                                 className="mt-2 border border-gray-400 px-3 py-1 text-xs hover:bg-gray-100 transition-colors"
                             >
@@ -409,13 +409,13 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
-                                    <button 
+                                    <button
                                         onClick={() => applyExactValues('floor')}
                                         className="flex-1 bg-[#cfa84f] text-white px-3 py-1 text-xs rounded hover:bg-[#b8863c] transition-colors"
                                     >
                                         Apply
                                     </button>
-                                    <button 
+                                    <button
                                         onClick={() => toggleExactInput('floor')}
                                         className="flex-1 border border-gray-400 px-3 py-1 text-xs rounded hover:bg-gray-100 transition-colors"
                                     >
@@ -540,9 +540,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 <div className="text-xs text-gray-600 mt-4">
                     Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
                 </div>
-                
+
                 {!exactInputs.area ? (
-                    <button 
+                    <button
                         onClick={() => toggleExactInput('area')}
                         className="mt-2 border border-gray-400 px-4 py-1 hover:bg-gray-100 transition-colors"
                     >
@@ -571,13 +571,13 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                             </div>
                         </div>
                         <div className="flex gap-3">
-                            <button 
+                            <button
                                 onClick={() => applyExactValues('area')}
                                 className="flex-1 bg-[#cfa84f] text-white px-4 py-2 rounded hover:bg-[#b8863c] transition-colors"
                             >
                                 Apply
                             </button>
-                            <button 
+                            <button
                                 onClick={() => toggleExactInput('area')}
                                 className="flex-1 border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition-colors"
                             >
@@ -612,9 +612,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 <div className="text-xs text-gray-600 mt-4">
                     Range: Floor {filters.sliderMinFloor} - {filters.sliderMaxFloor}
                 </div>
-                
+
                 {!exactInputs.floor ? (
-                    <button 
+                    <button
                         onClick={() => toggleExactInput('floor')}
                         className="mt-2 border border-gray-400 px-4 py-1 hover:bg-gray-100 transition-colors"
                     >
@@ -645,13 +645,13 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                             </div>
                         </div>
                         <div className="flex gap-3">
-                            <button 
+                            <button
                                 onClick={() => applyExactValues('floor')}
                                 className="flex-1 bg-[#cfa84f] text-white px-4 py-2 rounded hover:bg-[#b8863c] transition-colors"
                             >
                                 Apply
                             </button>
-                            <button 
+                            <button
                                 onClick={() => toggleExactInput('floor')}
                                 className="flex-1 border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition-colors"
                             >
