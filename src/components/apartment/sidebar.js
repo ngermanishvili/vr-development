@@ -282,9 +282,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                     {/* Total Area */}
                     <div className="text-center mb-4">
                         <h2 className="italic text-gray-400 mb-2 text-sm">Total Area</h2>
-                        <div className="flex justify-between text-[#cfa84f] text-xs mb-2">
-                            <span>From {statistics?.overall?.min_area || 25.90} m²</span>
-                            <span>To {statistics?.overall?.max_area || 440.10} m²</span>
+                        <div className="flex justify-between text-xs mb-2 px-2">
+                            <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.min_area || 26)} m²</span></span>
+                            <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.max_area || 440)} m²</span></span>
                         </div>
                         <div className="px-2 mb-2 py-4">
                             {!loading && (
@@ -300,9 +300,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                             {loading && (
                                 <div className="h-6 bg-gray-200 rounded animate-pulse"></div>
                             )}
-                        </div>
-                        <div className="text-xs text-gray-600 mt-3">
-                            Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
                         </div>
 
                         {!exactInputs.area ? (
@@ -356,9 +353,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                     {/* Floor */}
                     <div className="text-center mb-4">
                         <h2 className="italic text-gray-400 mb-2 text-sm">Floor</h2>
-                        <div className="flex justify-between text-[#cfa84f] text-xs mb-2">
-                            <span>From 1</span>
-                            <span>To {filters.maxFloor}</span>
+                        <div className="flex justify-between text-xs mb-2 px-2">
+                            <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">1</span></span>
+                            <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.maxFloor}</span></span>
                         </div>
                         <div className="px-2 mb-2 py-4">
                             {filters.maxFloor > 1 && (
@@ -372,9 +369,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                                     className="relative z-10"
                                 />
                             )}
-                        </div>
-                        <div className="text-xs text-gray-600 mt-3">
-                            Range: Floor {filters.sliderMinFloor} - {filters.sliderMaxFloor}
                         </div>
 
                         {!exactInputs.floor ? (
@@ -518,9 +512,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
             {/* Total Area */}
             <div className="text-center mb-6">
                 <h2 className="italic text-gray-400 mb-2">Total Area</h2>
-                <div className="flex justify-between text-[#cfa84f] text-sm mb-2">
-                    <span>From {statistics?.overall?.min_area || 25.90} m²</span>
-                    <span>To {statistics?.overall?.max_area || 440.10} m²</span>
+                <div className="flex justify-between text-sm mb-2 px-4">
+                    <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.min_area || 26)} m²</span></span>
+                    <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.max_area || 440)} m²</span></span>
                 </div>
                 <div className="px-4 mb-2 py-4">
                     {!loading && (
@@ -536,9 +530,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                     {loading && (
                         <div className="h-6 bg-gray-200 rounded animate-pulse"></div>
                     )}
-                </div>
-                <div className="text-xs text-gray-600 mt-4">
-                    Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
                 </div>
 
                 {!exactInputs.area ? (
@@ -592,9 +583,9 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
             {/* Floor */}
             <div className="text-center mb-6">
                 <h2 className="italic text-gray-400 mb-2">Floor</h2>
-                <div className="flex justify-between text-[#cfa84f] text-sm mb-2">
-                    <span>From 1</span>
-                    <span>To {filters.maxFloor}</span>
+                <div className="flex justify-between text-sm mb-2 px-4">
+                    <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">1</span></span>
+                    <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.maxFloor}</span></span>
                 </div>
                 <div className="px-4 mb-2 py-4">
                     {filters.maxFloor > 1 && (
@@ -608,9 +599,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                             className="relative z-10"
                         />
                     )}
-                </div>
-                <div className="text-xs text-gray-600 mt-4">
-                    Range: Floor {filters.sliderMinFloor} - {filters.sliderMaxFloor}
                 </div>
 
                 {!exactInputs.floor ? (
