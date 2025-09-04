@@ -110,7 +110,7 @@ const FloorDetailPage = () => {
                             <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
                                 <h2 className="text-2xl font-semibold mb-4">Floor Plan - Click on an apartment to view details</h2>
                                 <div className="flex justify-center">
-                                    <div className="relative inline-block">
+                                    <div className="relative inline-block  ">
                                         <img
                                             src={
                                                 (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
@@ -132,11 +132,11 @@ const FloorDetailPage = () => {
                                                 viewBox={
                                                     // Different blocks may have different coordinate systems
                                                     (block === 'c' || block === 'C' || block === 'C1' || block === 'c1')
-                                                        ? "0 0 1280 720"  // C block coords were created on 1280×720 canvas
+                                                        ? "0 0 1275 720"  // C block coords were created on 1280×720 canvas
                                                         : (block === 'b1' || block === 'B1')
-                                                            ? "0 0 1280 640"  // B1 block coords
+                                                            ? "0 0 1280 648"  // B1 block coords
                                                             : (block === 'b2' || block === 'B2')
-                                                                ? "0 0 1280 640"  // B2 block coords
+                                                                ? "0 0 1280 728"  // B2 block coords
                                                                 : "0 0 1280 640"  // A block coords were created on 1280×640 canvas
                                                 }
                                                 preserveAspectRatio="xMidYMid meet"
