@@ -94,14 +94,28 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
         setFilters(prev => ({ ...prev, [filterType]: value }))
         console.log(`Filter changed: ${filterType} = ${value}`)
 
-        // If block is changed, navigate to the new block's page
+        // If block is changed, handle based on current page
         if (filterType === 'selectedBlock' && value) {
             const currentPath = window.location.pathname
-            const pathSegments = currentPath.split('/')
-            // Keep the current floor number or default to 1
-            const currentFloor = pathSegments[3] || '1'
-            // Navigate to the new block with the same floor
-            window.location.href = `/floor/${value.toLowerCase()}/${currentFloor}`
+            
+            // If on floor page, update URL without refresh
+            if (currentPath.startsWith('/floor/')) {
+                const pathSegments = currentPath.split('/')
+                const currentFloor = pathSegments[3] || '1'
+                const newUrl = `/floor/${value.toLowerCase()}/${currentFloor}`
+                window.history.pushState({}, '', newUrl)
+                
+                // Dispatch a custom event to notify the floor page component
+                window.dispatchEvent(new CustomEvent('blockChanged', { 
+                    detail: { block: value.toLowerCase(), floor: currentFloor } 
+                }))
+            }
+            // If on choose-apartment page, update query parameter only
+            else if (currentPath.startsWith('/choose-apartment')) {
+                const url = new URL(window.location)
+                url.searchParams.set('block', value)
+                window.history.pushState({}, '', url.toString())
+            }
         }
     }
 
@@ -465,8 +479,8 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                             <button
                                 key={block.id}
                                 onClick={() => handleFilterChange('selectedBlock', block.block_code)}
-                                className={`px-4 py-2 ${filters.selectedBlock === block.block_code
-                                    ? 'bg-gray-700 text-white'
+                                className={`px-2 cursor-pointer py-0.5  ${filters.selectedBlock === block.block_code
+                                    ? 'bg-[#858585] text-white'
                                     : 'border border-gray-400'
                                     }`}
                             >

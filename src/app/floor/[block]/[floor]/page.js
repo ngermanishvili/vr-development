@@ -9,7 +9,7 @@ import FloorTooltip from '@/components/ui/FloorTooltip'
 const FloorDetailPage = () => {
     const params = useParams()
     const router = useRouter()
-    const { block } = params
+    const [currentBlock, setCurrentBlock] = useState(params.block)
     const [currentFloor, setCurrentFloor] = useState(params.floor)
 
     const [floorData, setFloorData] = useState(null)
@@ -17,7 +17,8 @@ const FloorDetailPage = () => {
     const [blockInfo, setBlockInfo] = useState(null)
     const [statistics, setStatistics] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [loadingFloorData, setLoadingFloorData] = useState(false)
+    // Remove loadingFloorData for seamless experience
+    // const [loadingFloorData, setLoadingFloorData] = useState(false)
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
     const [zoomLevel, setZoomLevel] = useState(1.2)
 
@@ -43,54 +44,97 @@ const FloorDetailPage = () => {
     }
 
     useEffect(() => {
-        if (block && currentFloor) {
+        if (currentBlock && currentFloor) {
+            // Only show loading on initial page load, not on block switches
+            if (!blockInfo) {
+                setLoading(true)
+            }
             fetchAllData()
         }
-    }, [block])
+    }, [currentBlock])
 
     useEffect(() => {
-        if (block && currentFloor && blockInfo) {
+        if (currentBlock && currentFloor && blockInfo) {
             fetchFloorData()
         }
     }, [currentFloor])
 
+    // Listen for URL changes and custom events
+    useEffect(() => {
+        const handleBlockChanged = (event) => {
+            const { block: newBlock, floor: newFloor } = event.detail
+            // Clear apartments immediately to avoid misaligned polygons
+            setApartments([])
+            setCurrentBlock(newBlock)
+            setCurrentFloor(newFloor)
+        }
+
+        window.addEventListener('blockChanged', handleBlockChanged)
+        
+        return () => {
+            window.removeEventListener('blockChanged', handleBlockChanged)
+        }
+    }, [])
+
     const fetchAllData = async () => {
         try {
-            setLoading(true)
+            // Don't show loading overlay for seamless block switching
+            // setLoading(true)
 
-            // Fetch block info
-            const blocksResponse = await fetch('/api/blocks')
+            // Clear apartments first to avoid misaligned polygons
+            setApartments([])
+
+            // Fetch all data in parallel for better performance
+            const [blocksResponse, statsResponse, floorResponse, apartmentsResponse] = await Promise.all([
+                fetch('/api/blocks'),
+                fetch('/api/statistics'),
+                fetch(`/api/floors?block_code=${currentBlock}`),
+                fetch(`/api/apartments?block_code=${currentBlock}&floor=${currentFloor}`)
+            ])
+
+            // Process block info
             const blocksData = await blocksResponse.json()
             if (blocksData.success) {
-                // Case-insensitive block code comparison
-                const currentBlock = blocksData.data.find(b =>
-                    b.block_code.toUpperCase() === block.toUpperCase()
+                const blockInfo = blocksData.data.find(b =>
+                    b.block_code.toUpperCase() === currentBlock.toUpperCase()
                 )
-                setBlockInfo(currentBlock)
+                setBlockInfo(blockInfo)
             }
 
-            // Fetch statistics
-            const statsResponse = await fetch('/api/statistics')
+            // Process statistics
             const statsData = await statsResponse.json()
             if (statsData.success) {
                 setStatistics(statsData.data)
             }
 
-            await fetchFloorData()
+            // Process floor data
+            const floorData = await floorResponse.json()
+            if (floorData.success) {
+                const floor = floorData.data.find(f => f.floor_number.toString() === currentFloor)
+                setFloorData(floor)
+            }
+
+            // Process apartments - set them last to ensure proper alignment
+            const apartmentsData = await apartmentsResponse.json()
+            if (apartmentsData.success) {
+                setApartments(apartmentsData.data)
+            }
 
         } catch (error) {
             console.error('Error fetching data:', error)
         } finally {
+            // Always set loading to false after data fetching
             setLoading(false)
         }
     }
 
     const fetchFloorData = async () => {
         try {
-            setLoadingFloorData(true)
+            // Remove loading state for seamless experience
+            // setLoadingFloorData(true)
 
             // Fetch floor data
-            const floorResponse = await fetch(`/api/floors?block_code=${block}`)
+            const floorResponse = await fetch(`/api/floors?block_code=${currentBlock}`)
             const floorData = await floorResponse.json()
             if (floorData.success) {
                 const floor = floorData.data.find(f => f.floor_number.toString() === currentFloor)
@@ -98,7 +142,7 @@ const FloorDetailPage = () => {
             }
 
             // Fetch apartments for this floor
-            const apartmentsResponse = await fetch(`/api/apartments?block_code=${block}&floor=${currentFloor}`)
+            const apartmentsResponse = await fetch(`/api/apartments?block_code=${currentBlock}&floor=${currentFloor}`)
             const apartmentsData = await apartmentsResponse.json()
             if (apartmentsData.success) {
                 setApartments(apartmentsData.data)
@@ -107,7 +151,7 @@ const FloorDetailPage = () => {
         } catch (error) {
             console.error('Error fetching floor data:', error)
         } finally {
-            setLoadingFloorData(false)
+            // setLoadingFloorData(false)
         }
     }
 
@@ -144,9 +188,9 @@ const FloorDetailPage = () => {
                 </div>
                 <div className={`${isSidebarCollapsed ? 'flex-1' : 'w-[75%]'} transition-all duration-300 ease-in-out relative`}>
                     {/* Floor Plan Image with Interactive Apartments */}
-                    {(block === 'c' || block === 'C' || block === 'C1' || block === 'c1' ||
-                        block === 'a' || block === 'A' || block === 'A1' || block === 'a1' ||
-                        block === 'b1' || block === 'B1' || block === 'b2' || block === 'B2') && (
+                    {(currentBlock === 'c' || currentBlock === 'C' || currentBlock === 'C1' || currentBlock === 'c1' ||
+                        currentBlock === 'a' || currentBlock === 'A' || currentBlock === 'A1' || currentBlock === 'a1' ||
+                        currentBlock === 'b1' || currentBlock === 'B1' || currentBlock === 'b2' || currentBlock === 'B2') && (
                             <div className="relative overflow-hidden">
                                 {/* Floor Selector - Vertical Column Design */}
                                 {blockInfo && blockInfo.total_floors > 0 && (
@@ -154,47 +198,76 @@ const FloorDetailPage = () => {
                                         <div className="flex flex-col items-center justify-start bg-white/10 w-20 py-6 rounded-lg backdrop-blur-sm">
                                             <h2 className="text-white font-bold mb-6 text-sm">FLOOR</h2>
                                             <ul className="flex flex-col space-y-4 text-white text-lg">
-                                                {Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1).map((floorNum) => (
-                                                    <li key={floorNum}>
-                                                        <button
-                                                            onClick={() => {
-                                                                setCurrentFloor(floorNum.toString())
-                                                                // Update URL when floor changes
-                                                                window.history.pushState({}, '', `/floor/${block}/${floorNum}`)
-                                                            }}
-                                                            className={`px-4 py-1 font-bold rounded transition-all duration-200 cursor-pointer ${parseInt(currentFloor) === floorNum
-                                                                ? 'bg-white/60 text-black'
-                                                                : 'text-white'
-                                                                }`}
-                                                        >
-                                                            {floorNum}
-                                                        </button>
-                                                    </li>
-                                                ))}
+                                                {(() => {
+                                                    // Special handling for A block - floors 2-8 only
+                                                    if (currentBlock === 'a' || currentBlock === 'A' || currentBlock === 'A1' || currentBlock === 'a1') {
+                                                        return Array.from({ length: 7 }, (_, i) => i + 2).map((floorNum) => (
+                                                            <li key={floorNum}>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        // Clear apartments immediately when changing floors
+                                                                        setApartments([])
+                                                                        setCurrentFloor(floorNum.toString())
+                                                                        // Update URL when floor changes
+                                                                        window.history.pushState({}, '', `/floor/${currentBlock}/${floorNum}`)
+                                                                    }}
+                                                                    className={`px-4 py-1 font-bold rounded transition-all duration-200 cursor-pointer ${parseInt(currentFloor) === floorNum
+                                                                        ? 'bg-white/60 text-black'
+                                                                        : 'text-white'
+                                                                        }`}
+                                                                >
+                                                                    {floorNum}
+                                                                </button>
+                                                            </li>
+                                                        ))
+                                                    } else {
+                                                        // Default behavior for other blocks - floors 1 to total_floors
+                                                        return Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1).map((floorNum) => (
+                                                            <li key={floorNum}>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        // Clear apartments immediately when changing floors
+                                                                        setApartments([])
+                                                                        setCurrentFloor(floorNum.toString())
+                                                                        // Update URL when floor changes
+                                                                        window.history.pushState({}, '', `/floor/${currentBlock}/${floorNum}`)
+                                                                    }}
+                                                                    className={`px-4 py-1 font-bold rounded transition-all duration-200 cursor-pointer ${parseInt(currentFloor) === floorNum
+                                                                        ? 'bg-white/60 text-black'
+                                                                        : 'text-white'
+                                                                        }`}
+                                                                >
+                                                                    {floorNum}
+                                                                </button>
+                                                            </li>
+                                                        ))
+                                                    }
+                                                })()}
                                             </ul>
                                         </div>
                                     </div>
                                 )}
 
                                 <div className="w-full h-screen max-h-screen relative overflow-hidden bg-gray-100 ">
-                                    {loadingFloorData && (
+                                    {/* Remove loading overlay for seamless experience */}
+                                    {/* {loadingFloorData && (
                                         <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-30">
                                             <div className="text-lg font-semibold text-gray-600">Loading floor data...</div>
                                         </div>
-                                    )}
+                                    )} */}
                                     <div className="relative w-full h-full">
                                         {/* Background image with cover */}
                                         <img
                                             src={
-                                                (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
+                                                (currentBlock === 'a' || currentBlock === 'A' || currentBlock === 'A1' || currentBlock === 'a1')
                                                     ? `/a-block-floors/a-${currentFloor}.jpg`
-                                                    : (block === 'b1' || block === 'B1')
+                                                    : (currentBlock === 'b1' || currentBlock === 'B1')
                                                         ? `/b1-block-floors/b-${currentFloor}.jpg`
-                                                        : (block === 'b2' || block === 'B2')
+                                                        : (currentBlock === 'b2' || currentBlock === 'B2')
                                                             ? `/b2-block-floors/b2-${currentFloor}.jpg`
                                                             : `/c-block-floors/c-${currentFloor}.jpg`
                                             }
-                                            alt={`Floor ${currentFloor} plan for Block ${block}`}
+                                            alt={`Floor ${currentFloor} plan for Block ${currentBlock}`}
                                             className="w-full h-full object-cover"
                                             draggable={false}
                                         />
@@ -204,11 +277,11 @@ const FloorDetailPage = () => {
                                                 className="absolute inset-0 w-full h-full pointer-events-none"
                                                 viewBox={
                                                     // Different blocks may have different coordinate systems
-                                                    (block === 'c' || block === 'C' || block === 'C1' || block === 'c1')
+                                                    (currentBlock === 'c' || currentBlock === 'C' || currentBlock === 'C1' || currentBlock === 'c1')
                                                         ? "0 0 1275 720"  // C block coords were created on 1280×720 canvas
-                                                        : (block === 'b1' || block === 'B1')
+                                                        : (currentBlock === 'b1' || currentBlock === 'B1')
                                                             ? "0 0 1280 648"  // B1 block coords
-                                                            : (block === 'b2' || block === 'B2')
+                                                            : (currentBlock === 'b2' || currentBlock === 'B2')
                                                                 ? "0 0 1280 728"  // B2 block coords
                                                                 : "0 0 1280 640"  // A block coords were created on 1280×640 canvas
                                                 }
@@ -368,7 +441,7 @@ const FloorDetailPage = () => {
             <div className="md:hidden pt-20">
                 <div className="p-4">
                     <h1 className="text-2xl font-bold mb-4">
-                        Block {block} - Floor {currentFloor}
+                        Block {currentBlock} - Floor {currentFloor}
                     </h1>
 
                     {/* Floor Selector for Mobile */}
@@ -376,18 +449,28 @@ const FloorDetailPage = () => {
                         <div className="bg-white rounded-lg shadow-lg p-4 mb-4">
                             <h3 className="text-lg font-semibold mb-2">Select Floor:</h3>
                             <div className="flex gap-2 flex-wrap">
-                                {Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1).map((floorNum) => (
+                                {(() => {
+                                    // Special handling for A block - floors 2-8 only
+                                    if (currentBlock === 'a' || currentBlock === 'A' || currentBlock === 'A1' || currentBlock === 'a1') {
+                                        return Array.from({ length: 7 }, (_, i) => i + 2)
+                                    } else {
+                                        // Default behavior for other blocks - floors 1 to total_floors
+                                        return Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1)
+                                    }
+                                })().map((floorNum) => (
                                     <button
                                         key={floorNum}
                                         onClick={() => {
+                                            // Clear apartments immediately when changing floors
+                                            setApartments([])
                                             setCurrentFloor(floorNum.toString())
                                             // Update URL when floor changes
-                                            window.history.pushState({}, '', `/floor/${block}/${floorNum}`)
+                                            window.history.pushState({}, '', `/floor/${currentBlock}/${floorNum}`)
                                         }}
                                         onMouseEnter={async (e) => {
                                             // Fetch available count for this floor
                                             try {
-                                                const response = await fetch(`/api/floors?block_code=${block}`)
+                                                const response = await fetch(`/api/floors?block_code=${currentBlock}`)
                                                 const data = await response.json()
                                                 if (data.success) {
                                                     const floorData = data.data.find(f => f.floor_number === floorNum)
@@ -431,23 +514,23 @@ const FloorDetailPage = () => {
                     )}
 
                     {/* Floor Plan for Mobile */}
-                    {(block === 'c' || block === 'C' || block === 'C1' || block === 'c1' ||
-                        block === 'a' || block === 'A' || block === 'A1' || block === 'a1' ||
-                        block === 'b1' || block === 'B1' || block === 'b2' || block === 'B2') && (
+                    {(currentBlock === 'c' || currentBlock === 'C' || currentBlock === 'C1' || currentBlock === 'c1' ||
+                        currentBlock === 'a' || currentBlock === 'A' || currentBlock === 'A1' || currentBlock === 'a1' ||
+                        currentBlock === 'b1' || currentBlock === 'B1' || currentBlock === 'b2' || currentBlock === 'B2') && (
                             <div className="bg-white rounded-lg shadow-lg p-4">
                                 <h2 className="text-lg font-semibold mb-2">Floor Plan</h2>
                                 <div className="relative inline-block w-full">
                                     <img
                                         src={
-                                            (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
+                                            (currentBlock === 'a' || currentBlock === 'A' || currentBlock === 'A1' || currentBlock === 'a1')
                                                 ? `/a-block-floors/a-${currentFloor}.jpg`
-                                                : (block === 'b1' || block === 'B1')
+                                                : (currentBlock === 'b1' || currentBlock === 'B1')
                                                     ? `/b1-block-floors/b-${currentFloor}.jpg`
-                                                    : (block === 'b2' || block === 'B2')
+                                                    : (currentBlock === 'b2' || currentBlock === 'B2')
                                                         ? `/b2-block-floors/b2-${currentFloor}.jpg`
                                                         : `/c-block-floors/c-${currentFloor}.jpg`
                                         }
-                                        alt={`Floor ${currentFloor} plan for Block ${block}`}
+                                        alt={`Floor ${currentFloor} plan for Block ${currentBlock}`}
                                         className="w-full h-auto rounded-lg shadow-md"
                                     />
                                     {/* SVG Overlay for Mobile */}
@@ -455,11 +538,11 @@ const FloorDetailPage = () => {
                                         <svg
                                             className="absolute inset-0 w-full h-full"
                                             viewBox={
-                                                (block === 'c' || block === 'C' || block === 'C1' || block === 'c1')
+                                                (currentBlock === 'c' || currentBlock === 'C' || currentBlock === 'C1' || currentBlock === 'c1')
                                                     ? "0 0 1275 720"
-                                                    : (block === 'b1' || block === 'B1')
+                                                    : (currentBlock === 'b1' || currentBlock === 'B1')
                                                         ? "0 0 1280 648"
-                                                        : (block === 'b2' || block === 'B2')
+                                                        : (currentBlock === 'b2' || currentBlock === 'B2')
                                                             ? "0 0 1280 728"
                                                             : "0 0 1280 640"
                                             }
@@ -512,7 +595,7 @@ const FloorDetailPage = () => {
             {/* Custom Tooltips */}
             <ApartmentTooltip
                 apartment={tooltipData.apartment}
-                blockCode={blockInfo?.block_code || block?.toUpperCase()}
+                blockCode={blockInfo?.block_code || currentBlock?.toUpperCase()}
                 x={tooltipData.x}
                 y={tooltipData.y}
                 visible={tooltipData.visible}
