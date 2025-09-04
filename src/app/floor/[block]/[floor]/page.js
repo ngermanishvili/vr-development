@@ -7,13 +7,15 @@ import Sidebar from '@/components/apartment/sidebar'
 const FloorDetailPage = () => {
     const params = useParams()
     const router = useRouter()
-    const { block, floor } = params
+    const { block } = params
+    const [currentFloor, setCurrentFloor] = useState(params.floor)
 
     const [floorData, setFloorData] = useState(null)
     const [apartments, setApartments] = useState([])
     const [blockInfo, setBlockInfo] = useState(null)
     const [statistics, setStatistics] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [loadingFloorData, setLoadingFloorData] = useState(false)
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
     const [zoomLevel, setZoomLevel] = useState(1.2)
 
@@ -22,31 +24,20 @@ const FloorDetailPage = () => {
     }
 
     useEffect(() => {
-        if (block && floor) {
+        if (block && currentFloor) {
             fetchAllData()
         }
-    }, [block, floor])
+    }, [block])
+
+    useEffect(() => {
+        if (block && currentFloor && blockInfo) {
+            fetchFloorData()
+        }
+    }, [currentFloor])
 
     const fetchAllData = async () => {
         try {
             setLoading(true)
-
-            // Fetch floor data
-            const floorResponse = await fetch(`/api/floors?block_code=${block}`)
-            const floorData = await floorResponse.json()
-            if (floorData.success) {
-                const currentFloor = floorData.data.find(f => f.floor_number.toString() === floor)
-                setFloorData(currentFloor)
-            }
-
-            // Fetch apartments for this floor
-            const apartmentsResponse = await fetch(`/api/apartments?block_code=${block}&floor=${floor}`)
-            const apartmentsData = await apartmentsResponse.json()
-            console.log('Apartments API Response:', apartmentsData) // Debug log
-            if (apartmentsData.success) {
-                setApartments(apartmentsData.data)
-                console.log('Apartments set:', apartmentsData.data) // Debug log
-            }
 
             // Fetch block info
             const blocksResponse = await fetch('/api/blocks')
@@ -63,10 +54,38 @@ const FloorDetailPage = () => {
                 setStatistics(statsData.data)
             }
 
+            await fetchFloorData()
+
         } catch (error) {
             console.error('Error fetching data:', error)
         } finally {
             setLoading(false)
+        }
+    }
+
+    const fetchFloorData = async () => {
+        try {
+            setLoadingFloorData(true)
+
+            // Fetch floor data
+            const floorResponse = await fetch(`/api/floors?block_code=${block}`)
+            const floorData = await floorResponse.json()
+            if (floorData.success) {
+                const floor = floorData.data.find(f => f.floor_number.toString() === currentFloor)
+                setFloorData(floor)
+            }
+
+            // Fetch apartments for this floor
+            const apartmentsResponse = await fetch(`/api/apartments?block_code=${block}&floor=${currentFloor}`)
+            const apartmentsData = await apartmentsResponse.json()
+            if (apartmentsData.success) {
+                setApartments(apartmentsData.data)
+            }
+
+        } catch (error) {
+            console.error('Error fetching floor data:', error)
+        } finally {
+            setLoadingFloorData(false)
         }
     }
 
@@ -116,8 +135,8 @@ const FloorDetailPage = () => {
                                                 {Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1).map((floorNum) => (
                                                     <button
                                                         key={floorNum}
-                                                        onClick={() => router.push(`/floor/${block}/${floorNum}`)}
-                                                        className={`px-2 py-1 rounded text-sm transition-all duration-200 ${parseInt(floor) === floorNum
+                                                        onClick={() => setCurrentFloor(floorNum.toString())}
+                                                        className={`px-2 py-1 rounded text-sm transition-all duration-200 ${parseInt(currentFloor) === floorNum
                                                             ? 'bg-blue-600 text-white shadow-md'
                                                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                                             }`}
@@ -131,6 +150,11 @@ const FloorDetailPage = () => {
                                 )}
                                 
                                 <div className="w-full h-full">
+                                    {loadingFloorData && (
+                                        <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-30">
+                                            <div className="text-lg font-semibold text-gray-600">Loading floor data...</div>
+                                        </div>
+                                    )}
                                     <div className="relative w-full h-full overflow-hidden">
                                         <div
                                             className="relative"
@@ -144,14 +168,14 @@ const FloorDetailPage = () => {
                                             <img
                                                 src={
                                                     (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
-                                                        ? `/a-block-floors/a-${floor}.jpg`
+                                                        ? `/a-block-floors/a-${currentFloor}.jpg`
                                                         : (block === 'b1' || block === 'B1')
-                                                            ? `/b1-block-floors/b-${floor}.jpg`
+                                                            ? `/b1-block-floors/b-${currentFloor}.jpg`
                                                             : (block === 'b2' || block === 'B2')
-                                                                ? `/b2-block-floors/b2-${floor}.jpg`
-                                                                : `/c-block-floors/c-${floor}.jpg`
+                                                                ? `/b2-block-floors/b2-${currentFloor}.jpg`
+                                                                : `/c-block-floors/c-${currentFloor}.jpg`
                                                 }
-                                                alt={`Floor ${floor} plan for Block ${block}`}
+                                                alt={`Floor ${currentFloor} plan for Block ${block}`}
                                                 className="w-full h-full object-contain"
                                                 draggable={false}
                                             />
@@ -312,7 +336,7 @@ const FloorDetailPage = () => {
             <div className="md:hidden pt-20">
                 <div className="p-4">
                     <h1 className="text-2xl font-bold mb-4">
-                        Block {block} - Floor {floor}
+                        Block {block} - Floor {currentFloor}
                     </h1>
 
                     {/* Floor Selector for Mobile */}
@@ -323,8 +347,8 @@ const FloorDetailPage = () => {
                                 {Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1).map((floorNum) => (
                                     <button
                                         key={floorNum}
-                                        onClick={() => router.push(`/floor/${block}/${floorNum}`)}
-                                        className={`px-3 py-1 rounded-lg transition-all duration-200 text-sm ${parseInt(floor) === floorNum
+                                        onClick={() => setCurrentFloor(floorNum.toString())}
+                                        className={`px-3 py-1 rounded-lg transition-all duration-200 text-sm ${parseInt(currentFloor) === floorNum
                                             ? 'bg-blue-600 text-white shadow-lg'
                                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                             }`}
@@ -346,14 +370,14 @@ const FloorDetailPage = () => {
                                     <img
                                         src={
                                             (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
-                                                ? `/a-block-floors/a-${floor}.jpg`
+                                                ? `/a-block-floors/a-${currentFloor}.jpg`
                                                 : (block === 'b1' || block === 'B1')
-                                                    ? `/b1-block-floors/b-${floor}.jpg`
+                                                    ? `/b1-block-floors/b-${currentFloor}.jpg`
                                                     : (block === 'b2' || block === 'B2')
-                                                        ? `/b2-block-floors/b2-${floor}.jpg`
-                                                        : `/c-block-floors/c-${floor}.jpg`
+                                                        ? `/b2-block-floors/b2-${currentFloor}.jpg`
+                                                        : `/c-block-floors/c-${currentFloor}.jpg`
                                         }
-                                        alt={`Floor ${floor} plan for Block ${block}`}
+                                        alt={`Floor ${currentFloor} plan for Block ${block}`}
                                         className="w-full h-auto rounded-lg shadow-md"
                                     />
                                     {/* SVG Overlay for Mobile */}

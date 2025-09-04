@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { DualRangeSlider } from '../ui/dual-range-slider'
 
 export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
     const [blocks, setBlocks] = useState([])
@@ -8,8 +9,12 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
     const [filters, setFilters] = useState({
         selectedBlock: '',
         apartmentType: 'ALL',
-        minArea: 25.90,
-        maxArea: 440.10,
+        minArea: 26,
+        maxArea: 440,
+        minFloor: 1,
+        maxFloor: 12,
+        minPrice: 100,
+        maxPrice: 2000,
         floor: 'ALL'
     })
     const [loading, setLoading] = useState(true)
@@ -52,6 +57,27 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
         // TODO: Apply filters to apartment search
     }
 
+    const handleAreaRangeChange = (values) => {
+        const [minVal, maxVal] = values
+        if (minVal !== undefined && maxVal !== undefined && !isNaN(minVal) && !isNaN(maxVal)) {
+            setFilters(prev => ({ ...prev, minArea: minVal, maxArea: maxVal }))
+        }
+    }
+
+    const handleFloorRangeChange = (values) => {
+        const [minVal, maxVal] = values
+        if (minVal !== undefined && maxVal !== undefined && !isNaN(minVal) && !isNaN(maxVal)) {
+            setFilters(prev => ({ ...prev, minFloor: minVal, maxFloor: maxVal }))
+        }
+    }
+
+    const handlePriceRangeChange = (values) => {
+        const [minVal, maxVal] = values
+        if (minVal !== undefined && maxVal !== undefined && !isNaN(minVal) && !isNaN(maxVal)) {
+            setFilters(prev => ({ ...prev, minPrice: minVal, maxPrice: maxVal }))
+        }
+    }
+
     const handleChooseApartment = () => {
         // Build query string with current filters
         const queryParams = new URLSearchParams()
@@ -62,10 +88,10 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
         if (filters.apartmentType && filters.apartmentType !== 'ALL') {
             queryParams.append('apartmentType', filters.apartmentType)
         }
-        if (filters.minArea && filters.minArea !== 25.90) {
+        if (filters.minArea) {
             queryParams.append('minArea', filters.minArea.toString())
         }
-        if (filters.maxArea && filters.maxArea !== 440.10) {
+        if (filters.maxArea) {
             queryParams.append('maxArea', filters.maxArea.toString())
         }
         if (filters.floor && filters.floor !== 'ALL') {
@@ -174,27 +200,48 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                             <span>From {statistics?.overall?.min_area || 25.90} m²</span>
                             <span>To {statistics?.overall?.max_area || 440.10} m²</span>
                         </div>
-                        <input
-                            type="range"
-                            className="w-full accent-[#cfa84f]"
-                            min={statistics?.overall?.min_area || 25.90}
-                            max={statistics?.overall?.max_area || 440.10}
-                            value={filters.maxArea}
-                            onChange={(e) => handleFilterChange('maxArea', parseFloat(e.target.value))}
-                        />
-                        <div className="text-xs text-gray-600 mt-1">Current: {filters.maxArea} m²</div>
+                        <div className="px-2 mb-2 py-4">
+                            {!loading && (
+                                <DualRangeSlider
+                                    min={Math.round(statistics?.overall?.min_area || 26)}
+                                    max={Math.round(statistics?.overall?.max_area || 440)}
+                                    step={1}
+                                    value={[filters.minArea, filters.maxArea]}
+                                    onValueChange={handleAreaRangeChange}
+                                    className="relative z-10"
+                                />
+                            )}
+                            {loading && (
+                                <div className="h-6 bg-gray-200 rounded animate-pulse"></div>
+                            )}
+                        </div>
+                        <div className="text-xs text-gray-600 mt-3">
+                            Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
+                        </div>
                         <button className="mt-2 border border-gray-400 px-3 py-1 text-xs opacity-50">Exact Number</button>
                     </div>
 
-                    {/* Price - Disabled for now */}
-                    <div className="text-center mb-4 opacity-50">
+                    {/* Price */}
+                    <div className="text-center mb-4">
                         <h2 className="italic text-gray-400 mb-2 text-sm">Price</h2>
                         <div className="flex justify-between text-[#cfa84f] text-xs mb-2">
-                            <span>Coming Soon</span>
-                            <span>Coming Soon</span>
+                            <span>From $100</span>
+                            <span>To $2000</span>
                         </div>
-                        <input type="range" className="w-full accent-[#cfa84f]" disabled />
-                        <button className="mt-2 border border-gray-400 px-3 py-1 text-xs" disabled>Exact Price</button>
+                        <div className="px-2 mb-2 py-4">
+                            <DualRangeSlider
+                                min={100}
+                                max={2000}
+                                step={10}
+                                value={[filters.minPrice, filters.maxPrice]}
+                                onValueChange={handlePriceRangeChange}
+                                className="relative z-10"
+                            />
+                        </div>
+                        <div className="text-xs text-gray-600 mt-3">
+                            Range: ${filters.minPrice} - ${filters.maxPrice}
+                        </div>
+                        <button className="mt-2 border border-gray-400 px-3 py-1 text-xs opacity-50">Exact Price</button>
                     </div>
 
                     {/* Floor */}
@@ -204,15 +251,18 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                             <span>From 1</span>
                             <span>To {blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 12}</span>
                         </div>
-                        <input
-                            type="range"
-                            className="w-full accent-[#cfa84f]"
-                            min="1"
-                            max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 12}
-                            onChange={(e) => handleFilterChange('floor', parseInt(e.target.value))}
-                        />
-                        <div className="text-xs text-gray-600 mt-1">
-                            {filters.floor === 'ALL' ? 'All Floors' : `Floor ${filters.floor}`}
+                        <div className="px-2 mb-2 py-4">
+                            <DualRangeSlider
+                                min={1}
+                                max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 12}
+                                step={1}
+                                value={[filters.minFloor, filters.maxFloor]}
+                                onValueChange={handleFloorRangeChange}
+                                className="relative z-10"
+                            />
+                        </div>
+                        <div className="text-xs text-gray-600 mt-3">
+                            Range: Floor {filters.minFloor} - {filters.maxFloor}
                         </div>
                         <button className="mt-2 border border-gray-400 px-3 py-1 text-xs opacity-50">Exact Number</button>
                     </div>
@@ -330,15 +380,24 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                     <span>From {statistics?.overall?.min_area || 25.90} m²</span>
                     <span>To {statistics?.overall?.max_area || 440.10} m²</span>
                 </div>
-                <input
-                    type="range"
-                    className="w-full accent-[#cfa84f]"
-                    min={statistics?.overall?.min_area || 25.90}
-                    max={statistics?.overall?.max_area || 440.10}
-                    value={filters.maxArea}
-                    onChange={(e) => handleFilterChange('maxArea', parseFloat(e.target.value))}
-                />
-                <div className="text-xs text-gray-600 mt-1">Current: {filters.maxArea} m²</div>
+                <div className="px-4 mb-2 py-4">
+                    {!loading && (
+                        <DualRangeSlider
+                            min={Math.round(statistics?.overall?.min_area || 26)}
+                            max={Math.round(statistics?.overall?.max_area || 440)}
+                            step={1}
+                            value={[filters.minArea, filters.maxArea]}
+                            onValueChange={handleAreaRangeChange}
+                            className="relative z-10"
+                        />
+                    )}
+                    {loading && (
+                        <div className="h-6 bg-gray-200 rounded animate-pulse"></div>
+                    )}
+                </div>
+                <div className="text-xs text-gray-600 mt-4">
+                    Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
+                </div>
                 <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Number</button>
             </div>
 
@@ -346,11 +405,23 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
             <div className="text-center mb-6">
                 <h2 className="italic text-gray-400 mb-2">Price</h2>
                 <div className="flex justify-between text-[#cfa84f] text-sm mb-2">
-                    <span>From 100 m²</span>
-                    <span>To 2000 m²</span>
+                    <span>From $100</span>
+                    <span>To $2000</span>
                 </div>
-                <input type="range" className="w-full accent-[#cfa84f]" />
-                <button className="mt-2 border border-gray-400 px-4 py-1">Exact Price</button>
+                <div className="px-4 mb-2 py-4">
+                    <DualRangeSlider
+                        min={100}
+                        max={2000}
+                        step={10}
+                        value={[filters.minPrice, filters.maxPrice]}
+                        onValueChange={handlePriceRangeChange}
+                        className="relative z-10"
+                    />
+                </div>
+                <div className="text-xs text-gray-600 mt-4">
+                    Range: ${filters.minPrice} - ${filters.maxPrice}
+                </div>
+                <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Price</button>
             </div>
 
             {/* Floor */}
@@ -360,15 +431,18 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                     <span>From 1</span>
                     <span>To {blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}</span>
                 </div>
-                <input
-                    type="range"
-                    className="w-full accent-[#cfa84f]"
-                    min="1"
-                    max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}
-                    onChange={(e) => handleFilterChange('floor', parseInt(e.target.value))}
-                />
-                <div className="text-xs text-gray-600 mt-1">
-                    {filters.floor === 'ALL' ? 'All Floors' : `Floor ${filters.floor}`}
+                <div className="px-4 mb-2 py-4">
+                    <DualRangeSlider
+                        min={1}
+                        max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}
+                        step={1}
+                        value={[filters.minFloor, filters.maxFloor]}
+                        onValueChange={handleFloorRangeChange}
+                        className="relative z-10"
+                    />
+                </div>
+                <div className="text-xs text-gray-600 mt-4">
+                    Range: Floor {filters.minFloor} - {filters.maxFloor}
                 </div>
                 <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Number</button>
             </div>
