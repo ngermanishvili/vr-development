@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-const FloorOverlay = ({ selectedBlock }) => {
+const FloorOverlay = ({ selectedBlock, onTooltipChange }) => {
   const [floors, setFloors] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,23 +27,25 @@ const FloorOverlay = ({ selectedBlock }) => {
   };
 
   if (!selectedBlock || loading || floors.length === 0) {
-    <div className="absolute inset-0 w-full h-full">
-      <svg
-        className="w-full h-full"
-        viewBox="0 0 2500 938"
-        preserveAspectRatio="xMidYMid slice"
-        style={{ pointerEvents: "auto" }}
-      >
-        //HERE WILL BE FETCHED AND DONE POLYS FOR CHOOSING A BLOCK
-      </svg>
-    </div>;
+    return null;
   }
+
+  const getViewBox = (block) => {
+    const blockUpper = block?.toUpperCase();
+    if (blockUpper === "B2" || blockUpper === "B1") {
+      return "0 0 1920 970";
+    } else if (blockUpper === "C1") {
+      return "0 0 1920 1080";
+    }
+    // Default viewBox
+    return "0 0 1920 1080";
+  };
 
   return (
     <div className="absolute inset-0 w-full h-full">
       <svg
         className="w-full h-full"
-        viewBox="0 0 1920 970"
+        viewBox={getViewBox(selectedBlock)}
         preserveAspectRatio="xMidYMid slice"
         style={{ pointerEvents: "auto" }}
       >
@@ -59,9 +61,42 @@ const FloorOverlay = ({ selectedBlock }) => {
               e.target.style.fill = "#CA9B43";
               e.target.style.fillOpacity = "0.7";
               console.log(`Hovering floor ${floor.floor_number}`);
+
+              // Show floor tooltip
+              if (onTooltipChange) {
+                onTooltipChange({
+                  visible: true,
+                  floorNumber: floor.floor_number,
+                  availableCount: Number(floor.available_count) || 0,
+                  x: e.clientX,
+                  y: e.clientY,
+                  type: "floor",
+                });
+              }
+            }}
+            onMouseMove={(e) => {
+              // Update tooltip position
+              if (onTooltipChange) {
+                onTooltipChange({
+                  visible: true,
+                  floorNumber: floor.floor_number,
+                  availableCount: Number(floor.available_count) || 0,
+                  x: e.clientX,
+                  y: e.clientY,
+                  type: "floor",
+                });
+              }
             }}
             onMouseLeave={(e) => {
               e.target.style.fill = "transparent";
+
+              // Hide tooltip
+              if (onTooltipChange) {
+                onTooltipChange({
+                  visible: false,
+                  type: "floor",
+                });
+              }
             }}
             onClick={(e) => {
               e.stopPropagation();

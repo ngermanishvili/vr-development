@@ -1,7 +1,12 @@
 import React from "react";
 import FloorOverlay from "./FloorOverlay";
 
-const ProjectImage = ({ onImageClick, isFullscreen, selectedBlock }) => {
+const ProjectImage = ({
+  onImageClick,
+  isFullscreen,
+  selectedBlock,
+  onTooltipChange,
+}) => {
   const getBlockImage = (block) => {
     console.log("Selected block:", block); // Debug
     if (block === "C1") {
@@ -28,7 +33,10 @@ const ProjectImage = ({ onImageClick, isFullscreen, selectedBlock }) => {
         src={getBlockImage(selectedBlock)}
         alt="Project Image"
       />
-      <FloorOverlay selectedBlock={selectedBlock} />
+      <FloorOverlay
+        selectedBlock={selectedBlock}
+        onTooltipChange={onTooltipChange}
+      />
     </div>
   );
 };
