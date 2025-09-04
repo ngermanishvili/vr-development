@@ -12,22 +12,61 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
         minArea: 26,
         maxArea: 440,
         minFloor: 1,
-        maxFloor: 12,
+        maxFloor: 6,
+        sliderMinFloor: 1,
+        sliderMaxFloor: 3,
         minPrice: 100,
         maxPrice: 2000,
         floor: 'ALL'
     })
     const [loading, setLoading] = useState(true)
+    const [exactInputs, setExactInputs] = useState({
+        area: false,
+        price: false,
+        floor: false
+    })
+    const [tempInputValues, setTempInputValues] = useState({
+        minArea: '',
+        maxArea: '',
+        minPrice: '',
+        maxPrice: '',
+        minFloor: '',
+        maxFloor: ''
+    })
     const searchParams = useSearchParams()
 
     useEffect(() => {
         fetchData()
-        // Set initial block from URL
+        // Set initial block from URL or pathname
         const blockFromUrl = searchParams.get('block')
+        const currentPath = window.location.pathname
+        const pathSegments = currentPath.split('/')
+        const blockFromPath = pathSegments[2] // /floor/[block]/[floor] structure
+        
         if (blockFromUrl) {
             setFilters(prev => ({ ...prev, selectedBlock: blockFromUrl }))
+        } else if (blockFromPath) {
+            setFilters(prev => ({ ...prev, selectedBlock: blockFromPath.toUpperCase() }))
         }
     }, [searchParams])
+
+    // Update floor range when blocks data or selected block changes
+    useEffect(() => {
+        if (blocks.length > 0 && filters.selectedBlock) {
+            const currentBlock = blocks.find(b => b.block_code === filters.selectedBlock)
+            if (currentBlock && currentBlock.total_floors) {
+                const totalFloors = Number(currentBlock.total_floors);
+                setFilters(prev => ({ 
+                    ...prev, 
+                    minFloor: 1,
+                    maxFloor: totalFloors,
+                    // Set initial slider range to show a subset, not the full range
+                    sliderMinFloor: 1,
+                    sliderMaxFloor: Math.min(3, totalFloors) // Start with floors 1-3 or max available
+                }))
+            }
+        }
+    }, [blocks, filters.selectedBlock])
 
     const fetchData = async () => {
         try {
@@ -67,7 +106,7 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
     const handleFloorRangeChange = (values) => {
         const [minVal, maxVal] = values
         if (minVal !== undefined && maxVal !== undefined && !isNaN(minVal) && !isNaN(maxVal)) {
-            setFilters(prev => ({ ...prev, minFloor: minVal, maxFloor: maxVal }))
+            setFilters(prev => ({ ...prev, sliderMinFloor: minVal, sliderMaxFloor: maxVal }))
         }
     }
 
@@ -76,6 +115,57 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
         if (minVal !== undefined && maxVal !== undefined && !isNaN(minVal) && !isNaN(maxVal)) {
             setFilters(prev => ({ ...prev, minPrice: minVal, maxPrice: maxVal }))
         }
+    }
+
+    const toggleExactInput = (type) => {
+        setExactInputs(prev => ({
+            ...prev,
+            [type]: !prev[type]
+        }))
+        
+        // ინიციალიზება temp values-ების
+        if (!exactInputs[type]) {
+            if (type === 'area') {
+                setTempInputValues(prev => ({
+                    ...prev,
+                    minArea: filters.minArea.toString(),
+                    maxArea: filters.maxArea.toString()
+                }))
+            } else if (type === 'price') {
+                setTempInputValues(prev => ({
+                    ...prev,
+                    minPrice: filters.minPrice.toString(),
+                    maxPrice: filters.maxPrice.toString()
+                }))
+            } else if (type === 'floor') {
+                setTempInputValues(prev => ({
+                    ...prev,
+                    minFloor: filters.minFloor.toString(),
+                    maxFloor: filters.maxFloor.toString()
+                }))
+            }
+        }
+    }
+
+    const handleExactInputChange = (field, value) => {
+        setTempInputValues(prev => ({ ...prev, [field]: value }))
+    }
+
+    const applyExactValues = (type) => {
+        if (type === 'area') {
+            const minVal = parseFloat(tempInputValues.minArea) || filters.minArea
+            const maxVal = parseFloat(tempInputValues.maxArea) || filters.maxArea
+            setFilters(prev => ({ ...prev, minArea: minVal, maxArea: maxVal }))
+        } else if (type === 'price') {
+            const minVal = parseFloat(tempInputValues.minPrice) || filters.minPrice
+            const maxVal = parseFloat(tempInputValues.maxPrice) || filters.maxPrice
+            setFilters(prev => ({ ...prev, minPrice: minVal, maxPrice: maxVal }))
+        } else if (type === 'floor') {
+            const minVal = parseInt(tempInputValues.minFloor) || filters.minFloor
+            const maxVal = parseInt(tempInputValues.maxFloor) || filters.maxFloor
+            setFilters(prev => ({ ...prev, minFloor: minVal, maxFloor: maxVal }))
+        }
+        toggleExactInput(type)
     }
 
     const handleChooseApartment = () => {
@@ -218,7 +308,52 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         <div className="text-xs text-gray-600 mt-3">
                             Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
                         </div>
-                        <button className="mt-2 border border-gray-400 px-3 py-1 text-xs opacity-50">Exact Number</button>
+                        
+                        {!exactInputs.area ? (
+                            <button 
+                                onClick={() => toggleExactInput('area')}
+                                className="mt-2 border border-gray-400 px-3 py-1 text-xs hover:bg-gray-100 transition-colors"
+                            >
+                                Exact Number
+                            </button>
+                        ) : (
+                            <div className="mt-3 space-y-2">
+                                <div className="flex gap-2 text-xs">
+                                    <div className="flex-1">
+                                        <label className="block text-gray-600 mb-1">Min m²:</label>
+                                        <input
+                                            type="number"
+                                            value={tempInputValues.minArea}
+                                            onChange={(e) => handleExactInputChange('minArea', e.target.value)}
+                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                                        />
+                                    </div>
+                                    <div className="flex-1">
+                                        <label className="block text-gray-600 mb-1">Max m²:</label>
+                                        <input
+                                            type="number"
+                                            value={tempInputValues.maxArea}
+                                            onChange={(e) => handleExactInputChange('maxArea', e.target.value)}
+                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex gap-2">
+                                    <button 
+                                        onClick={() => applyExactValues('area')}
+                                        className="flex-1 bg-[#cfa84f] text-white px-3 py-1 text-xs rounded hover:bg-[#b8863c] transition-colors"
+                                    >
+                                        Apply
+                                    </button>
+                                    <button 
+                                        onClick={() => toggleExactInput('area')}
+                                        className="flex-1 border border-gray-400 px-3 py-1 text-xs rounded hover:bg-gray-100 transition-colors"
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Price */}
@@ -241,7 +376,52 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         <div className="text-xs text-gray-600 mt-3">
                             Range: ${filters.minPrice} - ${filters.maxPrice}
                         </div>
-                        <button className="mt-2 border border-gray-400 px-3 py-1 text-xs opacity-50">Exact Price</button>
+                        
+                        {!exactInputs.price ? (
+                            <button 
+                                onClick={() => toggleExactInput('price')}
+                                className="mt-2 border border-gray-400 px-3 py-1 text-xs hover:bg-gray-100 transition-colors"
+                            >
+                                Exact Price
+                            </button>
+                        ) : (
+                            <div className="mt-3 space-y-2">
+                                <div className="flex gap-2 text-xs">
+                                    <div className="flex-1">
+                                        <label className="block text-gray-600 mb-1">Min $:</label>
+                                        <input
+                                            type="number"
+                                            value={tempInputValues.minPrice}
+                                            onChange={(e) => handleExactInputChange('minPrice', e.target.value)}
+                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                                        />
+                                    </div>
+                                    <div className="flex-1">
+                                        <label className="block text-gray-600 mb-1">Max $:</label>
+                                        <input
+                                            type="number"
+                                            value={tempInputValues.maxPrice}
+                                            onChange={(e) => handleExactInputChange('maxPrice', e.target.value)}
+                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex gap-2">
+                                    <button 
+                                        onClick={() => applyExactValues('price')}
+                                        className="flex-1 bg-[#cfa84f] text-white px-3 py-1 text-xs rounded hover:bg-[#b8863c] transition-colors"
+                                    >
+                                        Apply
+                                    </button>
+                                    <button 
+                                        onClick={() => toggleExactInput('price')}
+                                        className="flex-1 border border-gray-400 px-3 py-1 text-xs rounded hover:bg-gray-100 transition-colors"
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Floor */}
@@ -249,22 +429,72 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         <h2 className="italic text-gray-400 mb-2 text-sm">Floor</h2>
                         <div className="flex justify-between text-[#cfa84f] text-xs mb-2">
                             <span>From 1</span>
-                            <span>To {blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 12}</span>
+                            <span>To {filters.maxFloor}</span>
                         </div>
                         <div className="px-2 mb-2 py-4">
-                            <DualRangeSlider
-                                min={1}
-                                max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 12}
-                                step={1}
-                                value={[filters.minFloor, filters.maxFloor]}
-                                onValueChange={handleFloorRangeChange}
-                                className="relative z-10"
-                            />
+                            {filters.maxFloor > 1 && (
+                                <DualRangeSlider
+                                    key={`floor-mobile-${filters.maxFloor}`}
+                                    min={1}
+                                    max={Number(filters.maxFloor)}
+                                    step={1}
+                                    value={[Number(filters.sliderMinFloor), Number(filters.sliderMaxFloor)]}
+                                    onValueChange={handleFloorRangeChange}
+                                    className="relative z-10"
+                                />
+                            )}
                         </div>
                         <div className="text-xs text-gray-600 mt-3">
-                            Range: Floor {filters.minFloor} - {filters.maxFloor}
+                            Range: Floor {filters.sliderMinFloor} - {filters.sliderMaxFloor}
                         </div>
-                        <button className="mt-2 border border-gray-400 px-3 py-1 text-xs opacity-50">Exact Number</button>
+                        
+                        {!exactInputs.floor ? (
+                            <button 
+                                onClick={() => toggleExactInput('floor')}
+                                className="mt-2 border border-gray-400 px-3 py-1 text-xs hover:bg-gray-100 transition-colors"
+                            >
+                                Exact Number
+                            </button>
+                        ) : (
+                            <div className="mt-3 space-y-2">
+                                <div className="flex gap-2 text-xs">
+                                    <div className="flex-1">
+                                        <label className="block text-gray-600 mb-1">Min Floor:</label>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            value={tempInputValues.minFloor}
+                                            onChange={(e) => handleExactInputChange('minFloor', e.target.value)}
+                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                                        />
+                                    </div>
+                                    <div className="flex-1">
+                                        <label className="block text-gray-600 mb-1">Max Floor:</label>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            value={tempInputValues.maxFloor}
+                                            onChange={(e) => handleExactInputChange('maxFloor', e.target.value)}
+                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex gap-2">
+                                    <button 
+                                        onClick={() => applyExactValues('floor')}
+                                        className="flex-1 bg-[#cfa84f] text-white px-3 py-1 text-xs rounded hover:bg-[#b8863c] transition-colors"
+                                    >
+                                        Apply
+                                    </button>
+                                    <button 
+                                        onClick={() => toggleExactInput('floor')}
+                                        className="flex-1 border border-gray-400 px-3 py-1 text-xs rounded hover:bg-gray-100 transition-colors"
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Additional Parameters - Visual only for now */}
@@ -398,7 +628,52 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 <div className="text-xs text-gray-600 mt-4">
                     Range: {filters.minArea || 26} - {filters.maxArea || 440} m²
                 </div>
-                <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Number</button>
+                
+                {!exactInputs.area ? (
+                    <button 
+                        onClick={() => toggleExactInput('area')}
+                        className="mt-2 border border-gray-400 px-4 py-1 hover:bg-gray-100 transition-colors"
+                    >
+                        Exact Number
+                    </button>
+                ) : (
+                    <div className="mt-3 space-y-3">
+                        <div className="flex gap-3">
+                            <div className="flex-1">
+                                <label className="block text-gray-600 mb-1 text-sm">Min m²:</label>
+                                <input
+                                    type="number"
+                                    value={tempInputValues.minArea}
+                                    onChange={(e) => handleExactInputChange('minArea', e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                                />
+                            </div>
+                            <div className="flex-1">
+                                <label className="block text-gray-600 mb-1 text-sm">Max m²:</label>
+                                <input
+                                    type="number"
+                                    value={tempInputValues.maxArea}
+                                    onChange={(e) => handleExactInputChange('maxArea', e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex gap-3">
+                            <button 
+                                onClick={() => applyExactValues('area')}
+                                className="flex-1 bg-[#cfa84f] text-white px-4 py-2 rounded hover:bg-[#b8863c] transition-colors"
+                            >
+                                Apply
+                            </button>
+                            <button 
+                                onClick={() => toggleExactInput('area')}
+                                className="flex-1 border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Price */}
@@ -421,7 +696,52 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 <div className="text-xs text-gray-600 mt-4">
                     Range: ${filters.minPrice} - ${filters.maxPrice}
                 </div>
-                <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Price</button>
+                
+                {!exactInputs.price ? (
+                    <button 
+                        onClick={() => toggleExactInput('price')}
+                        className="mt-2 border border-gray-400 px-4 py-1 hover:bg-gray-100 transition-colors"
+                    >
+                        Exact Price
+                    </button>
+                ) : (
+                    <div className="mt-3 space-y-3">
+                        <div className="flex gap-3">
+                            <div className="flex-1">
+                                <label className="block text-gray-600 mb-1 text-sm">Min $:</label>
+                                <input
+                                    type="number"
+                                    value={tempInputValues.minPrice}
+                                    onChange={(e) => handleExactInputChange('minPrice', e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                                />
+                            </div>
+                            <div className="flex-1">
+                                <label className="block text-gray-600 mb-1 text-sm">Max $:</label>
+                                <input
+                                    type="number"
+                                    value={tempInputValues.maxPrice}
+                                    onChange={(e) => handleExactInputChange('maxPrice', e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex gap-3">
+                            <button 
+                                onClick={() => applyExactValues('price')}
+                                className="flex-1 bg-[#cfa84f] text-white px-4 py-2 rounded hover:bg-[#b8863c] transition-colors"
+                            >
+                                Apply
+                            </button>
+                            <button 
+                                onClick={() => toggleExactInput('price')}
+                                className="flex-1 border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Floor */}
@@ -429,22 +749,72 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 <h2 className="italic text-gray-400 mb-2">Floor</h2>
                 <div className="flex justify-between text-[#cfa84f] text-sm mb-2">
                     <span>From 1</span>
-                    <span>To {blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}</span>
+                    <span>To {filters.maxFloor}</span>
                 </div>
                 <div className="px-4 mb-2 py-4">
-                    <DualRangeSlider
-                        min={1}
-                        max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}
-                        step={1}
-                        value={[filters.minFloor, filters.maxFloor]}
-                        onValueChange={handleFloorRangeChange}
-                        className="relative z-10"
-                    />
+                    {filters.maxFloor > 1 && (
+                        <DualRangeSlider
+                            key={`floor-desktop-${filters.maxFloor}`}
+                            min={1}
+                            max={Number(filters.maxFloor)}
+                            step={1}
+                            value={[Number(filters.sliderMinFloor), Number(filters.sliderMaxFloor)]}
+                            onValueChange={handleFloorRangeChange}
+                            className="relative z-10"
+                        />
+                    )}
                 </div>
                 <div className="text-xs text-gray-600 mt-4">
-                    Range: Floor {filters.minFloor} - {filters.maxFloor}
+                    Range: Floor {filters.sliderMinFloor} - {filters.sliderMaxFloor}
                 </div>
-                <button className="mt-2 border border-gray-400 px-4 py-1 opacity-50">Exact Number</button>
+                
+                {!exactInputs.floor ? (
+                    <button 
+                        onClick={() => toggleExactInput('floor')}
+                        className="mt-2 border border-gray-400 px-4 py-1 hover:bg-gray-100 transition-colors"
+                    >
+                        Exact Number
+                    </button>
+                ) : (
+                    <div className="mt-3 space-y-3">
+                        <div className="flex gap-3">
+                            <div className="flex-1">
+                                <label className="block text-gray-600 mb-1 text-sm">Min Floor:</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    value={tempInputValues.minFloor}
+                                    onChange={(e) => handleExactInputChange('minFloor', e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                                />
+                            </div>
+                            <div className="flex-1">
+                                <label className="block text-gray-600 mb-1 text-sm">Max Floor:</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    value={tempInputValues.maxFloor}
+                                    onChange={(e) => handleExactInputChange('maxFloor', e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex gap-3">
+                            <button 
+                                onClick={() => applyExactValues('floor')}
+                                className="flex-1 bg-[#cfa84f] text-white px-4 py-2 rounded hover:bg-[#b8863c] transition-colors"
+                            >
+                                Apply
+                            </button>
+                            <button 
+                                onClick={() => toggleExactInput('floor')}
+                                className="flex-1 border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Additional Parameters */}
