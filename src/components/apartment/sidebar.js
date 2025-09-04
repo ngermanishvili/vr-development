@@ -93,7 +93,16 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
     const handleFilterChange = (filterType, value) => {
         setFilters(prev => ({ ...prev, [filterType]: value }))
         console.log(`Filter changed: ${filterType} = ${value}`)
-        // TODO: Apply filters to apartment search
+        
+        // If block is changed, navigate to the new block's page
+        if (filterType === 'selectedBlock' && value) {
+            const currentPath = window.location.pathname
+            const pathSegments = currentPath.split('/')
+            // Keep the current floor number or default to 1
+            const currentFloor = pathSegments[3] || '1'
+            // Navigate to the new block with the same floor
+            window.location.href = `/floor/${value.toLowerCase()}/${currentFloor}`
+        }
     }
 
     const handleAreaRangeChange = (values) => {
@@ -110,12 +119,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
         }
     }
 
-    const handlePriceRangeChange = (values) => {
-        const [minVal, maxVal] = values
-        if (minVal !== undefined && maxVal !== undefined && !isNaN(minVal) && !isNaN(maxVal)) {
-            setFilters(prev => ({ ...prev, minPrice: minVal, maxPrice: maxVal }))
-        }
-    }
 
     const toggleExactInput = (type) => {
         setExactInputs(prev => ({
@@ -244,13 +247,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         </div>
                     </div>
 
-                    {/* Category */}
-                    <div className="flex flex-wrap justify-center gap-2 mb-4">
-                        <button className="border border-[#cfa84f] px-3 py-1 text-[#cfa84f] text-xs">APARTMENT</button>
-                        <button className="border border-[#cfa84f] px-3 py-1 text-[#cfa84f] text-xs">COMMERCIAL</button>
-                        <button className="border border-[#cfa84f] px-3 py-1 text-[#cfa84f] text-xs">PARKING</button>
-                        <button className="border border-[#cfa84f] px-3 py-1 text-[#cfa84f] text-xs">RENT</button>
-                    </div>
 
                     {/* Number of Rooms */}
                     <div className="text-center mb-4">
@@ -356,73 +352,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         )}
                     </div>
 
-                    {/* Price */}
-                    <div className="text-center mb-4">
-                        <h2 className="italic text-gray-400 mb-2 text-sm">Price</h2>
-                        <div className="flex justify-between text-[#cfa84f] text-xs mb-2">
-                            <span>From $100</span>
-                            <span>To $2000</span>
-                        </div>
-                        <div className="px-2 mb-2 py-4">
-                            <DualRangeSlider
-                                min={100}
-                                max={2000}
-                                step={10}
-                                value={[filters.minPrice, filters.maxPrice]}
-                                onValueChange={handlePriceRangeChange}
-                                className="relative z-10"
-                            />
-                        </div>
-                        <div className="text-xs text-gray-600 mt-3">
-                            Range: ${filters.minPrice} - ${filters.maxPrice}
-                        </div>
-                        
-                        {!exactInputs.price ? (
-                            <button 
-                                onClick={() => toggleExactInput('price')}
-                                className="mt-2 border border-gray-400 px-3 py-1 text-xs hover:bg-gray-100 transition-colors"
-                            >
-                                Exact Price
-                            </button>
-                        ) : (
-                            <div className="mt-3 space-y-2">
-                                <div className="flex gap-2 text-xs">
-                                    <div className="flex-1">
-                                        <label className="block text-gray-600 mb-1">Min $:</label>
-                                        <input
-                                            type="number"
-                                            value={tempInputValues.minPrice}
-                                            onChange={(e) => handleExactInputChange('minPrice', e.target.value)}
-                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
-                                        />
-                                    </div>
-                                    <div className="flex-1">
-                                        <label className="block text-gray-600 mb-1">Max $:</label>
-                                        <input
-                                            type="number"
-                                            value={tempInputValues.maxPrice}
-                                            onChange={(e) => handleExactInputChange('maxPrice', e.target.value)}
-                                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="flex gap-2">
-                                    <button 
-                                        onClick={() => applyExactValues('price')}
-                                        className="flex-1 bg-[#cfa84f] text-white px-3 py-1 text-xs rounded hover:bg-[#b8863c] transition-colors"
-                                    >
-                                        Apply
-                                    </button>
-                                    <button 
-                                        onClick={() => toggleExactInput('price')}
-                                        className="flex-1 border border-gray-400 px-3 py-1 text-xs rounded hover:bg-gray-100 transition-colors"
-                                    >
-                                        Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        )}
-                    </div>
 
                     {/* Floor */}
                     <div className="text-center mb-4">
@@ -497,16 +426,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                         )}
                     </div>
 
-                    {/* Additional Parameters - Visual only for now */}
-                    <div className="text-left mb-4 opacity-60">
-                        <h2 className="font-semibold mb-2 text-sm">Additional Parameters</h2>
-                        <p className="text-xs">
-                            Bathroom with window | Master bedroom | <span className="text-[#cfa84f]">Terrace</span>
-                            <br />
-                            More than 2 windows | Windows on 3 sides | Street view
-                        </p>
-                        <p className="text-xs text-gray-500 mt-1 italic">Coming Soon</p>
-                    </div>
 
                     {/* Choose Apartment Button */}
                     <button
@@ -564,13 +483,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 </div>
             </div>
 
-            {/* Category - Visual only */}
-            <div className="flex justify-center gap-4 mb-6 opacity-60">
-                <button className="border border-[#cfa84f] px-4 py-2 text-[#cfa84f]" disabled>APARTMENT</button>
-                <button className="border border-[#cfa84f] px-4 py-2 text-[#cfa84f]" disabled>COMMERCIAL</button>
-                <button className="border border-[#cfa84f] px-4 py-2 text-[#cfa84f]" disabled>PARKING</button>
-                <button className="border border-[#cfa84f] px-4 py-2 text-[#cfa84f]" disabled>RENT</button>
-            </div>
 
             {/* Number of Rooms */}
             <div className="text-center mb-6">
@@ -676,73 +588,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 )}
             </div>
 
-            {/* Price */}
-            <div className="text-center mb-6">
-                <h2 className="italic text-gray-400 mb-2">Price</h2>
-                <div className="flex justify-between text-[#cfa84f] text-sm mb-2">
-                    <span>From $100</span>
-                    <span>To $2000</span>
-                </div>
-                <div className="px-4 mb-2 py-4">
-                    <DualRangeSlider
-                        min={100}
-                        max={2000}
-                        step={10}
-                        value={[filters.minPrice, filters.maxPrice]}
-                        onValueChange={handlePriceRangeChange}
-                        className="relative z-10"
-                    />
-                </div>
-                <div className="text-xs text-gray-600 mt-4">
-                    Range: ${filters.minPrice} - ${filters.maxPrice}
-                </div>
-                
-                {!exactInputs.price ? (
-                    <button 
-                        onClick={() => toggleExactInput('price')}
-                        className="mt-2 border border-gray-400 px-4 py-1 hover:bg-gray-100 transition-colors"
-                    >
-                        Exact Price
-                    </button>
-                ) : (
-                    <div className="mt-3 space-y-3">
-                        <div className="flex gap-3">
-                            <div className="flex-1">
-                                <label className="block text-gray-600 mb-1 text-sm">Min $:</label>
-                                <input
-                                    type="number"
-                                    value={tempInputValues.minPrice}
-                                    onChange={(e) => handleExactInputChange('minPrice', e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded"
-                                />
-                            </div>
-                            <div className="flex-1">
-                                <label className="block text-gray-600 mb-1 text-sm">Max $:</label>
-                                <input
-                                    type="number"
-                                    value={tempInputValues.maxPrice}
-                                    onChange={(e) => handleExactInputChange('maxPrice', e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded"
-                                />
-                            </div>
-                        </div>
-                        <div className="flex gap-3">
-                            <button 
-                                onClick={() => applyExactValues('price')}
-                                className="flex-1 bg-[#cfa84f] text-white px-4 py-2 rounded hover:bg-[#b8863c] transition-colors"
-                            >
-                                Apply
-                            </button>
-                            <button 
-                                onClick={() => toggleExactInput('price')}
-                                className="flex-1 border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition-colors"
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                )}
-            </div>
 
             {/* Floor */}
             <div className="text-center mb-6">
@@ -817,15 +662,6 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                 )}
             </div>
 
-            {/* Additional Parameters */}
-            <div className="text-left mb-6">
-                <h2 className="font-semibold mb-2">Additional Parameters</h2>
-                <p className="text-sm">
-                    Bathroom with window | Master bedroom | <span className="text-[#cfa84f]">Terrace</span>
-                    <br />
-                    More than 2 windows | Windows on 3 sides | Street view
-                </p>
-            </div>
 
             {/* Choose Apartment Button */}
             <button
