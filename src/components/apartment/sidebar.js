@@ -121,8 +121,13 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
 
     const handleAreaRangeChange = (values) => {
         const [minVal, maxVal] = values
+        console.log('Area range changed:', minVal, maxVal) // Debug
         if (minVal !== undefined && maxVal !== undefined && !isNaN(minVal) && !isNaN(maxVal)) {
-            setFilters(prev => ({ ...prev, minArea: minVal, maxArea: maxVal }))
+            setFilters(prev => {
+                const newFilters = { ...prev, minArea: minVal, maxArea: maxVal }
+                console.log('New filters:', newFilters) // Debug
+                return newFilters
+            })
         }
     }
 
@@ -297,8 +302,12 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                     <div className="text-center mb-4">
                         <h2 className="italic text-gray-400 mb-2 text-sm">Total Area</h2>
                         <div className="flex justify-between text-xs mb-2 px-2">
-                            <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.min_area || 26)} m²</span></span>
-                            <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.max_area || 440)} m²</span></span>
+                            <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{filters.minArea} m²</span></span>
+                            <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.maxArea} m²</span></span>
+                        </div>
+                        {/* Debug info */}
+                        <div className="text-xs text-red-500 px-2">
+                            Debug: {filters.minArea} - {filters.maxArea}
                         </div>
                         <div className="px-2 mb-2 py-4">
                             {!loading && (
@@ -368,8 +377,8 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
                     <div className="text-center mb-4">
                         <h2 className="italic text-gray-400 mb-2 text-sm">Floor</h2>
                         <div className="flex justify-between text-xs mb-2 px-2">
-                            <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">1</span></span>
-                            <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.maxFloor}</span></span>
+                            <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{filters.sliderMinFloor}</span></span>
+                            <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.sliderMaxFloor}</span></span>
                         </div>
                         <div className="px-2 mb-2 py-4">
                             {filters.maxFloor > 1 && (
@@ -527,8 +536,8 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
             <div className="text-center mb-6">
                 <h2 className="italic text-gray-400 mb-2">Total Area</h2>
                 <div className="flex justify-between text-sm mb-2 px-4">
-                    <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.min_area || 26)} m²</span></span>
-                    <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{Math.round(statistics?.overall?.max_area || 440)} m²</span></span>
+                    <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{filters.minArea} m²</span></span>
+                    <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.maxArea} m²</span></span>
                 </div>
                 <div className="px-4 mb-2 py-4">
                     {!loading && (
@@ -598,8 +607,8 @@ export default function Sidebar({ isCollapsed, isMobile, onToggleSidebar }) {
             <div className="text-center mb-6">
                 <h2 className="italic text-gray-400 mb-2">Floor</h2>
                 <div className="flex justify-between text-sm mb-2 px-4">
-                    <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">1</span></span>
-                    <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.maxFloor}</span></span>
+                    <span><span className="text-black">From</span> <span className="text-[#cfa84f] font-bold">{filters.sliderMinFloor}</span></span>
+                    <span><span className="text-black">To</span> <span className="text-[#cfa84f] font-bold">{filters.sliderMaxFloor}</span></span>
                 </div>
                 <div className="px-4 mb-2 py-4">
                     {filters.maxFloor > 1 && (
