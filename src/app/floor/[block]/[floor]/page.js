@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Header from '@/components/landing/Header/Header'
+import Sidebar from '@/components/apartment/sidebar'
 
 const FloorDetailPage = () => {
     const params = useParams()
@@ -13,6 +14,12 @@ const FloorDetailPage = () => {
     const [blockInfo, setBlockInfo] = useState(null)
     const [statistics, setStatistics] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
+    const [zoomLevel, setZoomLevel] = useState(1.2)
+
+    const toggleSidebar = () => {
+        setIsSidebarCollapsed(!isSidebarCollapsed)
+    }
 
     useEffect(() => {
         if (block && floor) {
@@ -74,11 +81,42 @@ const FloorDetailPage = () => {
     return (
         <div className="relative">
             <Header />
-            <div className="pt-24 p-8">
-                <div className="max-w-6xl mx-auto">
-                    <h1 className="text-4xl font-bold mb-4">
-                        Block {block} - Floor {floor}
-                    </h1>
+            {/* Desktop Layout */}
+            <div className="hidden md:flex pt-20 relative">
+                {/* Collapsed Sidebar Indicator */}
+                {isSidebarCollapsed && (
+                    <div className="fixed left-0 top-1/2 z-50 -translate-y-1/2">
+                        <button
+                            onClick={toggleSidebar}
+                            className="bg-[#cfa84f] hover:bg-[#b8963c] text-white p-3 rounded-r-lg shadow-lg transition-colors"
+                            title="Show Sidebar"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                )}
+
+                <div className={`${isSidebarCollapsed ? 'w-0' : 'w-[35%]'} absolute left-0 top-33 z-40 h-[calc(100%-80px)] transition-all duration-300`}>
+                    {!isSidebarCollapsed && (
+                        <div className="absolute top-4 right-4 z-50">
+                            <button
+                                onClick={toggleSidebar}
+                                className="border border-gray-300 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors bg-white shadow-lg"
+                                title="Hide Sidebar"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    )}
+                    <Sidebar isCollapsed={isSidebarCollapsed} />
+                </div>
+                <div className={`${isSidebarCollapsed ? 'w-full' : 'w-[60%]'} ${isSidebarCollapsed ? 'ml-0' : 'ml-[35%]'} transition-all duration-300`} >
+
+
 
                     {/* Floor Selector */}
                     {blockInfo && blockInfo.total_floors > 0 && (
@@ -107,112 +145,109 @@ const FloorDetailPage = () => {
                     {(block === 'c' || block === 'C' || block === 'C1' || block === 'c1' ||
                         block === 'a' || block === 'A' || block === 'A1' || block === 'a1' ||
                         block === 'b1' || block === 'B1' || block === 'b2' || block === 'B2') && (
-                            <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-                                <h2 className="text-2xl font-semibold mb-4">Floor Plan - Click on an apartment to view details</h2>
-                                <div className="flex justify-center">
-                                    <div className="relative inline-block  ">
-                                        <img
-                                            src={
-                                                (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
-                                                    ? `/a-block-floors/a-${floor}.jpg`
-                                                    : (block === 'b1' || block === 'B1')
-                                                        ? `/b1-block-floors/b-${floor}.jpg`
-                                                        : (block === 'b2' || block === 'B2')
-                                                            ? `/b2-block-floors/b2-${floor}.jpg`
-                                                            : `/c-block-floors/c-${floor}.jpg`
-                                            }
-                                            alt={`Floor ${floor} plan for Block ${block}`}
-                                            className="max-w-full h-auto rounded-lg shadow-md"
-                                            style={{ maxHeight: '600px' }}
-                                        />
-                                        {/* SVG Overlay for Interactive Apartments */}
-                                        {apartments.length > 0 && (
-                                            <svg
-                                                className="absolute inset-0 w-full h-full"
-                                                viewBox={
-                                                    // Different blocks may have different coordinate systems
-                                                    (block === 'c' || block === 'C' || block === 'C1' || block === 'c1')
-                                                        ? "0 0 1275 720"  // C block coords were created on 1280×720 canvas
+                            <div className={`${!isSidebarCollapsed ? '' : ''} `}>
+
+                                <div className="w-full h-screen">
+                                    <div className="relative  w-full h-full">
+                                        <div
+                                            className="relative"
+                                            style={{
+                                                transform: `scale(${zoomLevel})`,
+                                                transformOrigin: 'center center',
+                                                width: '100%',
+                                                height: '100%'
+                                            }}
+                                        >
+                                            <img
+                                                src={
+                                                    (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
+                                                        ? `/a-block-floors/a-${floor}.jpg`
                                                         : (block === 'b1' || block === 'B1')
-                                                            ? "0 0 1280 648"  // B1 block coords
+                                                            ? `/b1-block-floors/b-${floor}.jpg`
                                                             : (block === 'b2' || block === 'B2')
-                                                                ? "0 0 1280 728"  // B2 block coords
-                                                                : "0 0 1280 640"  // A block coords were created on 1280×640 canvas
+                                                                ? `/b2-block-floors/b2-${floor}.jpg`
+                                                                : `/c-block-floors/c-${floor}.jpg`
                                                 }
-                                                preserveAspectRatio="xMidYMid meet"
-                                                style={{ pointerEvents: 'auto' }}
-                                            >
-                                                {apartments.map((apartment) => apartment.coords && (
-                                                    <g key={apartment.id}>
-                                                        <polygon
-                                                            points={apartment.coords}
-                                                            fill={
-                                                                apartment.status === 'თავისუფალია' ? 'rgba(34, 197, 94, 0.3)' :  // მწვანე
-                                                                    apartment.status === 'გაყიდული' ? 'rgba(239, 68, 68, 0.3)' :      // წითელი
-                                                                        apartment.status === 'დაჯავშნილია' ? 'rgba(251, 191, 36, 0.3)' :  // ყვითელი
-                                                                            'rgba(156, 163, 175, 0.3)'  // ნაცრისფერი default
-                                                            }
-                                                            stroke={
-                                                                apartment.status === 'თავისუფალია' ? '#22c55e' :
-                                                                    apartment.status === 'გაყიდული' ? '#ef4444' :
-                                                                        apartment.status === 'დაჯავშნილია' ? '#fbbf24' :
-                                                                            '#9ca3af'
-                                                            }
-                                                            strokeWidth="1.5"
-                                                            className="transition-all duration-200 cursor-pointer hover:stroke-2"
-                                                            onMouseEnter={(e) => {
-                                                                e.target.style.fillOpacity = '0.6'
-                                                                e.target.style.strokeWidth = '3'
-                                                                // Show tooltip
-                                                                const tooltip = document.getElementById(`tooltip-${apartment.id}`)
-                                                                if (tooltip) tooltip.style.display = 'block'
-                                                            }}
-                                                            onMouseLeave={(e) => {
-                                                                e.target.style.fillOpacity = '0.3'
-                                                                e.target.style.strokeWidth = '1.5'
-                                                                // Hide tooltip
-                                                                const tooltip = document.getElementById(`tooltip-${apartment.id}`)
-                                                                if (tooltip) tooltip.style.display = 'none'
-                                                            }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation()
-                                                                // Show apartment details in an alert or modal
-                                                                alert(`ბინა #${apartment.apartment_number}\nფართობი: ${apartment.total_area} კვ.მ\nსტატუსი: ${apartment.status}\nტიპი: ${apartment.apartment_type}`)
-                                                            }}
-                                                        >
-                                                            <title>
-                                                                ბინა #{apartment.apartment_number}
-                                                                {'\n'}ფართობი: {apartment.total_area} კვ.მ
-                                                                {'\n'}სტატუსი: {apartment.status}
-                                                                {'\n'}ტიპი: {apartment.apartment_type}
-                                                            </title>
-                                                        </polygon>
-                                                    </g>
-                                                ))}
-                                            </svg>
-                                        )}
+                                                alt={`Floor ${floor} plan for Block ${block}`}
+                                                className="w-full h-screen object-contain"
+                                                draggable={false}
+                                            />
+                                            {/* SVG Overlay for Interactive Apartments */}
+                                            {apartments.length > 0 && (
+                                                <svg
+                                                    className="absolute inset-0 w-full h-full"
+                                                    viewBox={
+                                                        // Different blocks may have different coordinate systems
+                                                        (block === 'c' || block === 'C' || block === 'C1' || block === 'c1')
+                                                            ? "0 0 1275 720"  // C block coords were created on 1280×720 canvas
+                                                            : (block === 'b1' || block === 'B1')
+                                                                ? "0 0 1280 648"  // B1 block coords
+                                                                : (block === 'b2' || block === 'B2')
+                                                                    ? "0 0 1280 728"  // B2 block coords
+                                                                    : "0 0 1280 640"  // A block coords were created on 1280×640 canvas
+                                                    }
+                                                    preserveAspectRatio="xMidYMid meet"
+                                                    style={{ pointerEvents: 'auto' }}
+                                                >
+                                                    {apartments.map((apartment) => apartment.coords && (
+                                                        <g key={apartment.id}>
+                                                            <polygon
+                                                                points={apartment.coords}
+                                                                fill={
+                                                                    apartment.status === 'თავისუფალია' ? 'rgba(34, 197, 94, 0.3)' :  // მწვანე
+                                                                        apartment.status === 'გაყიდული' ? 'rgba(239, 68, 68, 0.3)' :      // წითელი
+                                                                            apartment.status === 'დაჯავშნილია' ? 'rgba(251, 191, 36, 0.3)' :  // ყვითელი
+                                                                                'rgba(156, 163, 175, 0.3)'  // ნაცრისფერი default
+                                                                }
+                                                                stroke={
+                                                                    apartment.status === 'თავისუფალია' ? '#22c55e' :
+                                                                        apartment.status === 'გაყიდული' ? '#ef4444' :
+                                                                            apartment.status === 'დაჯავშნილია' ? '#fbbf24' :
+                                                                                '#9ca3af'
+                                                                }
+                                                                strokeWidth="1.5"
+                                                                className="transition-all duration-200 cursor-pointer hover:stroke-2"
+                                                                onMouseEnter={(e) => {
+                                                                    e.target.style.fillOpacity = '0.6'
+                                                                    e.target.style.strokeWidth = '3'
+                                                                    // Show tooltip
+                                                                    const tooltip = document.getElementById(`tooltip-${apartment.id}`)
+                                                                    if (tooltip) tooltip.style.display = 'block'
+                                                                }}
+                                                                onMouseLeave={(e) => {
+                                                                    e.target.style.fillOpacity = '0.3'
+                                                                    e.target.style.strokeWidth = '1.5'
+                                                                    // Hide tooltip
+                                                                    const tooltip = document.getElementById(`tooltip-${apartment.id}`)
+                                                                    if (tooltip) tooltip.style.display = 'none'
+                                                                }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation()
+                                                                    // Show apartment details in an alert or modal
+                                                                    alert(`ბინა #${apartment.apartment_number}\nფართობი: ${apartment.total_area} კვ.მ\nსტატუსი: ${apartment.status}\nტიპი: ${apartment.apartment_type}`)
+                                                                }}
+                                                            >
+                                                                <title>
+                                                                    ბინა #{apartment.apartment_number}
+                                                                    {'\n'}ფართობი: {apartment.total_area} კვ.მ
+                                                                    {'\n'}სტატუსი: {apartment.status}
+                                                                    {'\n'}ტიპი: {apartment.apartment_type}
+                                                                </title>
+                                                            </polygon>
+                                                        </g>
+                                                    ))}
+                                                </svg>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
-                                {/* Legend */}
-                                <div className="mt-4 flex justify-center gap-6 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-4 h-4 bg-green-500 rounded"></div>
-                                        <span>თავისუფალია</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-4 h-4 bg-red-500 rounded"></div>
-                                        <span>გაყიდული</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-4 h-4 bg-amber-500 rounded"></div>
-                                        <span>დაჯავშნილია</span>
-                                    </div>
-                                </div>
+
+
                             </div>
                         )}
 
-                    {/* Floor Information */}
-                    {floorData && (
+                    {/* Floor Information - HIDDEN */}
+                    {/* {floorData && (
                         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
                             <h2 className="text-2xl font-semibold mb-4">Floor Information</h2>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -234,10 +269,10 @@ const FloorDetailPage = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
+                    )} */}
 
-                    {/* Block Information */}
-                    {blockInfo && (
+                    {/* Block Information - HIDDEN */}
+                    {/* {blockInfo && (
                         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
                             <h2 className="text-2xl font-semibold mb-4">Block Information</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -255,10 +290,10 @@ const FloorDetailPage = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
+                    )} */}
 
-                    {/* Apartments List */}
-                    {apartments.length > 0 && (
+                    {/* Apartments List - HIDDEN */}
+                    {/* {apartments.length > 0 && (
                         <div className="bg-white rounded-lg shadow-lg p-6">
                             <h2 className="text-2xl font-semibold mb-4">Apartments on this Floor</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -285,9 +320,116 @@ const FloorDetailPage = () => {
                                 ))}
                             </div>
                         </div>
-                    )}
+                    )} */}
 
                 </div>
+            </div>
+
+            {/* Mobile Layout */}
+            <div className="md:hidden pt-20">
+                <div className="p-4">
+                    <h1 className="text-2xl font-bold mb-4">
+                        Block {block} - Floor {floor}
+                    </h1>
+
+                    {/* Floor Selector for Mobile */}
+                    {blockInfo && blockInfo.total_floors > 0 && (
+                        <div className="bg-white rounded-lg shadow-lg p-4 mb-4">
+                            <h3 className="text-lg font-semibold mb-2">Select Floor:</h3>
+                            <div className="flex gap-2 flex-wrap">
+                                {Array.from({ length: blockInfo.total_floors }, (_, i) => i + 1).map((floorNum) => (
+                                    <button
+                                        key={floorNum}
+                                        onClick={() => router.push(`/floor/${block}/${floorNum}`)}
+                                        className={`px-3 py-1 rounded-lg transition-all duration-200 text-sm ${parseInt(floor) === floorNum
+                                            ? 'bg-blue-600 text-white shadow-lg'
+                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                            }`}
+                                    >
+                                        Floor {floorNum}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Floor Plan for Mobile */}
+                    {(block === 'c' || block === 'C' || block === 'C1' || block === 'c1' ||
+                        block === 'a' || block === 'A' || block === 'A1' || block === 'a1' ||
+                        block === 'b1' || block === 'B1' || block === 'b2' || block === 'B2') && (
+                            <div className="bg-white rounded-lg shadow-lg p-4">
+                                <h2 className="text-lg font-semibold mb-2">Floor Plan</h2>
+                                <div className="relative inline-block w-full">
+                                    <img
+                                        src={
+                                            (block === 'a' || block === 'A' || block === 'A1' || block === 'a1')
+                                                ? `/a-block-floors/a-${floor}.jpg`
+                                                : (block === 'b1' || block === 'B1')
+                                                    ? `/b1-block-floors/b-${floor}.jpg`
+                                                    : (block === 'b2' || block === 'B2')
+                                                        ? `/b2-block-floors/b2-${floor}.jpg`
+                                                        : `/c-block-floors/c-${floor}.jpg`
+                                        }
+                                        alt={`Floor ${floor} plan for Block ${block}`}
+                                        className="w-full h-auto rounded-lg shadow-md"
+                                    />
+                                    {/* SVG Overlay for Mobile */}
+                                    {apartments.length > 0 && (
+                                        <svg
+                                            className="absolute inset-0 w-full h-full"
+                                            viewBox={
+                                                (block === 'c' || block === 'C' || block === 'C1' || block === 'c1')
+                                                    ? "0 0 1275 720"
+                                                    : (block === 'b1' || block === 'B1')
+                                                        ? "0 0 1280 648"
+                                                        : (block === 'b2' || block === 'B2')
+                                                            ? "0 0 1280 728"
+                                                            : "0 0 1280 640"
+                                            }
+                                            preserveAspectRatio="xMidYMid meet"
+                                            style={{ pointerEvents: 'auto' }}
+                                        >
+                                            {apartments.map((apartment) => apartment.coords && (
+                                                <g key={apartment.id}>
+                                                    <polygon
+                                                        points={apartment.coords}
+                                                        fill={
+                                                            apartment.status === 'თავისუფალია' ? 'rgba(34, 197, 94, 0.3)' :
+                                                                apartment.status === 'გაყიდული' ? 'rgba(239, 68, 68, 0.3)' :
+                                                                    apartment.status === 'დაჯავშნილია' ? 'rgba(251, 191, 36, 0.3)' :
+                                                                        'rgba(156, 163, 175, 0.3)'
+                                                        }
+                                                        stroke={
+                                                            apartment.status === 'თავისუფალია' ? '#22c55e' :
+                                                                apartment.status === 'გაყიდული' ? '#ef4444' :
+                                                                    apartment.status === 'დაჯავშნილია' ? '#fbbf24' :
+                                                                        '#9ca3af'
+                                                        }
+                                                        strokeWidth="1.5"
+                                                        className="transition-all duration-200 cursor-pointer hover:stroke-2"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            alert(`ბინა #${apartment.apartment_number}\nფართობი: ${apartment.total_area} კვ.მ\nსტატუსი: ${apartment.status}\nტიპი: ${apartment.apartment_type}`)
+                                                        }}
+                                                    >
+                                                        <title>
+                                                            ბინა #{apartment.apartment_number}
+                                                            {'\n'}ფართობი: {apartment.total_area} კვ.მ
+                                                            {'\n'}სტატუსი: {apartment.status}
+                                                            {'\n'}ტიპი: {apartment.apartment_type}
+                                                        </title>
+                                                    </polygon>
+                                                </g>
+                                            ))}
+                                        </svg>
+                                    )}
+                                </div>
+
+                            </div>
+                        )}
+
+                </div>
+                <Sidebar isCollapsed={false} isMobile={true} />
             </div>
         </div>
     )

@@ -6,9 +6,9 @@
       "coords": "566,309,591,340,602,337,607,345,647,335,670,311,656,301,644,312,634,309,624,306,614,304,602,302,592,302,584,304,576,306",
       "originalId": "2457",
       "entrance": "1",
-      "area": "133.4 კვ.მ.",
+      "area": "133.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/VE7RrVdQWW.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-2",
@@ -16,9 +16,9 @@
       "coords": "605,347,632,383,675,368,702,341,668,310,647,336",
       "originalId": "2458",
       "entrance": "1",
-      "area": "85.9 კვ.მ.",
+      "area": "85.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/3lODMx2k5S.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-3",
@@ -26,9 +26,9 @@
       "coords": "633,383,648,404,692,389,717,358,701,340,675,368",
       "originalId": "2459",
       "entrance": "1",
-      "area": "59.7 კვ.მ.",
+      "area": "59.7",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/92z7YAIYtc.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-4",
@@ -36,9 +36,9 @@
       "coords": "677,443,722,428,750,393,766,412,740,448,696,467",
       "originalId": "2460",
       "entrance": "1",
-      "area": "45.6 კვ.მ.",
+      "area": "45.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/Qmf47RT2xB.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-5",
@@ -46,9 +46,9 @@
       "coords": "696,466,740,448,766,411,784,432,758,469,712,488",
       "originalId": "2461",
       "entrance": "1",
-      "area": "45.8 კვ.მ.",
+      "area": "45.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/OY4uyHM3y7.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-6",
@@ -56,9 +56,9 @@
       "coords": "714,489,729,512,779,492,802,454,784,430,758,469",
       "originalId": "2462",
       "entrance": "1",
-      "area": "45.8 კვ.მ.",
+      "area": "45.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/0rZumsLKfA.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-7",
@@ -66,9 +66,9 @@
       "coords": "730,512,779,492,802,454,822,478,797,518,751,538",
       "originalId": "2463",
       "entrance": "1",
-      "area": "45.8 კვ.მ.",
+      "area": "45.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/4nBIVegLVJ.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-8",
@@ -76,9 +76,9 @@
       "coords": "751,538,796,518,822,478,849,508,833,539,770,565",
       "originalId": "2464",
       "entrance": "1",
-      "area": "50.8 კვ.მ.",
+      "area": "50.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/sqTQS3xeyY.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-9",
@@ -86,9 +86,9 @@
       "coords": "848,510,846,530,850,543,856,554,859,566,862,579,860,590,857,604,854,615,847,624,840,633,832,640,823,646,816,650,797,624,789,612,792,592,770,564,833,539",
       "originalId": "2465",
       "entrance": "1",
-      "area": "96.9 კვ.მ.",
+      "area": "96.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/4ZEqvRE6QT.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-10",
@@ -96,9 +96,9 @@
       "coords": "732,546,752,572,686,600,684,612,632,606,639,572,654,574,656,564,682,566",
       "originalId": "2466",
       "entrance": "1",
-      "area": "44.6 კვ.მ.",
+      "area": "44.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/1PIIMTRoZi.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-11",
@@ -106,9 +106,9 @@
       "coords": "732,545,682,566,654,563,654,573,620,570,623,550,636,552,638,537,665,539,714,519",
       "originalId": "2467",
       "entrance": "1",
-      "area": "45.8 კვ.მ.",
+      "area": "45.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/tpWhpsIknq.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-12",
@@ -116,9 +116,9 @@
       "coords": "714,518,665,538,638,536,636,551,602,546,604,524,621,525,621,512,648,514,696,494",
       "originalId": "2468",
       "entrance": "1",
-      "area": "45.8 კვ.მ.",
+      "area": "45.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/QPipHeuOQu.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-13",
@@ -126,9 +126,9 @@
       "coords": "696,494,648,514,621,512,620,526,586,522,590,500,602,500,604,486,632,489,678,472",
       "originalId": "2469",
       "entrance": "1",
-      "area": "45.6 კვ.მ.",
+      "area": "45.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/CdsSGmTy0b.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-14",
@@ -136,19 +136,9 @@
       "coords": "518,428,556,429,555,420,579,419,628,403,594,359,544,374,527,372,527,385,492,384",
       "originalId": "2470",
       "entrance": "1",
-      "area": "145.57 კვ.მ.",
+      "area": "145.57",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/vB2yBhnmj3.jpg"
-    },
-    {
-      "id": "Block-B2-Ap-15",
-      "apartmentNumber": "15",
-      "coords": "498,371,520,372,519,362,580,342,576,336,585,332,564,302,532,314,532,322,524,324,516,329,509,335,503,344,500,351,498,361",
-      "originalId": "2471",
-      "entrance": "1",
-      "area": "132.75 კვ.მ.",
-      "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/Lpc5lgrv8M.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-14a",
@@ -156,9 +146,19 @@
       "coords": "500,384,527,386,527,372,545,374,592,359,581,342,519,362,519,372,498,372",
       "originalId": "2579",
       "entrance": "1",
-      "area": "კვ.მ.",
+      "area": null,
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/nophoto.jpg"
+      "source": "area"
+    },
+    {
+      "id": "Block-B2-Ap-15",
+      "apartmentNumber": "15",
+      "coords": "498,371,520,372,519,362,580,342,576,336,585,332,564,302,532,314,532,322,524,324,516,329,509,335,503,344,500,351,498,361",
+      "originalId": "2471",
+      "entrance": "1",
+      "area": "132.75",
+      "status": "გაყიდულია",
+      "source": "area"
     }
   ],
   "2": [
@@ -168,9 +168,9 @@
       "coords": "569,290,590,318,600,315,608,323,644,313,656,299,649,295,643,292,638,290,631,288,625,287,618,286,614,285,607,285,602,285,596,285,591,285,586,286,580,287,576,288,591,285",
       "originalId": "2472",
       "entrance": "1",
-      "area": "63.79 კვ.მ.",
+      "area": "63.79",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/awNA0t7SSD.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-17",
@@ -178,9 +178,9 @@
       "coords": "604,324,644,312,656,300,686,332,674,347,633,360",
       "originalId": "2473",
       "entrance": "1",
-      "area": "61.04 კვ.მ.",
+      "area": "61.04",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/FUcrAGLrkf.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-18",
@@ -188,9 +188,9 @@
       "coords": "633,360,674,347,686,332,702,352,691,365,648,380",
       "originalId": "2474",
       "entrance": "1",
-      "area": "47.9 კვ.მ.",
+      "area": "47.9",
       "status": "თავისუფალია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/pPcKXouiIW.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-19",
@@ -198,9 +198,9 @@
       "coords": "648,380,690,364,702,351,717,369,706,384,662,400",
       "originalId": "2475",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/6owD1DLH2L.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-20",
@@ -208,9 +208,9 @@
       "coords": "662,400,706,384,716,370,735,390,724,405,680,420",
       "originalId": "2476",
       "entrance": "1",
-      "area": "30.5 კვ.მ.",
+      "area": "30.5",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/OuqzOTuG8n.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-21",
@@ -218,9 +218,9 @@
       "coords": "680,420,724,405,734,391,752,412,743,425,696,443",
       "originalId": "2477",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/nxcsyJRzvl.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-22",
@@ -228,9 +228,9 @@
       "coords": "696,442,742,425,751,412,769,433,762,448,714,466",
       "originalId": "2478",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/RbzGNmWNkG.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-23",
@@ -238,9 +238,9 @@
       "coords": "714,466,761,448,769,434,788,456,781,471,734,489",
       "originalId": "2479",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/PGadiK6ZCA.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-24",
@@ -248,9 +248,9 @@
       "coords": "732,489,780,471,787,455,808,479,802,494,752,515",
       "originalId": "2480",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/6TELq819JL.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-25",
@@ -258,9 +258,9 @@
       "coords": "753,514,802,495,808,480,837,514,774,542",
       "originalId": "2481",
       "entrance": "1",
-      "area": "31.45 კვ.მ.",
+      "area": "31.45",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/iMAnDraHOx.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-26",
@@ -268,9 +268,9 @@
       "coords": "774,542,837,514,841,521,844,526,846,533,848,540,849,548,848,557,846,565,844,573,841,578,838,585,834,591,830,598,824,602,820,607,815,610,807,615,803,618,796,620,786,610,789,592,777,576,794,568",
       "originalId": "2482",
       "entrance": "1",
-      "area": "31.31 კვ.მ.",
+      "area": "31.31",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/TAoYmcP3Dv.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-27",
@@ -278,9 +278,9 @@
       "coords": "756,550,688,578,675,573,665,565,657,555,649,540,684,544,734,522",
       "originalId": "2483",
       "entrance": "1",
-      "area": "31.69 კვ.მ.",
+      "area": "31.69",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/lK4cmqCGFk.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-28",
@@ -288,9 +288,9 @@
       "coords": "734,522,684,542,649,540,631,513,666,516,714,496",
       "originalId": "2484",
       "entrance": "1",
-      "area": "31.69 კვ.მ.",
+      "area": "31.69",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/AMMBaqJp4Z.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-29",
@@ -298,9 +298,9 @@
       "coords": "714,496,665,516,631,513,615,488,649,490,696,472",
       "originalId": "2485",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "თავისუფალია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/0ve2NeljYi.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-30",
@@ -308,9 +308,9 @@
       "coords": "696,472,648,490,615,488,599,464,631,467,680,448",
       "originalId": "2486",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/LgEgWpeGjk.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-31",
@@ -318,9 +318,9 @@
       "coords": "599,465,631,467,678,448,662,426,610,444,584,441",
       "originalId": "2487",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/kzVmQoQR2F.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-32",
@@ -328,9 +328,19 @@
       "coords": "524,349,555,396,580,396,626,381,592,336,544,352",
       "originalId": "2488",
       "entrance": "1",
-      "area": "71.7 კვ.მ.",
+      "area": "71.7",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/9CBk1K8lN3.jpg"
+      "source": "area"
+    },
+    {
+      "id": "Block-B2-Ap-32",
+      "apartmentNumber": "32a",
+      "coords": "524,349,543,351,592,335,580,322,517,340",
+      "originalId": "2581",
+      "entrance": "1",
+      "area": "27.5",
+      "status": "გაყიდულია",
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-33",
@@ -338,19 +348,9 @@
       "coords": "517,340,513,332,512,326,513,319,514,314,519,308,524,303,529,300,535,296,540,293,546,292,552,290,524,303,558,290,561,284,581,310,571,313,578,323",
       "originalId": "2489",
       "entrance": "1",
-      "area": "65.6 კვ.მ.",
+      "area": "65.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/FclQSProcP.jpg"
-    },
-    {
-      "id": "Block-B2-Ap-32 a",
-      "apartmentNumber": "32 a",
-      "coords": "524,349,543,351,592,335,580,322,517,340",
-      "originalId": "2581",
-      "entrance": "1",
-      "area": "27.5 კვ.მ.",
-      "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/lF8UTlalIv.jpg"
+      "source": "area"
     }
   ],
   "3": [
@@ -360,9 +360,9 @@
       "coords": "565,267,589,294,599,293,606,302,646,290,657,276,650,272,642,270,632,266,622,265,610,264,599,264,588,264,578,265",
       "originalId": "2490",
       "entrance": "1",
-      "area": "63.79 კვ.მ.",
+      "area": "63.79",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/4rrgCIAzfp.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-35",
@@ -370,9 +370,9 @@
       "coords": "606,303,646,290,656,277,686,311,675,323,631,337",
       "originalId": "2491",
       "entrance": "1",
-      "area": "61.04 კვ.მ.",
+      "area": "61.04",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/WuOjAulc9Y.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-36",
@@ -380,9 +380,9 @@
       "coords": "631,336,675,323,685,310,701,329,692,341,647,357",
       "originalId": "2492",
       "entrance": "1",
-      "area": "47.9 კვ.მ.",
+      "area": "47.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/9aBX4cJKtX.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-37",
@@ -390,9 +390,9 @@
       "coords": "647,356,691,342,700,328,718,350,708,361,662,376",
       "originalId": "2493",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/MMinKdSZcM.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-38",
@@ -400,9 +400,9 @@
       "coords": "662,376,708,361,718,350,734,368,727,380,680,396",
       "originalId": "2494",
       "entrance": "1",
-      "area": "30.35 კვ.მ.",
+      "area": "30.35",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/dQuUUBTZZf.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-39",
@@ -410,9 +410,9 @@
       "coords": "680,395,727,380,732,368,753,389,745,402,698,419",
       "originalId": "2495",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/TVaXzBS8ed.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-40",
@@ -420,9 +420,9 @@
       "coords": "698,420,744,402,752,388,771,410,764,423,714,442",
       "originalId": "2496",
       "entrance": "1",
-      "area": "30.35 კვ.მ.",
+      "area": "30.35",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/XVE0lXw0rE.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-41",
@@ -430,9 +430,9 @@
       "coords": "714,441,763,424,770,409,792,433,784,447,732,466",
       "originalId": "2497",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/bMnUf265V9.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-42",
@@ -440,9 +440,9 @@
       "coords": "732,466,784,446,790,432,812,455,805,471,753,490",
       "originalId": "2498",
       "entrance": "1",
-      "area": "30.35 კვ.მ.",
+      "area": "30.35",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/IpYO3sfzyN.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-43",
@@ -450,9 +450,9 @@
       "coords": "753,490,805,470,812,456,842,492,774,518",
       "originalId": "2499",
       "entrance": "1",
-      "area": "30.9 კვ.მ.",
+      "area": "30.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/ZWeepj1TSw.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-44",
@@ -460,9 +460,9 @@
       "coords": "774,517,841,492,846,500,850,509,852,519,852,528,852,538,850,548,847,558,842,564,837,570,834,574,829,579,823,584,818,588,811,592,806,595,800,597,788,587,792,568,780,552,798,545",
       "originalId": "2500",
       "entrance": "1",
-      "area": "31.31 კვ.მ.",
+      "area": "31.31",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/sqDKPvUvID.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-45",
@@ -470,9 +470,9 @@
       "coords": "737,497,758,524,688,554,674,548,649,516,683,521",
       "originalId": "2501",
       "entrance": "1",
-      "area": "30.8 კვ.მ.",
+      "area": "30.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/yAkPvb3YQU.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-46",
@@ -480,9 +480,9 @@
       "coords": "736,497,682,520,649,516,631,490,666,491,718,472",
       "originalId": "2502",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/qUuYybDFSo.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-47",
@@ -490,9 +490,9 @@
       "coords": "718,471,666,491,630,489,615,464,647,466,698,447",
       "originalId": "2503",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/mB7T2Q450P.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-48",
@@ -500,9 +500,9 @@
       "coords": "696,448,646,467,615,464,600,441,630,442,680,425",
       "originalId": "2504",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/8E2rHkdm4H.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-49",
@@ -510,9 +510,9 @@
       "coords": "599,441,628,442,680,424,662,402,610,420,586,418",
       "originalId": "2505",
       "entrance": "1",
-      "area": "30.0 კვ.მ.",
+      "area": "30.0",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/UCPZqBWqe5.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-50",
@@ -520,9 +520,19 @@
       "coords": "554,373,576,374,625,357,591,314,542,329,522,329",
       "originalId": "2506",
       "entrance": "1",
-      "area": "71.7 კვ.მ.",
+      "area": "71.7",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/7LW6Xck33v.jpg"
+      "source": "area"
+    },
+    {
+      "id": "Block-B2-Ap-50",
+      "apartmentNumber": "50a",
+      "coords": "522,329,540,329,591,314,579,298,516,318",
+      "originalId": "2582",
+      "entrance": "1",
+      "area": "27.5",
+      "status": "გაყიდულია",
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-51",
@@ -530,19 +540,9 @@
       "coords": "514,317,510,310,511,302,514,292,521,286,528,280,536,276,543,272,552,270,560,268,561,262,580,288,572,291,576,298",
       "originalId": "2507",
       "entrance": "1",
-      "area": "63.9 კვ.მ.",
+      "area": "63.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/YSBA7YHwdt.jpg"
-    },
-    {
-      "id": "Block-B2-Ap-50 a",
-      "apartmentNumber": "50 a",
-      "coords": "522,329,540,329,591,314,579,298,516,318",
-      "originalId": "2582",
-      "entrance": "1",
-      "area": "27.5 კვ.მ.",
-      "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/IljZO45P8M.jpg"
+      "source": "area"
     }
   ],
   "4": [
@@ -552,9 +552,9 @@
       "coords": "565,242,588,272,599,269,605,277,646,266,658,256,648,248,638,244,628,242,617,241,607,241,597,241",
       "originalId": "2508",
       "entrance": "1",
-      "area": "63.79 კვ.მ.",
+      "area": "63.79",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/qP1HbTTz8y.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-53",
@@ -562,9 +562,9 @@
       "coords": "605,277,644,266,659,256,688,287,677,300,632,313",
       "originalId": "2509",
       "entrance": "1",
-      "area": "61.04 კვ.მ.",
+      "area": "61.04",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/inBtzMMbfw.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-54",
@@ -572,9 +572,9 @@
       "coords": "633,313,676,299,688,287,704,305,694,317,648,332",
       "originalId": "2510",
       "entrance": "1",
-      "area": "47.9 კვ.მ.",
+      "area": "47.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/bdWab5KTHP.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-55",
@@ -582,9 +582,9 @@
       "coords": "648,332,693,318,704,305,722,323,710,337,664,352",
       "originalId": "2511",
       "entrance": "1",
-      "area": "30.5 კვ.მ.",
+      "area": "30.5",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/yIMD8lZ6gv.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-56",
@@ -592,9 +592,9 @@
       "coords": "664,350,710,337,722,323,740,342,728,356,680,372",
       "originalId": "2512",
       "entrance": "1",
-      "area": "30.5 კვ.მ.",
+      "area": "30.5",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/6DQXRScT3g.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-57",
@@ -602,9 +602,9 @@
       "coords": "680,372,728,357,738,341,756,363,746,378,699,394",
       "originalId": "2513",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/4krEXJl1NT.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-58",
@@ -612,9 +612,9 @@
       "coords": "699,394,746,377,755,361,776,385,766,398,717,416",
       "originalId": "2514",
       "entrance": "1",
-      "area": "30.35 კვ.მ.",
+      "area": "30.35",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/JCTlriCIsx.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-59",
@@ -622,9 +622,9 @@
       "coords": "717,416,766,399,774,384,796,406,787,422,737,441",
       "originalId": "2515",
       "entrance": "1",
-      "area": "30.35 კვ.მ.",
+      "area": "30.35",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/E4ScqyRZkf.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-60",
@@ -632,9 +632,9 @@
       "coords": "737,440,787,421,795,405,818,431,808,446,758,466",
       "originalId": "2516",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/iWzCHbwOtm.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-61",
@@ -642,9 +642,9 @@
       "coords": "758,466,807,446,816,432,844,466,781,492",
       "originalId": "2517",
       "entrance": "1",
-      "area": "30.9 კვ.მ.",
+      "area": "30.9",
       "status": "თავისუფალია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/7ontyEllDO.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-62",
@@ -652,9 +652,9 @@
       "coords": "781,492,844,466,849,471,852,476,855,482,857,489,858,498,857,506,856,512,855,518,852,526,850,533,844,541,840,548,836,552,831,557,826,562,816,568,806,574,792,562,797,543,784,528,802,520",
       "originalId": "2518",
       "entrance": "1",
-      "area": "31.4 კვ.მ.",
+      "area": "31.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/vLodgHg2WO.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-63",
@@ -662,9 +662,9 @@
       "coords": "738,472,762,501,688,530,677,524,670,519,650,492,686,494",
       "originalId": "2519",
       "entrance": "1",
-      "area": "30.8 კვ.მ.",
+      "area": "30.8",
       "status": "თავისუფალია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/N4AEmcV9Q8.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-64",
@@ -672,9 +672,9 @@
       "coords": "650,492,686,494,738,472,719,448,666,466,632,466",
       "originalId": "2520",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/aV74xGU0kQ.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-65",
@@ -682,9 +682,9 @@
       "coords": "720,448,666,467,632,465,615,439,649,441,699,423",
       "originalId": "2521",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "თავისუფალია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/BZpZDYD3dQ.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-66",
@@ -692,9 +692,9 @@
       "coords": "615,440,649,441,700,423,680,400,630,417,598,416",
       "originalId": "2522",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "თავისუფალია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/jgsNIMV4Zl.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-67",
@@ -702,9 +702,9 @@
       "coords": "680,400,630,416,598,416,584,394,613,395,664,378",
       "originalId": "2523",
       "entrance": "1",
-      "area": "30.0 კვ.მ.",
+      "area": "30.0",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/dzhZNw5fre.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-68",
@@ -712,9 +712,19 @@
       "coords": "550,348,579,348,625,332,591,290,539,304,520,304",
       "originalId": "2524",
       "entrance": "1",
-      "area": "71.7 კვ.მ.",
+      "area": "71.7",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/SWiZZjLA9o.jpg"
+      "source": "area"
+    },
+    {
+      "id": "Block-B2-Ap-68",
+      "apartmentNumber": "68a",
+      "coords": "520,305,538,304,590,290,579,276,513,294",
+      "originalId": "2583",
+      "entrance": "1",
+      "area": "27.5",
+      "status": "გაყიდულია",
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-69",
@@ -722,19 +732,9 @@
       "coords": "513,294,508,288,508,278,511,271,516,264,522,258,527,256,532,253,540,250,548,246,556,243,561,241,579,264,569,267,576,275",
       "originalId": "2525",
       "entrance": "1",
-      "area": "63.9 კვ.მ.",
+      "area": "63.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/qMBFx3CPPm.jpg"
-    },
-    {
-      "id": "Block-B2-Ap-68 a",
-      "apartmentNumber": "68 a",
-      "coords": "520,305,538,304,590,290,579,276,513,294",
-      "originalId": "2583",
-      "entrance": "1",
-      "area": "27.5 კვ.მ.",
-      "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/1ZAaDgGTiF.jpg"
+      "source": "area"
     }
   ],
   "5": [
@@ -744,9 +744,9 @@
       "coords": "561,218,587,247,599,244,605,253,647,242,657,230,650,226,642,221,634,219,626,217,617,214,607,214,596,212,584,214",
       "originalId": "2526",
       "entrance": "1",
-      "area": "63.79 კვ.მ.",
+      "area": "63.79",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/i0nAicrL2y.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-71",
@@ -754,9 +754,9 @@
       "coords": "602,253,647,242,657,230,688,263,678,274,632,288",
       "originalId": "2527",
       "entrance": "1",
-      "area": "61.04 კვ.მ.",
+      "area": "61.04",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/P7OqKS7ETJ.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-72",
@@ -764,9 +764,9 @@
       "coords": "633,288,677,274,688,263,703,281,696,292,648,307",
       "originalId": "2528",
       "entrance": "1",
-      "area": "47.9 კვ.მ.",
+      "area": "47.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/m6tv17G56A.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-73",
@@ -774,9 +774,9 @@
       "coords": "648,307,696,292,703,281,720,300,712,312,665,326",
       "originalId": "2529",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/dO4NZs3V6s.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-74",
@@ -784,9 +784,9 @@
       "coords": "664,326,711,312,719,299,738,318,729,330,682,346",
       "originalId": "2530",
       "entrance": "1",
-      "area": "30.35 კვ.მ.",
+      "area": "30.35",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/E0zfY9EPOA.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-75",
@@ -794,9 +794,9 @@
       "coords": "682,346,728,330,737,318,758,338,748,351,699,368",
       "originalId": "2531",
       "entrance": "1",
-      "area": "30.3 კვ.მ.",
+      "area": "30.3",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/kyb0Kc8bSU.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-76",
@@ -804,9 +804,9 @@
       "coords": "699,368,748,352,756,337,778,360,769,372,719,390",
       "originalId": "2532",
       "entrance": "1",
-      "area": "30.35 კვ.მ.",
+      "area": "30.35",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/VBD6FnenK0.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-77",
@@ -814,9 +814,9 @@
       "coords": "719,391,768,373,778,360,800,383,790,396,740,414",
       "originalId": "2533",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/P1A0BYWFBv.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-78",
@@ -824,9 +824,9 @@
       "coords": "740,414,789,396,800,383,822,404,814,419,761,440",
       "originalId": "2534",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/4CiQKEmdBC.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-79",
@@ -834,9 +834,9 @@
       "coords": "761,440,813,419,822,404,850,441,784,466",
       "originalId": "2535",
       "entrance": "1",
-      "area": "31.45 კვ.მ.",
+      "area": "31.45",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/CSl2VvRU4u.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-80",
@@ -844,9 +844,9 @@
       "coords": "784,464,850,440,855,448,857,455,859,461,860,466,862,474,862,481,862,487,860,495,858,503,855,508,852,515,847,520,844,524,839,530,833,534,828,539,821,542,815,546,808,548,797,538,800,515,788,502,807,494",
       "originalId": "2536",
       "entrance": "1",
-      "area": "31.31 კვ.მ.",
+      "area": "31.31",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/Y8m6wjOoH4.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-81",
@@ -854,9 +854,9 @@
       "coords": "764,474,691,504,677,496,650,465,686,467,742,447",
       "originalId": "2537",
       "entrance": "1",
-      "area": "30.8 კვ.მ.",
+      "area": "30.8",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/PqW68ysJvV.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-82",
@@ -864,9 +864,9 @@
       "coords": "742,447,688,466,649,464,631,438,666,440,722,421",
       "originalId": "2538",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/4MzvZCPJsQ.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-83",
@@ -874,9 +874,9 @@
       "coords": "720,421,666,441,631,438,614,413,648,416,701,397",
       "originalId": "2539",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/uxilH1eZvP.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-84",
@@ -884,9 +884,9 @@
       "coords": "614,414,648,417,700,398,682,374,630,392,597,390",
       "originalId": "2540",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "თავისუფალია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/tJ9t2NnLu0.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-85",
@@ -894,9 +894,9 @@
       "coords": "630,391,597,390,584,368,610,370,664,354,683,374",
       "originalId": "2541",
       "entrance": "1",
-      "area": "30.0 კვ.მ.",
+      "area": "30.0",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/dQdKV2gZqz.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-86",
@@ -904,9 +904,19 @@
       "coords": "550,324,573,325,624,309,589,265,537,280,517,280",
       "originalId": "2542",
       "entrance": "1",
-      "area": "71.7 კვ.მ.",
+      "area": "71.7",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/MqtLVLlnVg.jpg"
+      "source": "area"
+    },
+    {
+      "id": "Block-B2-Ap-86",
+      "apartmentNumber": "86a",
+      "coords": "517,278,536,280,589,266,578,251,511,270",
+      "originalId": "2584",
+      "entrance": "1",
+      "area": "27.5",
+      "status": "გაყიდულია",
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-87",
@@ -914,19 +924,9 @@
       "coords": "511,270,506,264,506,254,509,245,514,238,520,234,527,230,534,227,540,225,546,222,554,220,560,219,576,240,566,243,574,252",
       "originalId": "2543",
       "entrance": "1",
-      "area": "63.9 კვ.მ.",
+      "area": "63.9",
       "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/Dqnx2mGNdC.jpg"
-    },
-    {
-      "id": "Block-B2-Ap-86 a",
-      "apartmentNumber": "86 a",
-      "coords": "517,278,536,280,589,266,578,251,511,270",
-      "originalId": "2584",
-      "entrance": "1",
-      "area": "27.5 კვ.მ.",
-      "status": "გაყიდულია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/yuJQV6hSUy.jpg"
+      "source": "area"
     }
   ],
   "6": [
@@ -936,9 +936,9 @@
       "coords": "558,192,579,215,589,212,596,220,656,204,650,198,642,194,632,189,624,187,615,186,604,186,594,186",
       "originalId": "2585",
       "entrance": "1",
-      "area": "65.6 კვ.მ.",
+      "area": "65.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/ub6SQOmhwv.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-89",
@@ -946,9 +946,9 @@
       "coords": "596,219,656,203,680,226,670,234,618,248",
       "originalId": "2586",
       "entrance": "1",
-      "area": "52.6 კვ.მ.",
+      "area": "52.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/lj8khgdiNq.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-90",
@@ -956,9 +956,9 @@
       "coords": "618,247,670,234,680,226,704,252,692,264,644,277",
       "originalId": "2587",
       "entrance": "1",
-      "area": "47.9 კვ.მ.",
+      "area": "47.9",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/bghBPxubFV.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-91",
@@ -966,9 +966,9 @@
       "coords": "644,276,662,296,710,282,722,272,703,251,691,265",
       "originalId": "2588",
       "entrance": "1",
-      "area": "30.5 კვ.მ.",
+      "area": "30.5",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/Pob0r12UGL.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-92",
@@ -976,9 +976,9 @@
       "coords": "662,296,678,316,728,300,740,290,722,272,710,282",
       "originalId": "2589",
       "entrance": "1",
-      "area": "30.5 კვ.მ.",
+      "area": "30.5",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/2kvDFSK3kb.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-93",
@@ -986,9 +986,9 @@
       "coords": "680,316,697,336,750,320,758,311,740,290,729,300",
       "originalId": "2590",
       "entrance": "1",
-      "area": "30.4 კვ.მ.",
+      "area": "30.4",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/9i57sCsnK5.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-94",
@@ -996,9 +996,9 @@
       "coords": "698,337,748,322,758,310,778,330,769,342,714,358",
       "originalId": "2591",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/7q9DV2xEbv.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-95",
@@ -1006,9 +1006,9 @@
       "coords": "714,357,769,342,778,331,800,354,790,364,736,382",
       "originalId": "2592",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/oXyIIZxhHS.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-96",
@@ -1016,9 +1016,9 @@
       "coords": "736,382,789,364,800,353,822,377,813,388,758,406",
       "originalId": "2593",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/Grdi9CmrX2.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-97",
@@ -1026,9 +1026,9 @@
       "coords": "758,406,813,389,822,378,847,407,781,433",
       "originalId": "2594",
       "entrance": "1",
-      "area": "30.9 კვ.მ.",
+      "area": "30.9",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/0TacRfxeKJ.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-98",
@@ -1036,9 +1036,9 @@
       "coords": "781,433,848,407,865,426,870,433,873,438,876,445,880,452,882,459,882,466,881,474,878,482,875,490,870,498,866,505,862,510,857,515,852,521,846,524,839,529,832,532,826,534,820,537,808,526,813,503,784,469,806,461",
       "originalId": "2595",
       "entrance": "1",
-      "area": "31.4 კვ.მ.",
+      "area": "31.4",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/bHa5EtH9hL.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-99",
@@ -1046,9 +1046,9 @@
       "coords": "686,470,761,442,740,418,680,438,650,436",
       "originalId": "2596",
       "entrance": "1",
-      "area": "30.8 კვ.მ.",
+      "area": "30.8",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/YCYcsCsmWW.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-100",
@@ -1056,9 +1056,9 @@
       "coords": "649,435,678,438,740,418,716,390,658,410,631,410",
       "originalId": "2597",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/nhLcrD76ki.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-101",
@@ -1066,9 +1066,9 @@
       "coords": "631,410,658,410,716,390,696,368,640,386,610,386",
       "originalId": "2598",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/8qBJReZYCo.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-102",
@@ -1076,9 +1076,9 @@
       "coords": "610,386,640,386,696,368,676,344,622,362,595,363",
       "originalId": "2599",
       "entrance": "1",
-      "area": "30.6 კვ.მ.",
+      "area": "30.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/9mjvj2kvXE.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-103",
@@ -1086,9 +1086,9 @@
       "coords": "595,362,622,362,675,343,658,323,605,340,579,340",
       "originalId": "2600",
       "entrance": "1",
-      "area": "30.0 კვ.მ.",
+      "area": "30.0",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/UlVUJFzpqQ.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-104",
@@ -1096,19 +1096,19 @@
       "coords": "514,253,536,256,589,241,624,282,572,298,548,297",
       "originalId": "2601",
       "entrance": "1",
-      "area": "71.7 კვ.მ.",
+      "area": "71.7",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/Ib4jVfjbT2.jpg"
+      "source": "area"
     },
     {
-      "id": "Block-B2-Ap-104 a",
-      "apartmentNumber": "104 a",
+      "id": "Block-B2-Ap-104",
+      "apartmentNumber": "104a",
       "coords": "514,252,535,255,589,241,576,226,509,244",
       "originalId": "2602",
       "entrance": "1",
-      "area": "27.5 კვ.მ.",
+      "area": "27.5",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/t8drawU9Z3.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-105",
@@ -1116,9 +1116,9 @@
       "coords": "509,244,574,226,570,219,578,216,558,192,550,194,544,196,537,200,530,203,524,208,519,212,514,216,510,222,506,228,506,234,506,239",
       "originalId": "2603",
       "entrance": "1",
-      "area": "65.6 კვ.მ.",
+      "area": "65.6",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/wLqQw8M9El.jpg"
+      "source": "area"
     }
   ],
   "7": [
@@ -1128,9 +1128,9 @@
       "coords": "546,295,545,261,574,264,642,244,676,282,729,267,745,252,693,206,677,194,665,186,651,179,636,172,622,170,607,168,594,168,581,168,569,170,560,171,547,174,535,179,524,184,511,192,503,198,498,205,496,214,495,223,498,230,500,235",
       "originalId": "2544",
       "entrance": "1",
-      "area": "440.1 კვ.მ.",
+      "area": "440.1",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/IZcbkPz7U2.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-107",
@@ -1138,9 +1138,9 @@
       "coords": "676,282,737,348,795,330,808,312,746,252,728,267",
       "originalId": "2545",
       "entrance": "1",
-      "area": "93.4 კვ.მ.",
+      "area": "93.4",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/rTHEGT9G8p.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-108",
@@ -1148,9 +1148,9 @@
       "coords": "737,348,760,372,750,375,774,401,772,437,830,495,850,484,857,476,863,470,868,463,873,455,876,443,878,432,878,422,875,410,870,398,864,390,852,377,807,332,808,314,795,331",
       "originalId": "2546",
       "entrance": "1",
-      "area": "103.5 კვ.მ.",
+      "area": "103.5",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/2MzhUL8NGh.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-109",
@@ -1158,9 +1158,9 @@
       "coords": "658,376,718,355,740,379,750,376,774,400,772,438,829,494,818,498,806,501,797,502,781,504,770,504,760,504,750,503,740,501,727,498,714,493,699,486,680,475,662,457,650,440,630,410,628,371",
       "originalId": "2547",
       "entrance": "1",
-      "area": "103.5 კვ.მ.",
+      "area": "103.5",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/LJhhIG2VuN.jpg"
+      "source": "area"
     },
     {
       "id": "Block-B2-Ap-110",
@@ -1168,9 +1168,9 @@
       "coords": "630,410,628,371,658,376,717,354,660,290,608,304,576,306,578,340",
       "originalId": "2548",
       "entrance": "1",
-      "area": "93.0 კვ.მ.",
+      "area": "93.0",
       "status": "დაჯავშნილია",
-      "imageUrl": "https://vr.ge/portfolio/buildings/uploads/images/news/zzj60qME1e.jpg"
+      "source": "area"
     }
   ]
 }

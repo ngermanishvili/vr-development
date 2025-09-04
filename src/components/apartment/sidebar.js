@@ -55,7 +55,7 @@ export default function Sidebar({ isCollapsed, isMobile }) {
     const handleChooseApartment = () => {
         // Build query string with current filters
         const queryParams = new URLSearchParams()
-        
+
         if (filters.selectedBlock && filters.selectedBlock !== 'ALL') {
             queryParams.append('block', filters.selectedBlock)
         }
@@ -103,11 +103,10 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                                     <button
                                         key={block.id}
                                         onClick={() => handleFilterChange('selectedBlock', block.block_code)}
-                                        className={`px-3 py-1 text-sm ${
-                                            filters.selectedBlock === block.block_code
-                                                ? 'bg-gray-700 text-white'
-                                                : 'border border-gray-400'
-                                        }`}
+                                        className={`px-3 py-1 text-sm ${filters.selectedBlock === block.block_code
+                                            ? 'bg-gray-700 text-white'
+                                            : 'border border-gray-400'
+                                            }`}
                                     >
                                         {block.block_code}
                                     </button>
@@ -130,11 +129,10 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                         <div className="flex justify-center gap-1 flex-wrap">
                             <button
                                 onClick={() => handleFilterChange('apartmentType', 'ALL')}
-                                className={`px-3 py-1 text-xs ${
-                                    filters.apartmentType === 'ALL'
-                                        ? 'bg-[#cfa84f] text-white'
-                                        : 'border border-gray-400'
-                                }`}
+                                className={`px-3 py-1 text-xs ${filters.apartmentType === 'ALL'
+                                    ? 'bg-[#cfa84f] text-white'
+                                    : 'border border-gray-400'
+                                    }`}
                             >
                                 ALL
                             </button>
@@ -142,16 +140,15 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                                 <button
                                     key={type.apartment_type}
                                     onClick={() => handleFilterChange('apartmentType', type.apartment_type)}
-                                    className={`px-2 py-1 text-xs ${
-                                        filters.apartmentType === type.apartment_type
-                                            ? 'bg-[#cfa84f] text-white'
-                                            : 'border border-gray-400'
-                                    }`}
+                                    className={`px-2 py-1 text-xs ${filters.apartmentType === type.apartment_type
+                                        ? 'bg-[#cfa84f] text-white'
+                                        : 'border border-gray-400'
+                                        }`}
                                 >
                                     {type.apartment_type === 'სტუდიო' ? 'STUDIO' :
-                                     type.apartment_type === '1 საძინ' ? '1' :
-                                     type.apartment_type === '2 საძინ' ? '2' :
-                                     type.apartment_type === '5 საძინ' ? '5' : type.apartment_type}
+                                        type.apartment_type === '1 საძინ' ? '1' :
+                                            type.apartment_type === '2 საძინ' ? '2' :
+                                                type.apartment_type === '5 საძინ' ? '5' : type.apartment_type}
                                 </button>
                             ))}
                         </div>
@@ -164,8 +161,8 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                             <span>From {statistics?.overall?.min_area || 25.90} m²</span>
                             <span>To {statistics?.overall?.max_area || 440.10} m²</span>
                         </div>
-                        <input 
-                            type="range" 
+                        <input
+                            type="range"
                             className="w-full accent-[#cfa84f]"
                             min={statistics?.overall?.min_area || 25.90}
                             max={statistics?.overall?.max_area || 440.10}
@@ -194,8 +191,8 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                             <span>From 1</span>
                             <span>To {blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 12}</span>
                         </div>
-                        <input 
-                            type="range" 
+                        <input
+                            type="range"
                             className="w-full accent-[#cfa84f]"
                             min="1"
                             max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 12}
@@ -219,7 +216,7 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                     </div>
 
                     {/* Choose Apartment Button */}
-                    <button 
+                    <button
                         onClick={handleChooseApartment}
                         className="w-full bg-[#cfa84f] hover:bg-[#b8863c] text-white py-2 uppercase font-semibold text-sm transition-colors"
                     >
@@ -232,15 +229,13 @@ export default function Sidebar({ isCollapsed, isMobile }) {
 
     // Desktop version
     return (
-        <div className={`${isCollapsed ? 'w-0 overflow-hidden' : 'w-full'} h-screen bg-white shadow transition-all duration-300 ease-in-out ${isCollapsed ? 'p-0' : 'p-6'} font-sans overflow-y-auto`}>
+        <div className={`${isCollapsed ? 'w-0 overflow-hidden' : 'w-full'} h-full bg-white shadow ${isCollapsed ? 'p-0' : 'p-6'} font-sans overflow-y-auto`}>
             {/* Back Button */}
             <div className="flex justify-between items-center mb-6">
                 <button className="border border-[#cfa84f] px-6 py-2 text-[#cfa84f] uppercase text-sm">
                     Back
                 </button>
-                <button className="border border-gray-300 w-10 h-10 flex items-center justify-center">
-                    <span className="text-xl">←</span>
-                </button>
+
             </div>
 
             {/* Building */}
@@ -254,11 +249,10 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                             <button
                                 key={block.id}
                                 onClick={() => handleFilterChange('selectedBlock', block.block_code)}
-                                className={`px-4 py-2 ${
-                                    filters.selectedBlock === block.block_code
-                                        ? 'bg-gray-700 text-white'
-                                        : 'border border-gray-400'
-                                }`}
+                                className={`px-4 py-2 ${filters.selectedBlock === block.block_code
+                                    ? 'bg-gray-700 text-white'
+                                    : 'border border-gray-400'
+                                    }`}
                             >
                                 {block.block_code}
                             </button>
@@ -281,11 +275,10 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                 <div className="flex justify-center gap-2 flex-wrap">
                     <button
                         onClick={() => handleFilterChange('apartmentType', 'ALL')}
-                        className={`px-4 py-2 ${
-                            filters.apartmentType === 'ALL'
-                                ? 'bg-[#cfa84f] text-white'
-                                : 'border border-gray-400'
-                        }`}
+                        className={`px-4 py-2 ${filters.apartmentType === 'ALL'
+                            ? 'bg-[#cfa84f] text-white'
+                            : 'border border-gray-400'
+                            }`}
                     >
                         ALL
                     </button>
@@ -293,16 +286,15 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                         <button
                             key={type.apartment_type}
                             onClick={() => handleFilterChange('apartmentType', type.apartment_type)}
-                            className={`px-3 py-2 ${
-                                filters.apartmentType === type.apartment_type
-                                    ? 'bg-[#cfa84f] text-white'
-                                    : 'border border-gray-400'
-                            }`}
+                            className={`px-3 py-2 ${filters.apartmentType === type.apartment_type
+                                ? 'bg-[#cfa84f] text-white'
+                                : 'border border-gray-400'
+                                }`}
                         >
                             {type.apartment_type === 'სტუდიო' ? 'STUDIO' :
-                             type.apartment_type === '1 საძინ' ? '1' :
-                             type.apartment_type === '2 საძინ' ? '2' :
-                             type.apartment_type === '5 საძინ' ? '5' : type.apartment_type}
+                                type.apartment_type === '1 საძინ' ? '1' :
+                                    type.apartment_type === '2 საძინ' ? '2' :
+                                        type.apartment_type === '5 საძინ' ? '5' : type.apartment_type}
                         </button>
                     ))}
                 </div>
@@ -315,8 +307,8 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                     <span>From {statistics?.overall?.min_area || 25.90} m²</span>
                     <span>To {statistics?.overall?.max_area || 440.10} m²</span>
                 </div>
-                <input 
-                    type="range" 
+                <input
+                    type="range"
                     className="w-full accent-[#cfa84f]"
                     min={statistics?.overall?.min_area || 25.90}
                     max={statistics?.overall?.max_area || 440.10}
@@ -345,8 +337,8 @@ export default function Sidebar({ isCollapsed, isMobile }) {
                     <span>From 1</span>
                     <span>To {blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}</span>
                 </div>
-                <input 
-                    type="range" 
+                <input
+                    type="range"
                     className="w-full accent-[#cfa84f]"
                     min="1"
                     max={blocks.find(b => b.block_code === filters.selectedBlock)?.total_floors || 20}
@@ -369,7 +361,7 @@ export default function Sidebar({ isCollapsed, isMobile }) {
             </div>
 
             {/* Choose Apartment Button */}
-            <button 
+            <button
                 onClick={handleChooseApartment}
                 className="w-full bg-[#cfa84f] hover:bg-[#b8863c] text-white py-3 uppercase font-semibold transition-colors"
             >
